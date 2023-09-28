@@ -9,6 +9,12 @@ export default {
         lg: "976px",
         xl: "1440px",
       },
+      colors: {
+        primary: "#132F40",
+        primary_light: "#0E344B",
+        badge_onsale: "#F80000",
+        badge_discount: "#F3F800",
+      },
     },
   },
   plugins: [],
