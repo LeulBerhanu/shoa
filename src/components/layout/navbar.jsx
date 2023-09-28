@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 function Navbar() {
   return (
-    <nav className="flex align-middle justify-between px-16">
+    <nav className="flex align-middle justify-between px-16 py-14">
       <img src={shoaLogo} alt="Shoa logo" />
       <div className="flex space-x-14 font-medium text-2xl items-center">
         <NavLink to="/">Home</NavLink>
