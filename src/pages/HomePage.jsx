@@ -10,9 +10,10 @@ const h2Style = "text-[39px] text-center m-8 capitalize";
 function HomePage() {
   return (
     <>
-      <h1 className="text-[80px] text-center capitalize">
+      <h1 className="text-[80px] text-center capitalize mb-24">
         Opening doors, <br /> building communities!
       </h1>
+
       <section id="slider_section">
         <Card />
       </section>
