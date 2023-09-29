@@ -3,22 +3,6 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
-      fontFamily: {
-        custom: [
-          "Poppins",
-          "system-ui",
-          "-apple-system",
-          "BlinkMacSystemFont",
-          "Segoe UI",
-          "Roboto",
-          "Oxygen",
-          "Ubuntu",
-          "Cantarell",
-          "Open Sans",
-          "Helvetica Neue",
-          "sans-serif",
-        ],
-      },
       screens: {
         sm: "480px",
         md: "768px",
