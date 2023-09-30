@@ -5,6 +5,10 @@ import SmallCard from "../components/card/SmallCard";
 import MapComponent from "../components/MapComponent";
 // Icons
 import { HiOutlineArrowUpRight } from "react-icons/hi2";
+import ImageCarousel from "../components/Image Carousel/ImageCarousel";
+import Carousel from "../components/Image Carousel/Carousel";
+import SwiperComponent from "../components/SwiperComponent";
+import ContactForm from "../components/ContactForm";
 
 const h2Style = "text-[39px] text-center m-8 capitalize";
 
@@ -16,7 +20,9 @@ function HomePage() {
       </h1>
 
       <section id="slider_section">
-        <Card />
+        <div className="container mx-auto h-[600px] ">
+          <SwiperComponent />
+        </div>
       </section>
 
       <h2 className={h2Style}>Why choose shoa Homes?</h2>
@@ -62,8 +68,18 @@ function HomePage() {
         <h2 className={h2Style}>Location</h2>
 
         {/* <LocationMap /> */}
-        <div className=" max-w-screen-md h-[450px] mx-auto mb-14">
+        <div className=" max-w-screen-md h-[450px] mx-auto">
           <MapComponent />
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section>
+        <h2 className={h2Style}>Contact us</h2>
+        <div className="flex">
+          <div className="container mx-auto mb-14">
+            <ContactForm />
+          </div>
         </div>
       </section>
     </>
