@@ -8,9 +8,10 @@ import { HiOutlineArrowUpRight } from "react-icons/hi2";
 import ImageCarousel from "../components/Image Carousel/ImageCarousel";
 import Carousel from "../components/Image Carousel/Carousel";
 import SwiperComponent from "../components/SwiperComponent";
-import ContactForm from "../components/ContactForm";
 
-const h2Style = "text-[39px] text-center m-8 capitalize";
+import ContactComponent from "../components/Contact/ContactComponent";
+
+const h2Style = " text-center capitalize";
 
 function HomePage() {
   return (
@@ -76,11 +77,7 @@ function HomePage() {
       {/* Contact Section */}
       <section>
         <h2 className={h2Style}>Contact us</h2>
-        <div className="flex">
-          <div className="container mx-auto mb-14">
-            <ContactForm />
-          </div>
-        </div>
+        <ContactComponent />
       </section>
     </>
   );
