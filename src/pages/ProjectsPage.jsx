@@ -12,7 +12,14 @@ function ProjectsPage() {
         className="-z-10 w-full h-[500px] absolute top-0 bg-cover bg-no-repeat "
       >
         {/* Gradient Overlay */}
-        <div className="absolute w-full h-full  mix-blend-multiply bg-gradient-to-t from-primary_light/[.8] to-white/[.8]"></div>
+        {/* <div className="absolute w-full h-full  mix-blend-multiply bg-gradient-to-t from-primary_light/[.8] to-white/[.8]"></div> */}
+        <div
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(255, 255, 255, 0.8) -61.6%, rgba(14, 52, 75, 0.8) 100%)",
+          }}
+          className="absolute w-full h-full"
+        ></div>
       </div>
 
       <div className="flex flex-col gap-5">
