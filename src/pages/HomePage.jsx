@@ -2,6 +2,7 @@ import React from "react";
 import Card from "../components/card/Card";
 import Hero from "../components/Hero";
 import SmallCard from "../components/card/SmallCard";
+import MapComponent from "../components/MapComponent";
 // Icons
 import { HiOutlineArrowUpRight } from "react-icons/hi2";
 
@@ -59,7 +60,11 @@ function HomePage() {
 
       <section id="location_section">
         <h2 className={h2Style}>Location</h2>
+
         {/* <LocationMap /> */}
+        <div className=" max-w-screen-md h-[450px] mx-auto mb-14">
+          <MapComponent />
+        </div>
       </section>
     </>
   );
