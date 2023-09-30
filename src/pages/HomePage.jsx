@@ -69,7 +69,7 @@ function HomePage() {
         <h2 className={h2Style}>Location</h2>
 
         {/* <LocationMap /> */}
-        <div className=" max-w-screen-md h-[450px] mx-auto">
+        <div className=" container w-[994px]  h-[450px] mx-auto">
           <MapComponent />
         </div>
       </section>

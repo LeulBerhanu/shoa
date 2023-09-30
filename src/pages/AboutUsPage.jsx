@@ -11,15 +11,14 @@ function AboutUsPage() {
 
   return (
     <div>
-      <div
-        style={bgImage}
-        className="container mx-auto h-[500px] w-full relative shadow-boxShadow rounded-[15px]"
-      >
-        {/* Color Overlay */}
-        <div className="flex items-center absolute w-full h-full rounded-[15px] bg-primary_light/[.50] py-[73px] px-14 leading-[1.15] ">
-          <p className=" text-white text-[79px] w-[770px] font-light">
-            About Us
-          </p>
+      <div>
+        <div className="container flex items-center mx-auto relative h-[500px] ">
+          <p className="absolute px-14 text-[79px] text-white z-10">About Us</p>
+          <div className="flex items-center absolute w-full h-full rounded-[15px] bg-primary_light/[.50] py-[73px] px-14 leading-[1.15] "></div>
+          <img
+            src={house}
+            className="w-full h-full object-cover rounded-[15px]"
+          />
         </div>
       </div>
 

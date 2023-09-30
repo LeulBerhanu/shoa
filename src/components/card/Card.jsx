@@ -1,9 +1,11 @@
 import React from "react";
 import house from "../../img/house.png";
+import onSaleBadge from "../../img/onSaleBadge.svg";
+import OnSaleBadge from "../OnSaleBadge";
 
 function Card() {
   return (
-    <div className="flex gap-9 items-center px-9 py-8 shadow-boxShadow w-full rounded-2xl ">
+    <div className="flex gap-9 items-center px-9 py-8 shadow-boxShadow w-full rounded-2xl relative">
       <img src={house} className="max-w-430px" alt="house" />
       {/* Card Body */}
       <div className="flex flex-col gap-y-16">
@@ -24,6 +26,11 @@ function Card() {
           <li>2 Bedrooms</li>
           <li>2 Bathrooms</li>
         </ul>
+      </div>
+
+      {/* badge */}
+      <div className="absolute top-0 right-10">
+        <OnSaleBadge />
       </div>
     </div>
   );

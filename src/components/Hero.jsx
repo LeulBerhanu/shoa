@@ -4,6 +4,8 @@ import house from "../img/house.png";
 import { FaRegCheckCircle } from "react-icons/fa";
 import { PiMapPinLineBold } from "react-icons/pi";
 import { BsCash } from "react-icons/bs";
+import handCash from "../img/iconoir_hand-cash.svg";
+import locationPin from "../img/mingcute_location-2-line.svg";
 
 function Hero() {
   const bgImage = {
@@ -32,13 +34,13 @@ function Hero() {
             </div>
             <div className="flex flex-col items-center">
               <i className="text-[100px]">
-                <PiMapPinLineBold />
+                <img src={locationPin} alt="" />
               </i>
               <p>convenience</p>
             </div>
             <div className="flex flex-col items-center">
               <i className="text-[100px]">
-                <BsCash />
+                <img src={handCash} alt="" />
               </i>
               <p>Affordable</p>
             </div>

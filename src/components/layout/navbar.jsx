@@ -36,7 +36,7 @@ function Navbar() {
         <NavLink to="partnership-and-development">Partnership & Dev't</NavLink>
         <NavLink to="projects">Projects</NavLink>
         <NavLink to="about-us">About us</NavLink>
-        <NavLink to="#">Contact us</NavLink>
+        <NavLink to="contact-us">Contact us</NavLink>
       </div>
     </nav>
   );

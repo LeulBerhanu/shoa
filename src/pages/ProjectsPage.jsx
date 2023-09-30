@@ -1,8 +1,8 @@
 import React from "react";
 import SearchBar from "../components/SearchBar";
-import bedroom from "../img/bedroom.png";
 import Filters from "../components/Filters";
 import Card from "../components/card/Card";
+import bedroom from "../img/bedroom.png";
 
 function ProjectsPage() {
   return (
@@ -20,6 +20,8 @@ function ProjectsPage() {
           }}
           className="absolute w-full h-full"
         ></div>
+
+        {/* Badge */}
       </div>
 
       <div className="flex flex-col gap-5">
