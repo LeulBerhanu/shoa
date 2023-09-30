@@ -1,6 +1,7 @@
 import React from "react";
 import SearchBar from "../components/SearchBar";
 import bedroom from "../img/bedroom.png";
+import Filters from "../components/Filters";
 
 function ProjectsPage() {
   return (
@@ -12,7 +13,10 @@ function ProjectsPage() {
         {/* Gradient Overlay */}
         <div className="absolute w-full h-full  mix-blend-multiply bg-gradient-to-t from-primary_light/[.8] to-white/[.8]"></div>
       </div>
-      <SearchBar />
+      <div className="flex flex-col gap-5">
+        <SearchBar />
+        <Filters />
+      </div>
 
       {/* <div className="-z-10">project</div>
         <div className="self-end z-10">
