@@ -35,7 +35,7 @@ function Navbar() {
         <NavLink to="#">Blog</NavLink>
         <NavLink to="partnership-and-development">Partnership & Dev't</NavLink>
         <NavLink to="projects">Projects</NavLink>
-        <NavLink to="#">About us</NavLink>
+        <NavLink to="about-us">About us</NavLink>
         <NavLink to="#">Contact us</NavLink>
       </div>
     </nav>

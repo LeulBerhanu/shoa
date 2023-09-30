@@ -6,6 +6,7 @@ import Layout from "./components/layout/Layout";
 import HomePage from "./pages/HomePage";
 import ProjectsPage from "./pages/ProjectsPage";
 import PartnershipDevtPage from "./pages/Partnership&Dev'tPage";
+import AboutUsPage from "./pages/AboutUsPage";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           path="partnership-and-development"
           element={<PartnershipDevtPage />}
         />
+        <Route path="about-us" element={<AboutUsPage />} />
       </Route>
     </Routes>
   );
