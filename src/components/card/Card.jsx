@@ -3,7 +3,7 @@ import house from "../../img/house.png";
 
 function Card() {
   return (
-    <div className="flex gap-9 items-center px-9 py-8 shadow-boxShadow w-[994px] rounded-2xl ">
+    <div className="flex gap-9 items-center px-9 py-8 shadow-boxShadow w-full rounded-2xl ">
       <img src={house} className="max-w-430px" alt="house" />
       {/* Card Body */}
       <div className="flex flex-col gap-y-16">

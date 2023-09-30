@@ -27,33 +27,49 @@ export default function SwiperComponent() {
       className="mySwiper w-full h-full "
     >
       <SwiperSlide className="flex justify-center items-center object-cover">
-        <div className="block object-cover">
+        <div className=" object-cover">
           <Card />
         </div>
       </SwiperSlide>
       <SwiperSlide className="flex justify-center items-center">
-        <Card />
+        <div className=" object-cover">
+          <Card />
+        </div>
       </SwiperSlide>
       <SwiperSlide className="flex justify-center items-center">
-        <Card />
+        <div className=" object-cover">
+          <Card />
+        </div>
       </SwiperSlide>
       <SwiperSlide className="flex justify-center items-center">
-        <Card />
+        <div className=" object-cover">
+          <Card />
+        </div>
       </SwiperSlide>
       <SwiperSlide className="flex justify-center items-center">
-        <Card />
+        <div className=" object-cover">
+          <Card />
+        </div>
       </SwiperSlide>
       <SwiperSlide className="flex justify-center items-center">
-        <Card />
+        <div className=" object-cover">
+          <Card />
+        </div>
       </SwiperSlide>
       <SwiperSlide className="flex justify-center items-center">
-        <Card />
+        <div className=" object-cover">
+          <Card />
+        </div>
       </SwiperSlide>
       <SwiperSlide className="flex justify-center items-center">
-        <Card />
+        <div className=" object-cover">
+          <Card />
+        </div>
       </SwiperSlide>
       <SwiperSlide className="flex justify-center items-center">
-        <Card />
+        <div className=" object-cover">
+          <Card />
+        </div>
       </SwiperSlide>
     </Swiper>
   );
