@@ -1,6 +1,9 @@
 import React from "react";
 import house from "../img/house.png";
 import PageBanner from "../components/PageBanner";
+import bannerPar from "../img/aboutUsBanner/bannerPar.svg";
+import bannerParSolid from "../img/aboutUsBanner/bannerParSolid.svg";
+import bannerPic from "../img/aboutUsBanner/bannerPic.svg";
 
 function AboutUsPage() {
   const bgImage = {
@@ -11,12 +14,34 @@ function AboutUsPage() {
   };
 
   return (
-    <div className="px-20">
+    <div>
       <div className="container mx-auto">
-        <PageBanner name="About Us" />
+        <div className="flex relative w-full h-[672px]  rounded-[15px]">
+          <img
+            src={bannerPar}
+            className="absolute  z-30 px-[122px] py-[60px]"
+          />
+          <img
+            src={bannerPic}
+            className="absolute -bottom-[.5px] z-20"
+            alt=""
+          />
+          <img src={bannerParSolid} className="absolute px-[122px] py-[60px]" />
+
+          <p className="absolute right-28 text-white text-justify bottom-4 leading-tight text-[28px] w-[833px]">
+            Shoa is a well-known brand name in Ethiopia for over 6o years in
+            different sectors, though mainly people are fond of the merchandise
+            business we are in. The shoa supermarket chains are one of the
+            leading and most popular convenient stores in Addis Ababa with over
+            20 branches to date.
+          </p>
+
+          {/* Bg Color */}
+          <div className="bg-primary absolute w-full h-full -z-10"></div>
+        </div>
       </div>
 
-      <div className="container mx-auto text-[28px] text-justify mb">
+      <div className="px-20 container mx-auto text-[28px] text-justify mb">
         <p className="my-16">
           Shoa is a well-known brand name in Ethiopia for over 6o years in
           different sectors, though mainly people are fond of the merchandise
@@ -35,7 +60,7 @@ function AboutUsPage() {
           discount from the regular market.
         </p>
         <h2 className="mb-0">Why choose us?</h2>
-        <ul className="list-disc ml-8 mb-5">
+        <ul className="list-disc ml-14 mb-5">
           <li>Quality</li>
           <li>Convenience</li>
           <li>Affordable</li>
@@ -59,7 +84,7 @@ function AboutUsPage() {
         </p>
 
         <h2 className="mb-0">Payment options:</h2>
-        <ul className="list-disc ml-8">
+        <ul className="list-disc ml-14">
           <li>20% advance payment, and four time payment for the rest.</li>
           <li>Can pay full amount and enjoy a 1% discount.</li>
           <li>All payment values are in dollar.</li>
@@ -68,16 +93,16 @@ function AboutUsPage() {
       </div>
 
       <section>
-        <div className="container flex justify-between mx-auto object-cover py-14 ">
+        <div className="px-20 container flex justify-between mx-auto object-cover py-14 ">
           <div
             style={bgImage}
-            className="relative w-[582px] h-[645px]  rounded-[15px]"
+            className="relative w-[582px] h-[645px] rounded-[15px]"
           >
             <div className="flex items-center absolute w-full h-full rounded-[15px] bg-primary_light/[.50] py-[73px] px-14 leading-[1.15] "></div>
           </div>
           <div
             style={bgImage}
-            className="relative w-[582px] h-[645px]   rounded-[15px]"
+            className="relative w-[582px] h-[645px] rounded-[15px]"
           >
             <div className="flex items-center absolute w-full h-full rounded-[15px] bg-primary_light/[.50] py-[73px] px-14 leading-[1.15] "></div>
           </div>
@@ -85,7 +110,7 @@ function AboutUsPage() {
       </section>
 
       <section>
-        <div className="container mx-auto text-[28px] text-justify mb-56">
+        <div className="px-20 container mx-auto text-[28px] text-justify mb-56">
           <p className="my-16">
             Recently to tackle the sever problem in shortage and expensiveness
             of housing, we joined the real estate sector with adequate resources
