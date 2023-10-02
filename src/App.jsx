@@ -10,6 +10,7 @@ import AboutUsPage from "./pages/AboutUsPage";
 import ProjectDetailsPage from "./pages/ProjectDetailsPage";
 import ContactUsPage from "./pages/ContactUsPage";
 import BlogPage from "./pages/BlogPage";
+import BlogPageNews from "./pages/BlogPageNews";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
         <Route path="blog" element={<BlogPage />} />
+        <Route path="blog/:id" element={<BlogPageNews />} />
         <Route path="projects" element={<ProjectsPage />} />
         <Route path="projects/:id" element={<ProjectDetailsPage />} />
         <Route

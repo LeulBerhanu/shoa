@@ -3,13 +3,12 @@ import Card from "../components/card/Card";
 import Hero from "../components/Hero";
 import SmallCard from "../components/card/SmallCard";
 import MapComponent from "../components/MapComponent";
-// Icons
-import { HiOutlineArrowUpRight } from "react-icons/hi2";
+import SwiperComponent from "../components/SwiperComponent";
+import ContactComponent from "../components/Contact/ContactComponent";
 import ImageCarousel from "../components/Image Carousel/ImageCarousel";
 import Carousel from "../components/Image Carousel/Carousel";
-import SwiperComponent from "../components/SwiperComponent";
-
-import ContactComponent from "../components/Contact/ContactComponent";
+// Icons
+import { HiOutlineArrowUpRight } from "react-icons/hi2";
 
 const h2Style = " text-center capitalize";
 
@@ -39,26 +38,26 @@ function HomePage() {
 
       <section id="blog_section">
         <h2 className={h2Style}>Blog</h2>
-        <div className="flex text-4xl justify-center">
-          <div className="flex flex-col gap-16 p-11 max-w-[480px] border">
+        <div className="flex text-4xl justify-center h-[323px]">
+          <div className="relative p-11 max-w-[480px] border">
             <a href="#">Housing prices in Addis Ababa is changing</a>
-            <i className="self-end ">
+            <i className="absolute bottom-5 right-5">
               <HiOutlineArrowUpRight />
             </i>
           </div>
 
-          <div className="flex flex-col gap-16 p-11 max-w-[480px] border">
+          <div className="relative p-11 max-w-[480px] border">
             <a href="#">
               Is the current inflation affecting real estate owners
             </a>
-            <i className="self-end ">
+            <i className="absolute bottom-5 right-5">
               <HiOutlineArrowUpRight />
             </i>
           </div>
 
-          <div className="flex flex-col gap-16 p-11 max-w-[480px] border">
+          <div className="relative p-11 max-w-[480px] border">
             <a href="#">What’s new at shoa real estate listings</a>
-            <i className="w-8 self-end align-baseline">
+            <i className="absolute bottom-5 right-5">
               <HiOutlineArrowUpRight />
             </i>
           </div>
