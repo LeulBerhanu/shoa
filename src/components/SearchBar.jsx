@@ -9,7 +9,9 @@ function SearchBar() {
         placeholder="Find your home"
         className=" placeholder-black bg-transparent w-full outline-none"
       />
-      <AiOutlineSearch />
+      <div className="text-2xl">
+        <AiOutlineSearch />
+      </div>
     </div>
   );
 }

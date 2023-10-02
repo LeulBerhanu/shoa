@@ -22,15 +22,16 @@ function ProjectsPage() {
         ></div>
 
         {/* Badge */}
+        {/* <div></div> */}
       </div>
 
-      <div className="flex flex-col gap-5">
+      <div className="container mx-auto flex flex-col gap-5 px-36">
         <SearchBar />
         <Filters />
       </div>
 
       <section>
-        <div className="container mx-auto flex items-center justify-between mt-40">
+        <div className="container mx-auto px-24 flex items-center justify-between mt-40">
           <h2 className="capitalize">4 Properties Found</h2>
           <select
             style={{ boxShadow: "0px 0px 11px 1px #00000040" }}
@@ -44,7 +45,7 @@ function ProjectsPage() {
         </div>
 
         {/* Search Result */}
-        <div className="container mx-auto flex flex-col gap-8 mb-[60px]">
+        <div className="container mx-auto px-24 flex flex-col gap-8 mb-[60px]">
           <Card />
           <Card />
           <Card />

@@ -23,7 +23,7 @@ function Navbar() {
   return (
     <nav
       style={bgChange ? style : null}
-      className=" flex align-middle justify-between px-16 py-14"
+      className="container mx-auto flex align-middle justify-between px-16 py-14"
     >
       <img
         src={bgChange ? shoaLogoWhite : shoaLogo}
