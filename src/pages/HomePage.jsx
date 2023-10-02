@@ -9,6 +9,7 @@ import ImageCarousel from "../components/Image Carousel/ImageCarousel";
 import Carousel from "../components/Image Carousel/Carousel";
 // Icons
 import { HiOutlineArrowUpRight } from "react-icons/hi2";
+import PageBanner from "../components/PageBanner";
 
 const h2Style = " text-center capitalize";
 
@@ -65,11 +66,52 @@ function HomePage() {
       </section>
 
       <section id="location_section">
-        <h2 className={h2Style}>Location</h2>
+        <h2 className={h2Style}>Office Location</h2>
 
         {/* <LocationMap /> */}
         <div className=" container w-[994px]  h-[450px] mx-auto">
           <MapComponent />
+        </div>
+      </section>
+
+      <section>
+        <h2 className={h2Style}>Our sites</h2>
+        <div className="flex flex-col gap-14">
+          <div className="container flex items-center mx-auto relative">
+            <div className="w-[527px]  ml-32">
+              <PageBanner name="Jackros" />
+            </div>
+            <div className="absolute z-20 mr-32 right-0 w-[806px] h-[418px]">
+              <MapComponent />
+            </div>
+          </div>
+
+          <div className="container pl-32 flex justify-end items-center mx-auto relative">
+            <div className="w-[527px] mr-28">
+              <PageBanner name="Bulbula" />
+            </div>
+            <div className="absolute z-20 ml-32 left-0 w-[806px] h-[418px]">
+              <MapComponent />
+            </div>
+          </div>
+
+          <div className="container pl-32 flex items-center mx-auto relative">
+            <div className="w-[527px] ">
+              <PageBanner name="Mekanisa" />
+            </div>
+            <div className="absolute z-20 mr-32 right-0 w-[806px] h-[418px]">
+              <MapComponent />
+            </div>
+          </div>
+
+          <div className="container pl-32 flex justify-end items-center mx-auto relative">
+            <div className="w-[527px] mr-28">
+              <PageBanner name="Welo Sefer" />
+            </div>
+            <div className="absolute z-20 ml-32 left-0 w-[806px] h-[418px]">
+              <MapComponent />
+            </div>
+          </div>
         </div>
       </section>
 
