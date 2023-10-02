@@ -7,7 +7,7 @@ import copyright from "../../img/ph_copyright-thin.svg";
 
 function Footer() {
   return (
-    <footer className="bg-primary flex-shrink-0">
+    <footer className="bg-primary flex-shrink-0 mt-24">
       <div className=" container grid grid-cols-2  text-white mx-auto">
         {/* Left Column */}
         <div className=" flex flex-col gap-8 px-11 py-12 border-r">
