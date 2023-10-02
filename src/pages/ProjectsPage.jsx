@@ -11,8 +11,6 @@ function ProjectsPage() {
         style={{ backgroundImage: `url(${bedroom})` }}
         className="-z-10 w-full h-[500px] absolute top-0 bg-cover bg-no-repeat "
       >
-        {/* Gradient Overlay */}
-        {/* <div className="absolute w-full h-full  mix-blend-multiply bg-gradient-to-t from-primary_light/[.8] to-white/[.8]"></div> */}
         <div
           style={{
             background:
@@ -20,9 +18,6 @@ function ProjectsPage() {
           }}
           className="absolute w-full h-full"
         ></div>
-
-        {/* Badge */}
-        {/* <div></div> */}
       </div>
 
       <div className="container mx-auto flex flex-col gap-5 px-36">

@@ -32,7 +32,7 @@ function Navbar() {
       />
       <div className="flex space-x-14 font-medium text-2xl items-center">
         <NavLink to="/">Home</NavLink>
-        <NavLink to="#">Blog</NavLink>
+        <NavLink to="blog">Blog</NavLink>
         <NavLink to="partnership-and-development">Partnership & Dev't</NavLink>
         <NavLink to="projects">Projects</NavLink>
         <NavLink to="about-us">About us</NavLink>

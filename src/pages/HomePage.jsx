@@ -76,8 +76,10 @@ function HomePage() {
 
       {/* Contact Section */}
       <section>
-        <h2 className={h2Style}>Contact us</h2>
-        <ContactComponent />
+        <div className="px-20">
+          <h2 className={h2Style}>Contact us</h2>
+          <ContactComponent />
+        </div>
       </section>
     </>
   );

@@ -9,12 +9,14 @@ import PartnershipDevtPage from "./pages/Partnership&Dev'tPage";
 import AboutUsPage from "./pages/AboutUsPage";
 import ProjectDetailsPage from "./pages/ProjectDetailsPage";
 import ContactUsPage from "./pages/ContactUsPage";
+import BlogPage from "./pages/BlogPage";
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
+        <Route path="blog" element={<BlogPage />} />
         <Route path="projects" element={<ProjectsPage />} />
         <Route path="projects/:id" element={<ProjectDetailsPage />} />
         <Route

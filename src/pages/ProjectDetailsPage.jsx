@@ -45,7 +45,7 @@ function ProjectDetailsPage() {
       </div>
 
       {/* Details box */}
-      <div className="container mx-auto flex relative text-white text-[28px] rounded-[15px]">
+      <div className="container mx-auto mt-4 flex relative text-white text-[28px] rounded-[15px]">
         <div className="z-10 grid grid-cols-3 grid-rows-2 gap-y-10 p-10">
           <div className="flex items-center gap-x-5">
             <i>

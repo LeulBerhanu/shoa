@@ -1,5 +1,6 @@
 import React from "react";
 import house from "../img/house.png";
+import PageBanner from "../components/PageBanner";
 
 function AboutUsPage() {
   const bgImage = {
@@ -10,16 +11,9 @@ function AboutUsPage() {
   };
 
   return (
-    <div>
-      <div>
-        <div className="container flex items-center mx-auto relative h-[500px] ">
-          <p className="absolute px-14 text-[79px] text-white z-10">About Us</p>
-          <div className="flex items-center absolute w-full h-full rounded-[15px] bg-primary_light/[.50] py-[73px] px-14 leading-[1.15] "></div>
-          <img
-            src={house}
-            className="w-full h-full object-cover rounded-[15px]"
-          />
-        </div>
+    <div className="px-20">
+      <div className="container mx-auto">
+        <PageBanner name="About Us" />
       </div>
 
       <div className="container mx-auto text-[28px] text-justify mb">

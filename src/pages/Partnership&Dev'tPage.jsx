@@ -10,7 +10,7 @@ function PartnershipDevtPage() {
   };
 
   return (
-    <div>
+    <div className="px-20">
       <div
         style={bgImage}
         className="container mx-auto h-[500px] w-full relative shadow-boxShadow rounded-[15px]"
