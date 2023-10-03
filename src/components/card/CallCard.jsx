@@ -7,7 +7,7 @@ import locationpin from "../../img/locationpin.svg";
 // components
 import ClickablePhoneNumber from "../Contact/ClickablePhoneNumber";
 
-function CallingCard() {
+function CallCard() {
   return (
     <div className="p-[10px] shadow-boxShadow rounded-[15px]">
       <div className="px-3 pt-9">
@@ -58,4 +58,4 @@ function CallingCard() {
   );
 }
 
-export default CallingCard;
+export default CallCard;

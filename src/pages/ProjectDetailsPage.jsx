@@ -10,8 +10,8 @@ import bath from "../img/detailPageIcons/bath.svg";
 import saleTag from "../img/detailPageIcons/saleTag.svg";
 // components
 import MapComponent from "../components/MapComponent";
-import CallingCard from "../components/card/callingCard";
 import OnSaleBadge from "../components/OnSaleBadge";
+import CallCard from "../components/card/CallCard";
 
 function ProjectDetailsPage() {
   return (
@@ -138,7 +138,7 @@ function ProjectDetailsPage() {
               <MapComponent />
             </div>
             <div className="w-[444px]">
-              <CallingCard />
+              <CallCard />
             </div>
           </div>
         </div>
