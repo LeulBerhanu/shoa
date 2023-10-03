@@ -3,7 +3,7 @@ import shoaLogo from "../../img/shoaLogo.svg";
 import shoaLogoWhite from "../../img/shoaLogoWhite.svg";
 import { NavLink, useLocation } from "react-router-dom";
 
-function Navbar() {
+function Navigation() {
   const location = useLocation();
 
   const [bgChange, setBgChange] = React.useState(false);
@@ -21,7 +21,7 @@ function Navbar() {
   };
 
   return (
-    <nav
+    <div
       style={bgChange ? style : null}
       className="container mx-auto flex align-middle justify-between px-16 py-14"
     >
@@ -38,8 +38,8 @@ function Navbar() {
         <NavLink to="about-us">About us</NavLink>
         <NavLink to="contact-us">Contact us</NavLink>
       </div>
-    </nav>
+    </div>
   );
 }
 
-export default Navbar;
+export default Navigation;
