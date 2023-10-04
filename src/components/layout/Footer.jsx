@@ -13,7 +13,7 @@ function Footer() {
         <div className=" flex flex-col gap-8 px-11 py-12 border-r">
           {/* Contact */}
           <div className="flex justify-between">
-            <div className="capitalize text-[28px] tracking-wide font-bold text">
+            <div className="capitalize tracking-wide font-bold text xl:text-[28px]">
               {/* Phone */}
               <p>+251 912121212</p>
               {/* location */}
@@ -25,7 +25,7 @@ function Footer() {
 
             {/* Contact Button */}
             <div>
-              <button className="bg-white shadow-sm capitalize text-primary_light text-2xl font-medium py-4 px-6 rounded-[10px] ">
+              <button className="bg-white shadow-sm capitalize text-primary_light  font-medium py-2 px-4 xl:py-4 xl:px-6 rounded-[10px] xl:text-2xl">
                 let's talk
               </button>
             </div>
@@ -37,7 +37,7 @@ function Footer() {
           </button>
 
           {/* Paragraph Content */}
-          <p className="text-xl max-w-[500px]">
+          <p className="text-sm text-justify max-w-[500px] xl:text-xl">
             If you're ready to find your perfect retreat, our real estate
             landing page is the perfect place to start. Browse our listings and
             discover homes that seamlessly blend natural design with modern
@@ -46,13 +46,13 @@ function Footer() {
           </p>
 
           {/* Footer's footer */}
-          <div className="flex justify-between items-end">
+          <div className="flex justify-between items-start">
             <i className="flex items-center gap-2 not-italic">
-              <img src={copyright} alt="copyright" />
-              <p className="text-xl">All rights reserved</p>
+              <img src={copyright} className="w-5" alt="copyright" />
+              <p className="text-sm xl:text-xl">All rights reserved</p>
             </i>
             {/* Icons */}
-            <div className="flex text-5xl gap-x-3">
+            <div className="flex text-2xl gap-x-2 xl:text-5xl xl:gap-x-3">
               <AiFillInstagram />
               <AiFillFacebook />
               <FaLinkedinIn />
