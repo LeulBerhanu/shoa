@@ -140,7 +140,7 @@ function ProjectDetailsPage() {
         <div className="container mx-auto px-20">
           <h2>Location:</h2>
           <div className="flex flex-col gap-x-11 gap-y-8 xl:flex-row">
-            <div className="h-[350px]">
+            <div className="h-[350px] xl:h-auto flex-1">
               <MapComponent />
             </div>
             <div className="xl:w-[444px] ">
