@@ -40,14 +40,14 @@ function HomePage() {
       <section id="blog_section">
         <h2 className={h2Style}>Blog</h2>
         <div className="container mx-auto grid grid-cols-2 auto-rows-fr text-2xl  xl:flex xl:flex-row xl:text-4xl xl:h-[323px] xl:items-stretch">
-          <div className="relative p-11 max-w-[480px] border">
+          <div className="relative p-11 border">
             <a href="#">Housing prices in Addis Ababa is changing</a>
             <i className="absolute bottom-5 right-5">
               <HiOutlineArrowUpRight />
             </i>
           </div>
 
-          <div className="relative p-11 max-w-[480px] border">
+          <div className="relative p-11 border">
             <a href="#">
               Is the current inflation affecting real estate owners
             </a>
@@ -56,7 +56,7 @@ function HomePage() {
             </i>
           </div>
 
-          <div className="relative p-11 max-w-[480px] border">
+          <div className="relative p-11  border">
             <a href="#">What’s new at shoa real estate listings</a>
             <i className="absolute bottom-5 right-5">
               <HiOutlineArrowUpRight />
