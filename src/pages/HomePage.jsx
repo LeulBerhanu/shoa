@@ -16,7 +16,7 @@ const h2Style = " text-center capitalize xl:text-4xl";
 function HomePage() {
   return (
     <>
-      <h1 className="text-[40px] text-center capitalize mb-24 xl:text-[80px]">
+      <h1 className="text-[40px] text-center capitalize xl:mb-24 xl:text-[80px]">
         Opening doors, <br /> building communities!
       </h1>
 

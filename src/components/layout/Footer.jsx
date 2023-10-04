@@ -25,7 +25,7 @@ function Footer() {
 
             {/* Contact Button */}
             <div>
-              <button className="bg-white shadow-sm capitalize text-primary_light  font-medium py-2 px-4 xl:py-4 xl:px-6 rounded-[10px] xl:text-2xl">
+              <button className="bg-white shadow-sm capitalize text-primary_light  font-medium py-2 px-3 xl:py-4 xl:px-6 rounded-[10px] xl:text-2xl">
                 let's talk
               </button>
             </div>
