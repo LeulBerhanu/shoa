@@ -16,7 +16,7 @@ const h2Style = " text-center capitalize";
 function HomePage() {
   return (
     <>
-      <h1 className="text-[80px] text-center capitalize mb-24">
+      <h1 className="text-[40px] text-center capitalize mb-24 xl:text-[80px]">
         Opening doors, <br /> building communities!
       </h1>
 
@@ -31,7 +31,7 @@ function HomePage() {
 
       <section id="featured_properties_section">
         <h2 className={h2Style}>Featured properties</h2>
-        <div className=" flex gap-x-11 justify-center">
+        <div className=" flex flex-col gap-11 justify-center items-center xl:flex-row ">
           <SmallCard />
           <SmallCard />
         </div>
@@ -39,7 +39,7 @@ function HomePage() {
 
       <section id="blog_section">
         <h2 className={h2Style}>Blog</h2>
-        <div className="flex text-4xl justify-center h-[323px]">
+        <div className="container mx-auto grid grid-cols-2 auto-rows-fr text-2xl  xl:flex xl:flex-row xl:text-4xl xl:h-[323px] xl:items-stretch">
           <div className="relative p-11 max-w-[480px] border">
             <a href="#">Housing prices in Addis Ababa is changing</a>
             <i className="absolute bottom-5 right-5">
@@ -65,53 +65,73 @@ function HomePage() {
         </div>
       </section>
 
+      <section>
+        <h2 className={h2Style}>Our sites</h2>
+        <div className="flex flex-col gap-14 px-20">
+          <div className="container  flex flex-col  mx-auto relative">
+            <p className="py-4 px-8 text-white text-lg font-medium rounded-2xl mb-3 bg-primary xl:hidden">
+              Jackros
+            </p>
+
+            <div className="hidden ml-32 xl:w-[527px] xl:block">
+              <PageBanner name="Jackros" />
+            </div>
+
+            <div className="h-[300px] xl:absolute xl:z-20 xl:mr-32 xl:right-0 xl:w-[806px] xl:h-[418px] ">
+              <MapComponent />
+            </div>
+          </div>
+
+          <div className="container  flex flex-col  mx-auto relative xl:flex-row xl:items-center">
+            <p className="py-4 px-8 text-white text-lg font-medium rounded-2xl mb-3 bg-primary xl:hidden">
+              Bulbula
+            </p>
+
+            <div className="hidden mr-28  xl:w-[527px] xl:block">
+              <PageBanner name="Bulbula" />
+            </div>
+
+            <div className="h-[300px] xl:absolute xl:z-20 xl:mr-32 xl:right-0 xl:w-[806px] xl:h-[418px] ">
+              <MapComponent />
+            </div>
+          </div>
+
+          <div className="container  flex flex-col  mx-auto relative xl:flex-row xl:items-center">
+            <p className="py-4 px-8 text-white text-lg font-medium rounded-2xl mb-3 bg-primary xl:hidden">
+              Mekanisa
+            </p>
+
+            <div className="hidden xl:w-[527px] xl:block">
+              <PageBanner name="Mekanisa" />
+            </div>
+
+            <div className="h-[300px] xl:absolute xl:z-20 xl:mr-32 xl:right-0 xl:w-[806px] xl:h-[418px] ">
+              <MapComponent />
+            </div>
+          </div>
+
+          <div className="container  flex flex-col  mx-auto relative xl:flex-row xl:items-center">
+            <p className="py-4 px-8 text-white text-lg font-medium rounded-2xl mb-3 bg-primary/[.50] xl:hidden">
+              Welo Sefer <span className="opacity-50">(Coming Soon)</span>
+            </p>
+
+            <div className="hidden mr-28  xl:w-[527px] xl:block">
+              <PageBanner name="Welo Sefer" />
+            </div>
+
+            <div className="h-[300px] xl:absolute xl:z-20 xl:mr-32 xl:right-0 xl:w-[806px] xl:h-[418px] ">
+              <MapComponent />
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="location_section">
         <h2 className={h2Style}>Office Location</h2>
 
         {/* <LocationMap /> */}
-        <div className=" container w-[994px]  h-[450px] mx-auto">
+        <div className=" container px-20  h-[450px] mx-auto xl:w-[994px]">
           <MapComponent />
-        </div>
-      </section>
-
-      <section>
-        <h2 className={h2Style}>Our sites</h2>
-        <div className="flex flex-col gap-14">
-          <div className="container flex items-center mx-auto relative">
-            <div className="w-[527px]  ml-32">
-              <PageBanner name="Jackros" />
-            </div>
-            <div className="absolute z-20 mr-32 right-0 w-[806px] h-[418px]">
-              <MapComponent />
-            </div>
-          </div>
-
-          <div className="container pl-32 flex justify-end items-center mx-auto relative">
-            <div className="w-[527px] mr-28">
-              <PageBanner name="Bulbula" />
-            </div>
-            <div className="absolute z-20 ml-32 left-0 w-[806px] h-[418px]">
-              <MapComponent />
-            </div>
-          </div>
-
-          <div className="container pl-32 flex items-center mx-auto relative">
-            <div className="w-[527px] ">
-              <PageBanner name="Mekanisa" />
-            </div>
-            <div className="absolute z-20 mr-32 right-0 w-[806px] h-[418px]">
-              <MapComponent />
-            </div>
-          </div>
-
-          <div className="container pl-32 flex justify-end items-center mx-auto relative">
-            <div className="w-[527px] mr-28">
-              <PageBanner name="Welo Sefer" />
-            </div>
-            <div className="absolute z-20 ml-32 left-0 w-[806px] h-[418px]">
-              <MapComponent />
-            </div>
-          </div>
         </div>
       </section>
 

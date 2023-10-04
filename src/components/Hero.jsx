@@ -19,27 +19,27 @@ function Hero() {
     <>
       <div style={bgImage} className="flex justify-center text-white relative ">
         <div className="z-10 p-20">
-          <p className="container mx-auto text-2xl">
+          <p className="container mx-auto text-xl text-justify xl:text-2xl">
             We do all we can to have the best home we could possibly have to the
             best of our convenience. In Addis Ababa, this has been a major
             challenge even with a number of real estate developers.
           </p>
           {/* Icons */}
-          <div className="container flex place-content-around mx-auto text-4xl capitalize p-8">
+          <div className="container flex place-content-around mx-auto text-2xl capitalize p-8 xl:text-4xl ">
             <div className="flex flex-col items-center">
-              <i className="text-[100px]">
+              <i className="text-[70px] xl:text-[100px]">
                 <FaRegCheckCircle />
               </i>
               <p>Quality</p>
             </div>
             <div className="flex flex-col items-center">
-              <i className="text-[100px]">
+              <i className="w-[70px] xl:w-[100px]">
                 <img src={locationPin} alt="" />
               </i>
               <p>convenience</p>
             </div>
             <div className="flex flex-col items-center">
-              <i className="text-[100px]">
+              <i className="w-[70px] xl:w-[100px]">
                 <img src={handCash} alt="" />
               </i>
               <p>Affordable</p>

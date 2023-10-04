@@ -17,7 +17,7 @@ function Card() {
         <img src={house} className="max-w-430px" alt="house" />
         <button
           onClick={handleClick}
-          className="absolute  bottom-5  w-[90%] py-5 text-2xl rounded-[15px] bg-[#1E242B]/[.85] text-white font-medium"
+          className="absolute  bottom-5  w-[90%] py-5 rounded-[15px] bg-[#1E242B]/[.85] text-white font-medium  xl:text-2xl "
         >
           More Details
         </button>
@@ -27,7 +27,7 @@ function Card() {
         {/* Title and Price */}
         <div>
           {/* Title */}
-          <h3 className="capitalize break-words text-5xl font-light">
+          <h3 className="capitalize break-words  text-2xl xl:text-5xl xl:font-light">
             Bole bulbula site, two bedroom
           </h3>
 
@@ -36,7 +36,7 @@ function Card() {
         </div>
 
         {/* Details */}
-        <ul className="flex flex-col text-3xl gap-y-4">
+        <ul className="flex flex-col gap-y-4 text-xl xl:text-3xl">
           <li>125sqm</li>
           <li>2 Bedrooms</li>
           <li>2 Bathrooms</li>

@@ -23,14 +23,14 @@ function Navigation() {
   return (
     <div
       style={bgChange ? style : null}
-      className="container mx-auto flex align-middle justify-between px-16 py-14"
+      className="flex container mx-auto  align-middle justify-between px-16 py-14 xl:flex"
     >
       <img
         src={bgChange ? shoaLogoWhite : shoaLogo}
         alt="Shoa logo"
-        className="w-[95px]"
+        className="w-[50px] xl:w-[95px]"
       />
-      <div className="flex space-x-14 font-medium text-2xl items-center">
+      <div className="flex space-x-5 font-medium text-sm xl:text-2xl xl:space-x-14 items-center">
         <NavLink to="/">Home</NavLink>
         <NavLink to="blog">Blog</NavLink>
         <NavLink to="partnership-and-development">Partnership & Dev't</NavLink>

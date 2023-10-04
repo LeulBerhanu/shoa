@@ -4,7 +4,7 @@ import ContactInfo from "./ContactInfo";
 
 function ContactComponent() {
   return (
-    <div className="container grid grid-cols-2 gap-28 mb-14 mx-auto">
+    <div className="container flex flex-col gap-28 mb-14 mx-auto xl:grid grid-cols-2">
       <ContactForm />
       <ContactInfo />
     </div>
