@@ -82,19 +82,17 @@ function HomePage() {
             </div>
           </div>
 
-          <div className="container mx-auto flex relative h-[500px]">
-            <div className="flex flex-col xl:flex-row xl:items-center">
-              <p className=" py-4 px-8 text-white text-lg font-medium rounded-2xl mb-3 bg-primary xl:hidden">
-                Bulbula
-              </p>
+          <div className="container  flex flex-col  mx-auto relative xl:flex-row-reverse xl:items-center">
+            <p className="py-4 px-8 text-white text-lg font-medium rounded-2xl mb-3 bg-primary xl:hidden">
+              Bulbula
+            </p>
 
-              <div className="hidden xl:absolute xl:right-0 xl:w-[527px] l: xl:block">
-                <LocationName name="Bulbula" />
-              </div>
+            <div className="hidden xl:w-[527px] xl:block">
+              <LocationName name="Bulbula" />
+            </div>
 
-              <div className="h-[300px] xl:absolute xl:z-20   xl:w-[806px] xl:h-[418px] ">
-                <MapComponent />
-              </div>
+            <div className="h-[300px] xl:absolute xl:z-20  xl:left-0 xl:w-[806px] xl:h-[418px] ">
+              <MapComponent />
             </div>
           </div>
 
@@ -112,23 +110,17 @@ function HomePage() {
             </div>
           </div>
 
-          <div className="container mx-auto flex relative h-[500px]">
-            <div className="flex flex-col xl:flex-row xl:items-center">
-              <p className=" py-4 px-8 text-white text-lg font-medium rounded-2xl mb-3 bg-primary xl:hidden">
-                Welo Sefer <span className="opacity-50">(Coming Soon)</span>
-              </p>
+          <div className="container  flex flex-col  mx-auto relative xl:flex-row-reverse xl:items-center">
+            <p className="py-4 px-8 text-white text-lg font-medium rounded-2xl mb-3 bg-primary xl:hidden">
+              Welo Sefer <span className="opacity-50">(Coming Soon)</span>
+            </p>
 
-              <div className="hidden xl:absolute xl:right-0 xl:w-[527px] l: xl:block">
-                <LocationName
-                  name="Wolo Sefer"
-                  message="(Coming Soon)"
-                  closed
-                />
-              </div>
+            <div className="hidden xl:w-[527px] xl:block">
+              <LocationName name="Wolo Sefer" message="(Coming Soon)" closed />
+            </div>
 
-              <div className="h-[300px] xl:absolute xl:z-20   xl:w-[806px] xl:h-[418px] ">
-                <MapComponent />
-              </div>
+            <div className="h-[300px] xl:absolute xl:z-20  xl:left-0 xl:w-[806px] xl:h-[418px] ">
+              <MapComponent />
             </div>
           </div>
         </div>
