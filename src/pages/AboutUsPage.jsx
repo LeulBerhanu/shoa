@@ -16,19 +16,16 @@ function AboutUsPage() {
   return (
     <div>
       <div className="container mx-auto">
-        <div className="flex relative w-full h-[672px] rounded-[15px]">
-          <img
-            src={bannerPar}
-            className="absolute  z-30 px-[122px] py-[60px]"
-          />
+        <div className="flex relative w-full h-[490px] xl:h-[672px] rounded-[15px]">
+          <img src={bannerPar} className="absolute z-30 px-[122px] py-[60px]" />
           <img
             src={bannerPic}
-            className="absolute -bottom-[.5px] z-20"
+            className="absolute -bottom-[.5px] z-20 w-[400px] xl:w-auto"
             alt=""
           />
           <img src={bannerParSolid} className="absolute px-[122px] py-[60px]" />
 
-          <p className="absolute right-28 text-white text-justify bottom-4 leading-tight text-[28px] w-[833px]">
+          <p className=" absolute right-7  text-white text-justify bottom-6  leading-tight w-80 xl:w-[833px] xl:bottom-4 xl:right-9 xl:text-[28px]">
             Shoa is a well-known brand name in Ethiopia for over 6o years in
             different sectors, though mainly people are fond of the merchandise
             business we are in. The shoa supermarket chains are one of the
@@ -41,7 +38,7 @@ function AboutUsPage() {
         </div>
       </div>
 
-      <div className="px-20 container mx-auto text-[28px] text-justify mb">
+      <div className="px-20 container mx-auto xl:text-[28px] text-justify mb">
         <p className="my-16">
           Shoa is a well-known brand name in Ethiopia for over 6o years in
           different sectors, though mainly people are fond of the merchandise
@@ -59,7 +56,7 @@ function AboutUsPage() {
           directly related products in sufficient amount and over 40-50%
           discount from the regular market.
         </p>
-        <h2 className="mb-0">Why choose us?</h2>
+        <h2 className="mb-3 xl:text-4xl">Why choose us?</h2>
         <ul className="list-disc ml-14 mb-5">
           <li>Quality</li>
           <li>Convenience</li>
@@ -83,7 +80,7 @@ function AboutUsPage() {
           side of the house.
         </p>
 
-        <h2 className="mb-0">Payment options:</h2>
+        <h2 className="mb-3 xl:text-4xl">Payment options:</h2>
         <ul className="list-disc ml-14">
           <li>20% advance payment, and four time payment for the rest.</li>
           <li>Can pay full amount and enjoy a 1% discount.</li>
@@ -93,7 +90,7 @@ function AboutUsPage() {
       </div>
 
       <section>
-        <div className="px-20 container flex justify-between mx-auto object-cover py-14 ">
+        <div className="px-20 container flex flex-col gap-4 justify-between mx-auto object-cover py-14 ">
           <div
             style={bgImage}
             className="relative w-[582px] h-[645px] rounded-[15px]"
@@ -110,7 +107,7 @@ function AboutUsPage() {
       </section>
 
       <section>
-        <div className="px-20 container mx-auto text-[28px] text-justify mb-56">
+        <div className="px-20 container mx-auto xl:text-[28px] text-justify mb-56">
           <p className="my-16">
             Recently to tackle the sever problem in shortage and expensiveness
             of housing, we joined the real estate sector with adequate resources

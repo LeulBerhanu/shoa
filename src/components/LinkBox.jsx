@@ -5,7 +5,7 @@ import upRightArrow from "../img/topRightArrow.svg";
 function LinkBox({ content }) {
   return (
     <div className="flex h-full w-full relative font-light">
-      <p className="z-20 text-white text-3xl xl:text-[49px] w-[380px] m-14">
+      <p className="z-20 text-white leading-tight text-3xl xl:text-[49px] w-[380px] m-14">
         {content}
       </p>
 
@@ -13,7 +13,7 @@ function LinkBox({ content }) {
       <img
         src={upRightArrow}
         alt="up right arrow icon"
-        className="absolute bottom-8 right-8 z-20 w-[20px] xl:w-[30px]"
+        className="absolute bottom-8 right-8 z-20 w-[20px] xl:w-auto"
       />
 
       {/* color overlay */}

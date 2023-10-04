@@ -11,7 +11,7 @@ import Carousel from "../components/Image Carousel/Carousel";
 import { HiOutlineArrowUpRight } from "react-icons/hi2";
 import PageBanner from "../components/PageBanner";
 
-const h2Style = " text-center capitalize";
+const h2Style = " text-center capitalize xl:text-4xl";
 
 function HomePage() {
   return (
@@ -56,7 +56,7 @@ function HomePage() {
             </i>
           </div>
 
-          <div className="relative p-11  border">
+          <div className="relative p-11 border">
             <a href="#">What’s new at shoa real estate listings</a>
             <i className="absolute bottom-5 right-5">
               <HiOutlineArrowUpRight />
