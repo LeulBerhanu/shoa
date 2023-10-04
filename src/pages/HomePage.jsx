@@ -9,7 +9,7 @@ import ImageCarousel from "../components/Image Carousel/ImageCarousel";
 import Carousel from "../components/Image Carousel/Carousel";
 // Icons
 import { HiOutlineArrowUpRight } from "react-icons/hi2";
-import PageBanner from "../components/PageBanner";
+import LocationName from "../components/LocationName";
 
 const h2Style = " text-center capitalize xl:text-4xl";
 
@@ -68,31 +68,33 @@ function HomePage() {
       <section>
         <h2 className={h2Style}>Our sites</h2>
         <div className="flex flex-col gap-14 px-20">
-          <div className="container  flex flex-col  mx-auto relative">
+          <div className="container  flex flex-col  mx-auto relative xl:flex-row xl:items-center">
             <p className="py-4 px-8 text-white text-lg font-medium rounded-2xl mb-3 bg-primary xl:hidden">
               Jackros
             </p>
 
-            <div className="hidden ml-32 xl:w-[527px] xl:block">
-              <PageBanner name="Jackros" />
+            <div className="hidden xl:w-[527px] xl:block ">
+              <LocationName name="Jackros" />
             </div>
 
-            <div className="h-[300px] xl:absolute xl:z-20 xl:mr-32 xl:right-0 xl:w-[806px] xl:h-[418px] ">
+            <div className="h-[300px] xl:absolute xl:z-20 xl:right-0 xl:w-[806px] xl:h-[418px] ">
               <MapComponent />
             </div>
           </div>
 
-          <div className="container  flex flex-col  mx-auto relative xl:flex-row xl:items-center">
-            <p className="py-4 px-8 text-white text-lg font-medium rounded-2xl mb-3 bg-primary xl:hidden">
-              Bulbula
-            </p>
+          <div className="container mx-auto flex relative h-[500px]">
+            <div className="flex flex-col xl:flex-row xl:items-center">
+              <p className=" py-4 px-8 text-white text-lg font-medium rounded-2xl mb-3 bg-primary xl:hidden">
+                Bulbula
+              </p>
 
-            <div className="hidden mr-28  xl:w-[527px] xl:block">
-              <PageBanner name="Bulbula" />
-            </div>
+              <div className="hidden xl:absolute xl:right-0 xl:w-[527px] l: xl:block">
+                <LocationName name="Bulbula" />
+              </div>
 
-            <div className="h-[300px] xl:absolute xl:z-20 xl:mr-32 xl:right-0 xl:w-[806px] xl:h-[418px] ">
-              <MapComponent />
+              <div className="h-[300px] xl:absolute xl:z-20   xl:w-[806px] xl:h-[418px] ">
+                <MapComponent />
+              </div>
             </div>
           </div>
 
@@ -102,25 +104,27 @@ function HomePage() {
             </p>
 
             <div className="hidden xl:w-[527px] xl:block">
-              <PageBanner name="Mekanisa" />
+              <LocationName name="Mekanisa" />
             </div>
 
-            <div className="h-[300px] xl:absolute xl:z-20 xl:mr-32 xl:right-0 xl:w-[806px] xl:h-[418px] ">
+            <div className="h-[300px] xl:absolute xl:z-20  xl:right-0 xl:w-[806px] xl:h-[418px] ">
               <MapComponent />
             </div>
           </div>
 
-          <div className="container  flex flex-col  mx-auto relative xl:flex-row xl:items-center">
-            <p className="py-4 px-8 text-white text-lg font-medium rounded-2xl mb-3 bg-primary/[.50] xl:hidden">
-              Welo Sefer <span className="opacity-50">(Coming Soon)</span>
-            </p>
+          <div className="container mx-auto flex relative h-[500px]">
+            <div className="flex flex-col xl:flex-row xl:items-center">
+              <p className=" py-4 px-8 text-white text-lg font-medium rounded-2xl mb-3 bg-primary xl:hidden">
+                Welo Sefer <span className="opacity-50">(Coming Soon)</span>
+              </p>
 
-            <div className="hidden mr-28  xl:w-[527px] xl:block">
-              <PageBanner name="Welo Sefer" />
-            </div>
+              <div className="hidden xl:absolute xl:right-0 xl:w-[527px] l: xl:block">
+                <LocationName name="Wolo Sefer" footer="(Coming Soon)" closed />
+              </div>
 
-            <div className="h-[300px] xl:absolute xl:z-20 xl:mr-32 xl:right-0 xl:w-[806px] xl:h-[418px] ">
-              <MapComponent />
+              <div className="h-[300px] xl:absolute xl:z-20   xl:w-[806px] xl:h-[418px] ">
+                <MapComponent />
+              </div>
             </div>
           </div>
         </div>
