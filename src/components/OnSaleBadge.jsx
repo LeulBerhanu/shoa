@@ -3,9 +3,9 @@ import onSaleBadgeSvg from "../img/onSaleBadge.svg";
 
 function OnSaleBadge() {
   return (
-    <span className="flex justify-center items-center w-[60px] relative xl:w-auto">
+    <span className="flex justify-center items-center  relative w-10 xl:w-16">
       <img src={onSaleBadgeSvg} alt="" />
-      <p className="absolute text-center text-base text-white -mt-4 leading-none xl:text-[28px] xl:-mt-6">
+      <p className="absolute text-center text-xs  text-white  leading-none -mt-2 xl:text-lg xl:-mt-4 ">
         ON SALE
       </p>
     </span>

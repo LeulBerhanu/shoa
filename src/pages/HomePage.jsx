@@ -16,12 +16,12 @@ const h2Style = " text-center capitalize xl:text-4xl";
 function HomePage() {
   return (
     <>
-      <h1 className="text-[40px] text-center capitalize xl:mb-24 xl:text-[80px]">
+      <h1 className="text-[40px] text-center capitalize  xl:text-[80px]">
         Opening doors, <br /> building communities!
       </h1>
 
       <section id="slider_section">
-        <div className="container mx-auto h-[600px] ">
+        <div className="container mx-auto h-[270px] xl:h-[470px] ">
           <SwiperComponent />
         </div>
       </section>
