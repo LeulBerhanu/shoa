@@ -23,11 +23,11 @@ function Card() {
         </button>
       </div>
       {/* Card Body */}
-      <div className="flex flex-col gap-y-16">
+      <div className="flex flex-col gap-y-10 xl:gap-y-16">
         {/* Title and Price */}
         <div>
           {/* Title */}
-          <h3 className="capitalize break-words  text-2xl xl:text-5xl xl:font-light">
+          <h3 className="capitalize break-words text-2xl xl:text-5xl xl:font-light">
             Bole bulbula site, two bedroom
           </h3>
 
@@ -36,7 +36,7 @@ function Card() {
         </div>
 
         {/* Details */}
-        <ul className="flex flex-col gap-y-4 text-xl xl:text-3xl">
+        <ul className="flex flex-col text-lg xl:text-3xl xl:gap-y-4">
           <li>125sqm</li>
           <li>2 Bedrooms</li>
           <li>2 Bathrooms</li>
@@ -44,7 +44,7 @@ function Card() {
       </div>
 
       {/* badge */}
-      <div className="absolute top-0 right-10">
+      <div className="absolute top-0 right-10 ">
         <OnSaleBadge />
       </div>
     </div>

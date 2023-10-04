@@ -2,7 +2,7 @@ import React from "react";
 
 function Filters() {
   return (
-    <div className="container flex gap-7 justify-between mx-auto ">
+    <div className="container grid grid-cols-2 text-sm gap-4 justify-between mx-auto xl:flex xl:text-base">
       {/* Location */}
       <select className="w-full p-5 rounded-[15px] font-medium ">
         <option value="">Location (any)</option>

@@ -9,7 +9,7 @@ function ProjectsPage() {
     <div>
       <div
         style={{ backgroundImage: `url(${bedroom})` }}
-        className="-z-10 w-full h-[500px] absolute top-0 bg-cover bg-no-repeat "
+        className="-z-10 w-full h-[500px] absolute top-0 bg-cover bg-no-repeat"
       >
         <div
           style={{
@@ -20,14 +20,14 @@ function ProjectsPage() {
         ></div>
       </div>
 
-      <div className="container mx-auto flex flex-col gap-5 px-36">
+      <div className="container mx-auto flex flex-col gap-5 px-20 xl:px-36">
         <SearchBar />
         <Filters />
       </div>
 
       <section>
         <div className="container mx-auto px-24 flex items-center justify-between mt-40">
-          <h2 className="capitalize">4 Properties Found</h2>
+          <h2 className="capitalize text-3xl">4 Properties Found</h2>
           <select
             style={{ boxShadow: "0px 0px 11px 1px #00000040" }}
             className="w-44 p-5 rounded-[15px] font-medium "
@@ -40,7 +40,7 @@ function ProjectsPage() {
         </div>
 
         {/* Search Result */}
-        <div className="container mx-auto px-24 flex flex-col gap-8 mb-[60px]">
+        <div className="container mx-auto px-20 flex flex-col gap-8 ">
           <Card />
           <Card />
           <Card />

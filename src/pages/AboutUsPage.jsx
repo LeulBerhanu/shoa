@@ -16,7 +16,7 @@ function AboutUsPage() {
   return (
     <div>
       <div className="container mx-auto">
-        <div className="flex relative w-full h-[672px]  rounded-[15px]">
+        <div className="flex relative w-full h-[672px] rounded-[15px]">
           <img
             src={bannerPar}
             className="absolute  z-30 px-[122px] py-[60px]"
