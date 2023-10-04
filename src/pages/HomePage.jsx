@@ -119,7 +119,11 @@ function HomePage() {
               </p>
 
               <div className="hidden xl:absolute xl:right-0 xl:w-[527px] l: xl:block">
-                <LocationName name="Wolo Sefer" footer="(Coming Soon)" closed />
+                <LocationName
+                  name="Wolo Sefer"
+                  message="(Coming Soon)"
+                  closed
+                />
               </div>
 
               <div className="h-[300px] xl:absolute xl:z-20   xl:w-[806px] xl:h-[418px] ">

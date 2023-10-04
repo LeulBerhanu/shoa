@@ -1,12 +1,12 @@
 import React from "react";
 import house from "../img/house.png";
 
-function PageBanner({ name, footer, closed }) {
+function PageBanner({ name, message, closed }) {
   return (
     <div className="flex items-center justify-center relative h-[300px] xl:h-[500px] ">
       <p className="absolute px-14 text-center text-4xl leading-none text-white z-10 xl:text-[50px]">
         {name}
-        {footer ? <p className="opacity-50 text-sm">{footer}</p> : null}
+        {message ? <p className="opacity-50 text-sm">{message}</p> : null}
       </p>
 
       {closed ? (
