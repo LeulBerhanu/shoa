@@ -21,7 +21,7 @@ function HomePage() {
       </h1>
 
       <section id="slider_section">
-        <div className="container mx-auto h-[270px] xl:h-[470px] ">
+        <div className=" h-[270px] xl:h-[470px] ">
           <SwiperComponent />
         </div>
       </section>
