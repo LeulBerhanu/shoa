@@ -1,5 +1,6 @@
 import React from "react";
 import ppic from "../../img/ppic.jpg";
+import shoaLogo from "../../img/shoaLogo.svg";
 // icons
 import { PiPhone } from "react-icons/pi";
 import phoneSvg from "../../img/phoneSvg.svg";
@@ -14,12 +15,12 @@ function CallCard() {
         {/* Card Head */}
         <div className="flex items-center gap-x-4">
           <img
-            src={ppic}
-            alt="agent photo"
-            className="w-20 h-20 object-cover rounded-[15px] "
+            src={shoaLogo}
+            alt="shoa logo"
+            className="w-20 h-20 object-contain rounded-[15px] "
           />
           <div>
-            <h2 className="m-0 -mb-2">Henok Tsegaye</h2>
+            <h2 className="m-0 -mb-2">Shoa Homes</h2>
             <p className="text-xl text-[#4A6778]">Agent</p>
           </div>
         </div>

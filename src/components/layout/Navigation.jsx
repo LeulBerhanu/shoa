@@ -2,6 +2,7 @@ import React from "react";
 import shoaLogo from "../../img/shoaLogo.svg";
 import shoaLogoWhite from "../../img/shoaLogoWhite.svg";
 import { NavLink, useLocation } from "react-router-dom";
+import "./navStyles.css";
 
 function Navigation() {
   const location = useLocation();
@@ -30,13 +31,25 @@ function Navigation() {
         alt="Shoa logo"
         className="w-[50px] xl:w-[95px]"
       />
-      <div className="flex space-x-5 font-medium text-sm xl:text-2xl xl:space-x-14 items-center">
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="blog">Blog</NavLink>
-        <NavLink to="partnership-and-development">Partnership & Dev't</NavLink>
-        <NavLink to="projects">Projects</NavLink>
-        <NavLink to="about-us">About us</NavLink>
-        <NavLink to="contact-us">Contact us</NavLink>
+      <div className="flex space-x-5 font-medium text-sm xl:text-2xl xl:space-x-14 items-center relative">
+        <NavLink className="relative" to="/">
+          Home
+        </NavLink>
+        <NavLink className="relative" to="blog">
+          Blog
+        </NavLink>
+        <NavLink className="relative" to="partnership-and-development">
+          Partnership & Dev't
+        </NavLink>
+        <NavLink className="relative active-white" to="projects">
+          Projects
+        </NavLink>
+        <NavLink className="relative" to="about-us">
+          About us
+        </NavLink>
+        <NavLink className="relative" to="contact-us">
+          Contact us
+        </NavLink>
       </div>
     </div>
   );

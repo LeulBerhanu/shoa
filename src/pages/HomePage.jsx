@@ -126,20 +126,20 @@ function HomePage() {
         </div>
       </section>
 
+      {/* Contact Section */}
+      <section>
+        <div className="px-20">
+          <h2 className={h2Style}>Contact us</h2>
+          <ContactComponent />
+        </div>
+      </section>
+
       <section id="location_section">
         <h2 className={h2Style}>Office Location</h2>
 
         {/* <LocationMap /> */}
         <div className=" container px-20  h-[450px] mx-auto xl:w-[994px]">
           <MapComponent />
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section>
-        <div className="px-20">
-          <h2 className={h2Style}>Contact us</h2>
-          <ContactComponent />
         </div>
       </section>
     </>

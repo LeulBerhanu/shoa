@@ -1,0 +1,31 @@
+.active-white::after,
+.active::after {
+  content: "";
+  position: absolute;
+  height: 100px;
+  bottom: 50px;
+  left: 0;
+  border-left: 10px solid #132f40;
+  border-right: 10px solid #132f40;
+  border-bottom: 10px solid #132f40; /* Change color of arrow here */
+}
+
+.active-white::after {
+  border-left: 10px solid white;
+  border-right: 10px solid white;
+  border-bottom: 10px solid white; /* Change color of arrow here */
+}
+
+@media screen and (width < 1440px) {
+  .active::after {
+    border-left: 5px solid #132f40;
+    border-right: 5px solid #132f40;
+    border-bottom: 5px solid #132f40; /* Change color of arrow here */
+  }
+
+  .active-white::after {
+    border-left: 5px solid white;
+    border-right: 5px solid white;
+    border-bottom: 5px solid white; /* Change color of arrow here */
+  }
+}
