@@ -9,7 +9,7 @@ import "swiper/css/pagination";
 // import './styles.css';
 
 // import required modules
-import { Pagination } from "swiper/modules";
+import { Autoplay, Pagination } from "swiper/modules";
 
 import Card from "./card/Card";
 
@@ -18,13 +18,17 @@ export default function SwiperComponent() {
     <>
       <Swiper
         slidesPerView={2}
-        spaceBetween={40}
+        spaceBetween={30}
         centeredSlides={true}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
         // loop={true}
         pagination={{
           clickable: true,
         }}
-        modules={[Pagination]}
+        modules={[Autoplay, Pagination]}
         className="mySwiper w-full h-full"
       >
         <SwiperSlide className="flex justify-center items-center object-cover">
