@@ -32,8 +32,8 @@ function HomePage() {
       <section id="featured_properties_section">
         <h2 className={h2Style}>Featured properties</h2>
         <div className=" flex flex-col gap-11 justify-center items-center xl:flex-row ">
-          <SmallCard />
-          <SmallCard />
+          <SmallCard onSaleBadge />
+          <SmallCard discountBadge />
         </div>
       </section>
 

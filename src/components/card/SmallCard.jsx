@@ -1,12 +1,12 @@
 import React from "react";
 import house from "../../img/house.png";
 
-function SmallCard() {
+function SmallCard({ discountBadge, onSaleBadge }) {
   return (
-    <div className="flex gap-9 items-center px-5 py-4 shadow-boxShadow w-[610px] rounded-2xl">
+    <div className="flex gap-9 items-center px-5 py-4 shadow-boxShadow w-[610px] rounded-2xl relative">
       <img src={house} className="max-w-[278px]" alt="house" />
       {/* Card Body */}
-      <div className="flex flex-col gap-y-16">
+      <div className="flex flex-col gap-y-5">
         {/* Title and Price */}
         <div>
           {/* Title */}
@@ -19,12 +19,25 @@ function SmallCard() {
         </div>
 
         {/* Details */}
-        <ul className="flex flex-col text-xl gap-y-3 ">
+        <ul className="flex flex-col text-xl  ">
           <li>125sqm</li>
           <li>2 Bedrooms</li>
           <li>2 Bathrooms</li>
         </ul>
       </div>
+
+      {/* Badge */}
+      {discountBadge && (
+        <div className="bg-badge_discount absolute top-0 right-0 rounded-[15px] p-2">
+          Holiday Discount
+        </div>
+      )}
+
+      {onSaleBadge && (
+        <div className="bg-badge_onsale absolute top-0 right-0 rounded-[15px] py-2 px-5 text-white uppercase">
+          On Sale
+        </div>
+      )}
     </div>
   );
 }
