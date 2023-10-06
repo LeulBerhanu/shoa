@@ -90,7 +90,7 @@ function AboutUsPage() {
       </div>
 
       <section>
-        <div className="px-20 container flex flex-col gap-4 justify-between mx-auto object-cover py-14 ">
+        <div className="px-20 container flex flex-col gap-4 justify-between mx-auto object-cover py-14 xl:flex-row ">
           <div
             style={bgImage}
             className="relative w-[582px] h-[645px] rounded-[15px]"
