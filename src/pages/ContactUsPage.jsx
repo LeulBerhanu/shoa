@@ -6,14 +6,14 @@ import PageBanner from "../components/PageBanner";
 
 function ContactUsPage() {
   return (
-    <div className="px-20">
+    <div>
       <PageBanner name="Contact Us" />
 
-      <div className="mt-28">
+      <div className="mt-28 px-20">
         <ContactComponent />
       </div>
 
-      <div className=" container h-[622px] mx-auto mb-56">
+      <div className=" container h-[300px] mx-auto px-20 xl:h-[622px]">
         <MapComponent />
       </div>
     </div>

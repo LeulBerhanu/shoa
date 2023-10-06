@@ -42,7 +42,7 @@ function ProjectDetailsPage() {
       </div>
 
       <div className="container mx-auto px-20">
-        <h1 className="text-3xl xl:text-[49px]">
+        <h1 className="mb-3 text-3xl xl:text-[49px]">
           Bole Bulbula Site, Two bedroom
         </h1>
         <p className="text-xl xl:text-[28px] text-[#4A6778]">$97,000/sqm</p>

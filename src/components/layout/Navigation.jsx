@@ -35,13 +35,27 @@ function Navigation() {
         <NavLink className="relative" to="/">
           Home
         </NavLink>
-        <NavLink className="relative" to="blog">
+        <NavLink
+          className={
+            location.pathname.includes("/blog/")
+              ? "active relative"
+              : ({ isActive }) => (isActive ? "active relative" : "")
+          }
+          to="blog"
+        >
           Blog
         </NavLink>
         <NavLink className="relative" to="partnership-and-development">
           Partnership & Dev't
         </NavLink>
-        <NavLink className="relative active-white" to="projects">
+        <NavLink
+          className={
+            location.pathname.includes("/projects/")
+              ? "active relative"
+              : ({ isActive }) => (isActive ? "active-white relative" : "")
+          }
+          to="projects"
+        >
           Projects
         </NavLink>
         <NavLink className="relative" to="about-us">

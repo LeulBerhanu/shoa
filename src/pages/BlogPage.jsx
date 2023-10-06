@@ -5,9 +5,7 @@ import LinkBox from "../components/LinkBox";
 function BlogPage() {
   return (
     <div>
-      <div className="container mx-auto px-20">
-        <PageBanner name="Blog" />
-      </div>
+      <PageBanner name="Blog" />
 
       <div className="container mx-auto grid grid-cols-2 auto-rows-fr mt-24">
         <LinkBox content="Housing prices in Addis Ababa is changing" />

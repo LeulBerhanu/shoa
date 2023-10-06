@@ -1,10 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import apartment from "../img/apartment.jpg";
 import upRightArrow from "../img/topRightArrow.svg";
 
 function LinkBox({ content }) {
   return (
-    <div className="flex h-full w-full relative font-light">
+    <Link
+      to="/blog/id"
+      className="transition duration-1000 flex h-full w-full relative font-light group cursor-pointer"
+    >
       <p className="z-20 text-white leading-tight text-3xl xl:text-[49px] w-[380px] m-14">
         {content}
       </p>
@@ -17,11 +22,11 @@ function LinkBox({ content }) {
       />
 
       {/* color overlay */}
-      <div className="z-10 bg-primary_light/[.8] absolute w-full h-full"></div>
+      <div className="transition duration-300 group-hover:bg-primary_light z-10 bg-primary_light/[.8] absolute w-full h-full"></div>
 
       {/* background image */}
-      <img src={apartment} className="absolute w-full h-full object-cover" />
-    </div>
+      <img src={apartment} className=" absolute w-full h-full object-cover " />
+    </Link>
   );
 }
 

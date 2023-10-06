@@ -5,27 +5,25 @@
   height: 100px;
   bottom: 50px;
   left: 0;
-  border-left: 10px solid #132f40;
-  border-right: 10px solid #132f40;
-  border-bottom: 10px solid #132f40; /* Change color of arrow here */
+  width: 20px;
+}
+
+.active::after {
+  background-color: #132f40;
 }
 
 .active-white::after {
-  border-left: 10px solid white;
-  border-right: 10px solid white;
-  border-bottom: 10px solid white; /* Change color of arrow here */
+  background-color: white;
 }
 
 @media screen and (width < 1440px) {
-  .active::after {
-    border-left: 5px solid #132f40;
-    border-right: 5px solid #132f40;
-    border-bottom: 5px solid #132f40; /* Change color of arrow here */
-  }
-
+  .active::after,
   .active-white::after {
-    border-left: 5px solid white;
-    border-right: 5px solid white;
-    border-bottom: 5px solid white; /* Change color of arrow here */
+    width: 10px;
+    bottom: 30px;
   }
+}
+
+.pending {
+  background-color: blue;
 }

@@ -12,12 +12,10 @@ function PartnershipDevtPage() {
 
   return (
     <div>
-      <div className="container mx-auto px-20">
-        <PageBanner
-          name=" About Our Partnership and Development Program"
-          footer=" By fikadu Brand Mangaer at shoa homes"
-        />
-      </div>
+      <PageBanner
+        name=" About Our Partnership and Development Program"
+        footer=" By fikadu Brand Mangaer at shoa homes"
+      />
 
       <section>
         <div className="container mx-auto p-20 text-justify  xl:text-[28px]">
