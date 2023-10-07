@@ -2,9 +2,9 @@ import React from "react";
 
 function Filters() {
   return (
-    <div className="container grid grid-cols-2 text-sm gap-4 justify-between mx-auto xl:flex xl:text-base">
+    <div className="container grid grid-cols-2 text-xs gap-2 justify-between mx-auto xl:flex xl:text-base">
       {/* Location */}
-      <select className="w-full p-5 rounded-[15px] font-medium ">
+      <select className="w-full p-3 rounded-[15px] font-medium xl:p-5 ">
         <option value="">Location (any)</option>
         <option value="">Option 1</option>
         <option value="">Option 2</option>
@@ -12,7 +12,7 @@ function Filters() {
       </select>
 
       {/* Property Status (any) */}
-      <select className="w-full p-5 rounded-[15px] font-medium ">
+      <select className="w-full p-3 rounded-[15px] font-medium xl:p-5 ">
         <option value="">Property Status (any)</option>
         <option value="">Option 1</option>
         <option value="">Option 2</option>
@@ -20,7 +20,7 @@ function Filters() {
       </select>
 
       {/* Keyword */}
-      <select className="w-full p-5 rounded-[15px] font-medium ">
+      <select className="w-full p-3 rounded-[15px] font-medium xl:p-5 ">
         <option value="">Keyword (any)</option>
         <option value="">Option 1</option>
         <option value="">Option 2</option>
@@ -28,7 +28,7 @@ function Filters() {
       </select>
 
       {/* Property Type*/}
-      <select className="w-full p-5 rounded-[15px] font-medium ">
+      <select className="w-full p-3 rounded-[15px] font-medium xl:p-5 ">
         <option value="">Property Type (any)</option>
         <option value="">Option 1</option>
         <option value="">Option 2</option>

@@ -3,11 +3,12 @@ import SearchBar from "../components/SearchBar";
 import Filters from "../components/Filters";
 import Card from "../components/card/Card";
 import bedroom from "../img/bedroom.png";
+import PageBanner from "../components/PageBanner";
 
 function ProjectsPage() {
   return (
     <div>
-      <div
+      {/* <div
         style={{ backgroundImage: `url(${bedroom})` }}
         className="-z-10 w-full h-[500px] absolute top-0 bg-cover bg-no-repeat"
       >
@@ -18,19 +19,23 @@ function ProjectsPage() {
           }}
           className="absolute w-full h-full"
         ></div>
-      </div>
+      </div> */}
 
-      <div className="container mx-auto flex flex-col gap-5 px-20 xl:px-36">
-        <SearchBar />
-        <Filters />
-      </div>
+      <PageBanner
+        content={
+          <div className="flex flex-col gap-5 px-10 xl:px-36">
+            <SearchBar />
+            <Filters />
+          </div>
+        }
+      />
 
       <section>
-        <div className="container mx-auto px-24 flex items-center justify-between mt-40">
+        <div className="container mx-auto px-24 flex items-center justify-between mt-6">
           <h2 className="capitalize text-3xl">4 Properties Found</h2>
           <select
             style={{ boxShadow: "0px 0px 11px 1px #00000040" }}
-            className="w-44 p-5 rounded-[15px] font-medium "
+            className="w-44 text-xs p-3 xl:p-5 rounded-[15px] font-medium  xl:text-base"
           >
             <option value="">Sort By (any)</option>
             <option value="">Option 1</option>
