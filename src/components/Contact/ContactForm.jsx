@@ -1,12 +1,13 @@
 import React from "react";
 
-const inputContainerStyles = "flex bg-[#C3CCD2]/[.5] py-4 px-5 rounded";
-const inputStyles = "bg-transparent outline-none ml-4 w-full ";
+const inputContainerStyles =
+  "flex bg-[#C3CCD2]/[.5] py-2 px-3 rounded md:py-4 md:px-5 ";
+const inputStyles = "bg-transparent outline-none ml-2 md:ml-4 w-full ";
 const labelStyles = "text-white cursor-pointer";
 
 function ContactForm() {
   return (
-    <form className="container flex flex-col gap-y-6 text-2xl  font-medium">
+    <form className="container flex flex-col gap-y-2 font-medium text-sm md:gap-y-6 md:text-2xl">
       <div className={inputContainerStyles}>
         <label htmlFor="name" className={labelStyles}>
           Name
@@ -44,7 +45,7 @@ function ContactForm() {
 
       <button
         type="submit"
-        className="bg-primary_light text-white p-4 rounded-[5px]"
+        className="text-sm bg-primary_light text-white p-4 rounded-[5px] md:text-base"
       >
         Send Message
       </button>

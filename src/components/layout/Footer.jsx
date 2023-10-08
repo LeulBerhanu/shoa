@@ -8,7 +8,7 @@ import copyright from "../../img/ph_copyright-thin.svg";
 function Footer() {
   return (
     <footer className="bg-primary flex-shrink-0 mt-24">
-      <div className=" container grid grid-cols-2  text-white mx-auto">
+      <div className=" container flex flex-col md:grid md:grid-cols-2  text-white mx-auto">
         {/* Left Column */}
         <div className=" flex flex-col gap-8 px-11 py-12 border-r">
           {/* Contact */}
@@ -25,14 +25,14 @@ function Footer() {
 
             {/* Contact Button */}
             <div>
-              <button className="bg-white shadow-sm capitalize text-primary_light  font-medium py-2 px-3 xl:py-4 xl:px-6 rounded-[10px] xl:text-2xl">
+              <button className="hidden bg-white shadow-sm capitalize text-primary_light rounded-[10px] font-medium py-2 px-3 md:block xl:py-4 xl:px-6  xl:text-2xl">
                 let's talk
               </button>
             </div>
           </div>
 
           {/* Arrow Button */}
-          <button className="text-[40px] self-end">
+          <button className="hidden text-[40px] self-end md:block">
             <HiOutlineArrowUp />
           </button>
 
@@ -45,8 +45,16 @@ function Footer() {
             one of our agents today.
           </p>
 
+          <button className=" bg-white shadow-sm capitalize text-primary_light rounded-[10px] font-medium py-2 px-3 md:hidden xl:py-4 xl:px-6  xl:text-2xl">
+            let's talk
+          </button>
+
+          <div className="bg-slate-400 justify-self-end px-11 py-12 md:hidden ">
+            <p>currency converter</p>
+          </div>
+
           {/* Footer's footer */}
-          <div className="flex justify-between items-start">
+          <div className="flex flex-col-reverse gap-y-4 justify-between items-start md:flex-row">
             <i className="flex items-center gap-2 not-italic">
               <img src={copyright} className="w-5" alt="copyright" />
               <p className="text-sm xl:text-xl">All rights reserved</p>
@@ -62,7 +70,7 @@ function Footer() {
         </div>
 
         {/* *** Right Column *** */}
-        <div className="justify-self-end px-11 py-12">
+        <div className="hidden md:block justify-self-end  px-11 py-12">
           <p>currency converter</p>
         </div>
       </div>

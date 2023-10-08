@@ -7,8 +7,8 @@ import Ellipse2 from "../../img/ellipse/Ellipse 3.svg";
 
 function ContactInfo() {
   return (
-    <div className="relative text-xl bg-primary_light text-white rounded-[5px] py-14 px-8 ">
-      <h2 className="mt-0">Contact Information</h2>
+    <div className="relative md:text-xl bg-primary_light text-white rounded-[5px] py-14 px-8">
+      <h2 className="mt-0 text-xl">Contact Information</h2>
       <address>
         {/* Email */}
         <div className="flex">
@@ -21,7 +21,7 @@ function ContactInfo() {
         </div>
 
         {/* Phone number */}
-        <div className="flex mt-8 ">
+        <div className="flex mt-8">
           <img src={phone} alt="Phone icon" className="self-start" />
           <div className="ml-3">
             <p>+251-906-500000</p>
@@ -30,7 +30,7 @@ function ContactInfo() {
         </div>
       </address>
 
-      <h2>Working Hours</h2>
+      <h2 className="text-xl">Working Hours</h2>
       <ul>
         <li className="list-disc ml-8">
           <p>Mon - Fri: 6 am to 8 pm</p>
@@ -42,8 +42,14 @@ function ContactInfo() {
 
       {/* Ellipse */}
       <div>
-        <img src={Ellipse1} className="absolute bottom-0 right-0" />
-        <img src={Ellipse2} className="absolute bottom-0 right-0" />
+        <img
+          src={Ellipse1}
+          className="absolute bottom-0 right-0 opacity-25 md:opacity-100"
+        />
+        <img
+          src={Ellipse2}
+          className="absolute bottom-0 right-0 opacity-25 md:opacity-100"
+        />
       </div>
     </div>
   );
