@@ -20,8 +20,8 @@ function CallCard() {
             className="w-20 h-20 object-contain rounded-[15px] "
           />
           <div>
-            <h2 className="m-0 -mb-2">Shoa Homes</h2>
-            <p className="text-xl text-[#4A6778]">Agent</p>
+            <h2 className="text-xl md:text-2xl m-0 -mb-2">Shoa Homes</h2>
+            <p className="md:text-xl text-[#4A6778]">Agent</p>
           </div>
         </div>
 
@@ -52,7 +52,7 @@ function CallCard() {
         </address>
       </div>
 
-      <div className="bg-[#192A36] text-white text-[28px] p-10 text-center rounded-[15px] mt-7">
+      <div className="bg-[#192A36] text-white  p-4  text-center rounded-[15px] mt-7 md:p-10 md:text-[28px]">
         <p>Call Us Now and Secure your future home!</p>
       </div>
     </div>
