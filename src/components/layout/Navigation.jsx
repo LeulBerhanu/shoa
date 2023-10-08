@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 // Icons
 import shoaLogo from "../../img/shoaLogo.svg";
@@ -15,6 +15,10 @@ function Navigation() {
   function toggleMenu() {
     setToggle((prev) => !prev);
   }
+
+  useEffect(() => {
+    setToggle(false);
+  }, [location]);
 
   // const [bgChange, setBgChange] = React.useState(false);
 
