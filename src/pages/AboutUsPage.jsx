@@ -16,16 +16,22 @@ function AboutUsPage() {
   return (
     <div>
       <div className="container mx-auto">
-        <div className="flex relative w-full h-[490px] xl:h-[672px] rounded-[15px]">
-          <img src={bannerPar} className="absolute z-30 px-[122px] py-[60px]" />
+        <div className="flex relative w-full h-[430px] md:h-[490px] xl:h-[672px] rounded-[15px]">
+          <img
+            src={bannerPar}
+            className="absolute z-30 px-4 md:px-[122px] py-[60px]"
+          />
           <img
             src={bannerPic}
             className="absolute -bottom-[.5px] z-20 w-[400px] xl:w-auto"
             alt=""
           />
-          <img src={bannerParSolid} className="absolute px-[122px] py-[60px]" />
+          <img
+            src={bannerParSolid}
+            className="absolute px-4 md:px-[122px] py-[60px]"
+          />
 
-          <p className=" absolute right-7  text-white text-justify bottom-6  leading-tight w-80 xl:w-[833px] xl:bottom-4 xl:right-9 xl:text-[28px]">
+          <p className="hidden absolute right-7  text-white text-justify bottom-6  leading-tight w-80 md:block xl:w-[833px] xl:bottom-4 xl:right-9 xl:text-[28px]">
             Shoa is a well-known brand name in Ethiopia for over 6o years in
             different sectors, though mainly people are fond of the merchandise
             business we are in. The shoa supermarket chains are one of the
@@ -38,7 +44,7 @@ function AboutUsPage() {
         </div>
       </div>
 
-      <div className="px-20 container mx-auto xl:text-[28px] text-justify mb">
+      <div className="px-4 text-sm container mx-auto text-justify  md:px-20 xl:text-[28px]">
         <p className="my-16">
           Shoa is a well-known brand name in Ethiopia for over 6o years in
           different sectors, though mainly people are fond of the merchandise
@@ -57,13 +63,13 @@ function AboutUsPage() {
           discount from the regular market.
         </p>
         <h2 className="mb-3 xl:text-4xl">Why choose us?</h2>
-        <ul className="list-disc ml-14 mb-5">
+        <ul className="list-disc mb-5 text-left ml-8 md:ml-14">
           <li>Quality</li>
           <li>Convenience</li>
           <li>Affordable</li>
           <li>Suitablle Contemporaty Ethiopian life</li>
         </ul>
-        <p>
+        <p className="my-16">
           SHOA being the most known and trustworthy brand in other business
           lines for over half a century, has come to deliver solution to the
           most concerning housing challenges.
@@ -81,7 +87,7 @@ function AboutUsPage() {
         </p>
 
         <h2 className="mb-3 xl:text-4xl">Payment options:</h2>
-        <ul className="list-disc ml-14">
+        <ul className="list-disc ml-8 md:ml-14 text-left">
           <li>20% advance payment, and four time payment for the rest.</li>
           <li>Can pay full amount and enjoy a 1% discount.</li>
           <li>All payment values are in dollar.</li>
@@ -90,16 +96,16 @@ function AboutUsPage() {
       </div>
 
       <section>
-        <div className="px-20 container flex flex-col gap-4 justify-between mx-auto object-cover py-14 xl:flex-row ">
+        <div className="px-4  container flex flex-col gap-4 justify-between mx-auto object-cover py-14 md:px-20 xl:flex-row ">
           <div
             style={bgImage}
-            className="relative w-[582px] h-[645px] rounded-[15px]"
+            className="relative h-[300px] rounded-[15px] md:w-[582px] md:h-[645px]"
           >
             <div className="flex items-center absolute w-full h-full rounded-[15px] bg-primary_light/[.50] py-[73px] px-14 leading-[1.15] "></div>
           </div>
           <div
             style={bgImage}
-            className="relative w-[582px] h-[645px] rounded-[15px]"
+            className="relative h-[300px] rounded-[15px] md:w-[582px] md:h-[645px]"
           >
             <div className="flex items-center absolute w-full h-full rounded-[15px] bg-primary_light/[.50] py-[73px] px-14 leading-[1.15] "></div>
           </div>
@@ -107,7 +113,7 @@ function AboutUsPage() {
       </section>
 
       <section>
-        <div className="px-20 container mx-auto xl:text-[28px] text-justify mb-56">
+        <div className="px-4 md:px-20 container mx-auto xl:text-[28px] text-justify mb-56">
           <p className="my-16">
             Recently to tackle the sever problem in shortage and expensiveness
             of housing, we joined the real estate sector with adequate resources
