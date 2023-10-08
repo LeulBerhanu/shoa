@@ -10,7 +10,7 @@ function LinkBox({ content }) {
       to="/blog/id"
       className="transition duration-1000 flex h-full w-full relative font-light group cursor-pointer"
     >
-      <p className="z-20 text-white leading-tight text-3xl xl:text-[49px] w-[380px] m-14">
+      <p className="z-20 text-white leading-tight md:text-3xl xl:text-[49px] w-[380px] m-14">
         {content}
       </p>
 
@@ -18,7 +18,7 @@ function LinkBox({ content }) {
       <img
         src={upRightArrow}
         alt="up right arrow icon"
-        className="absolute bottom-8 right-8 z-20 w-[20px] xl:w-auto"
+        className="absolute bottom-8 right-8 z-20 w-[15px] md:w-[20px] xl:w-auto"
       />
 
       {/* color overlay */}
