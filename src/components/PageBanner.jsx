@@ -24,7 +24,7 @@ function PageBanner({ name, content, footer }) {
 
         {/* footer */}
         {footer && (
-          <p className="absolute bottom-0 right-20 py-4 text-white text-xs xl:text-base">
+          <p className="absolute bottom-0 right-5 py-4 text-white text-[10px] md:text-xs md:right-20 xl:text-base">
             {footer}
           </p>
         )}

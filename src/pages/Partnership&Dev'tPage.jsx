@@ -20,7 +20,7 @@ function PartnershipDevtPage() {
       />
 
       <section>
-        <div className="container mx-auto p-20 text-justify  xl:text-[28px]">
+        <div className="container mx-auto px-4 md:p-20 text-justify xl:text-[28px]">
           <article className="text-sm xl:text-2xl text-justify">
             <h2 className={h2Style}>መነሻ ሃሳብ</h2>
             <p className="my-3">

@@ -44,7 +44,7 @@ function AboutUsPage() {
         </div>
       </div>
 
-      <div className="px-4 text-sm container mx-auto text-justify  md:px-20 xl:text-[28px]">
+      <div className="px-4 text-sm container mx-auto text-justify leading-normal md:px-20 xl:text-[28px]">
         <p className="my-16">
           Shoa is a well-known brand name in Ethiopia for over 6o years in
           different sectors, though mainly people are fond of the merchandise
