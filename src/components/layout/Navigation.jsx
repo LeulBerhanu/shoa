@@ -25,7 +25,7 @@ function Navigation() {
   // };
 
   return (
-    <div className="flex container mx-auto items-center justify-between px-16 py-5 xl:py-14 xl:flex">
+    <div className="flex container mx-auto items-center justify-between px-5 md:px-16 py-5 xl:py-14 xl:flex">
       <img
         src={shoaLogo}
         alt="Shoa logo"

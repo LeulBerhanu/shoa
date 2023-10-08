@@ -13,11 +13,11 @@ import { Autoplay, Pagination } from "swiper/modules";
 
 import Card from "./card/Card";
 
-export default function SwiperComponent() {
+export default function SwiperComponent({ slides }) {
   return (
     <>
       <Swiper
-        slidesPerView={2}
+        slidesPerView={slides}
         spaceBetween={30}
         centeredSlides={true}
         autoplay={{

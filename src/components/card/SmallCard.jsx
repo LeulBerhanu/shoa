@@ -3,15 +3,15 @@ import house from "../../img/house.png";
 
 function SmallCard({ discountBadge, onSaleBadge }) {
   return (
-    <div className="flex gap-9 items-center px-5 py-4 shadow-boxShadow w-[610px] rounded-2xl relative">
+    <div className="flex flex-col gap-9 md:items-center px-5 py-4 shadow-boxShadow md:w-[610px] rounded-2xl relative md:flex-row">
       <img src={house} className="max-w-[278px]" alt="house" />
       {/* Card Body */}
       <div className="flex flex-col gap-y-5">
         {/* Title and Price */}
         <div>
           {/* Title */}
-          <h3 className="capitalize break-words text-2xl">
-            Bole bulbula site, two bedroom
+          <h3 className=" capitalize break-words text-2xl">
+            Bole bulbula site, <br /> two bedroom
           </h3>
 
           {/* Price */}

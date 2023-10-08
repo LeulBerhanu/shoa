@@ -12,11 +12,11 @@ function Card() {
   }
 
   return (
-    <div className="flex gap-4 items-center p-5 shadow-boxShadow  rounded-2xl relative">
+    <div className="flex flex-col gap-4 items-center p-5 shadow-boxShadow rounded-2xl relative md:flex-row">
       <div className="flex relative justify-center">
         <img
           src={house}
-          className="max-w-[150px] xl:max-w-[300px]"
+          className="max-w-[250px] md:max-w-[150px] xl:max-w-[300px]"
           alt="house"
         />
         <button
