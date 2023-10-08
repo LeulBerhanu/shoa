@@ -70,7 +70,7 @@ function HomePage() {
 
       <section>
         <h2 className={h2Style}>Our sites</h2>
-        <div className="flex flex-col gap-14 px-20">
+        <div className="flex flex-col gap-14 px-4 md:px-20">
           <div className="container  flex flex-col  mx-auto relative xl:flex-row xl:items-center">
             <p className="py-4 px-8 text-white text-lg font-medium rounded-2xl mb-3 bg-primary xl:hidden">
               Jackros
