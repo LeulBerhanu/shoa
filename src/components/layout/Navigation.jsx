@@ -1,7 +1,10 @@
 import React from "react";
+import { NavLink, useLocation } from "react-router-dom";
+// Icons
 import shoaLogo from "../../img/shoaLogo.svg";
 import shoaLogoWhite from "../../img/shoaLogoWhite.svg";
-import { NavLink, useLocation } from "react-router-dom";
+import { FaBars } from "react-icons/fa";
+// Styles
 import "./navStyles.css";
 
 function Navigation() {
@@ -22,9 +25,13 @@ function Navigation() {
   // };
 
   return (
-    <div className="flex container mx-auto  align-middle justify-between px-16 py-14 xl:flex">
-      <img src={shoaLogo} alt="Shoa logo" className="w-[50px] xl:w-[95px]" />
-      <div className="flex space-x-5 font-medium text-sm xl:text-2xl xl:space-x-14 items-center relative">
+    <div className="flex container mx-auto items-center justify-between px-16 py-5 xl:py-14 xl:flex">
+      <img
+        src={shoaLogo}
+        alt="Shoa logo"
+        className="w-[25px] md:w-[50px] xl:w-[95px]"
+      />
+      <div className="hidden space-x-5 font-medium text-sm md:flex xl:text-2xl xl:space-x-14 items-center relative">
         <NavLink className="relative" to="/">
           Home
         </NavLink>
@@ -57,6 +64,9 @@ function Navigation() {
         <NavLink className="relative" to="contact-us">
           Contact us
         </NavLink>
+      </div>
+      <div className="text-primary md:hidden">
+        <FaBars />
       </div>
     </div>
   );
