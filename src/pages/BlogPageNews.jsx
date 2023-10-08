@@ -4,15 +4,15 @@ import PageBanner from "../components/PageBanner";
 function BlogPageNews() {
   return (
     <div>
-      <PageBanner footer="Read time: 6min" />
+      <PageBanner name="News" footer="Read time: 6min" />
 
-      <div className="container mx-auto px-20 text-xl mt-8 ">
+      <div className="container mx-auto px-4 text-xl mt-8 md:px-20">
         <span className="bg-primary uppercase px-5 py-3 inline-block text-white rounded-[15px]">
           General News
         </span>
       </div>
 
-      <div className="container mx-auto flex flex-col gap-5 px-20  mt-8 text-justify xl:text-xl">
+      <div className="container mx-auto flex flex-col gap-5 text-sm px-4 mt-8 text-justify md:text-base md:px-20 xl:text-xl">
         <p>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut
           similique nihil repellat recusandae numquam, eos nemo, totam animi,

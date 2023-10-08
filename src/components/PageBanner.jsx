@@ -11,7 +11,7 @@ function PageBanner({ name, content, footer }) {
 
   return (
     <div style={bgImage} className="flex items-center relative ">
-      <div className="container px-20 mx-auto z-10 relative ">
+      <div className="container px-5 mx-auto z-10 relative md:px-20">
         {name && (
           <p className="py-14 text-xl leading-none text-white  xl:text-4xl">
             {name}

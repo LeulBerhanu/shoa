@@ -23,7 +23,7 @@ function ProjectsPage() {
 
       <PageBanner
         content={
-          <div className="flex flex-col gap-5 px-10 xl:px-36">
+          <div className="flex flex-col gap-5 md:px-10 xl:px-36">
             <SearchBar />
             <Filters />
           </div>
@@ -31,11 +31,11 @@ function ProjectsPage() {
       />
 
       <section>
-        <div className="container mx-auto px-24 flex items-center justify-between mt-6">
-          <h2 className="capitalize text-3xl">4 Properties Found</h2>
+        <div className="container mx-auto px-4 flex flex-col items-center justify-between mt-6 md:px-24 md:flex-row">
+          <h2 className="capitalize md:text-3xl">4 Properties Found</h2>
           <select
             style={{ boxShadow: "0px 0px 11px 1px #00000040" }}
-            className="w-44 text-xs p-3 xl:p-5 rounded-[15px] font-medium  xl:text-base"
+            className="w-60 mb-7 text-xs p-3 xl:p-5 rounded-[15px] font-medium md:w-44 xl:text-base"
           >
             <option value="">Sort By (any)</option>
             <option value="">Option 1</option>
@@ -45,7 +45,7 @@ function ProjectsPage() {
         </div>
 
         {/* Search Result */}
-        <div className="container mx-auto px-20 flex flex-col gap-8 ">
+        <div className="container mx-auto px-4  flex flex-col gap-8 md:px-20">
           <Card />
           <Card />
           <Card />

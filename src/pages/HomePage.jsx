@@ -21,7 +21,7 @@ function HomePage() {
       </h1>
 
       <section id="slider_section">
-        <div className="h-[500px] md:hidden ">
+        <div className="h-[620px] md:hidden ">
           <SwiperComponent slides="1" />
         </div>
         <div className="hidden h-[270px] md:block xl:h-[470px] ">
