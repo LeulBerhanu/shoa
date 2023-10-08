@@ -31,7 +31,7 @@ function AboutUsPage() {
             className="absolute px-4 md:px-[122px] py-[60px]"
           />
 
-          <p className="hidden absolute right-7  text-white text-justify bottom-6  leading-tight w-80 md:block xl:w-[833px] xl:bottom-4 xl:right-9 xl:text-[28px]">
+          <p className="hidden absolute right-7 text-white text-justify bottom-6  leading-tight w-80 md:block xl:w-[833px] xl:bottom-4 xl:right-9 xl:text-[28px]">
             Shoa is a well-known brand name in Ethiopia for over 6o years in
             different sectors, though mainly people are fond of the merchandise
             business we are in. The shoa supermarket chains are one of the

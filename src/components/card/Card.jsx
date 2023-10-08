@@ -27,7 +27,7 @@ function Card() {
         </button>
       </div>
       {/* Card Body */}
-      <div className="flex flex-col gap-y-5 xl:gap-y-16">
+      <div className="flex flex-col gap-y-5 self-start md:self-auto xl:gap-y-16">
         {/* Title and Price */}
         <div>
           {/* Title */}

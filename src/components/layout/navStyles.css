@@ -27,3 +27,10 @@
 .pending {
   background-color: blue;
 }
+
+.active-mobile {
+  background-color: #132f40;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: white;
+}
