@@ -10,13 +10,14 @@ import Carousel from "../components/Image Carousel/Carousel";
 // Icons
 import { HiOutlineArrowUpRight } from "react-icons/hi2";
 import LocationName from "../components/LocationName";
+import PageBanner from "../components/PageBanner";
 
 const h2Style = " px-8 text-center capitalize text-[28px] xl:text-4xl";
 
 function HomePage() {
   return (
     <>
-      <h1 className=" text-center capitalize text-[40px] xl:text-[80px]">
+      <h1 className="px-6 text-center capitalize text-[40px] xl:text-[80px]">
         Opening doors, <br /> building communities!
       </h1>
 
@@ -72,6 +73,58 @@ function HomePage() {
       </section>
 
       <section>
+        <h2 className={h2Style}>Our sites</h2>
+        <div className="flex flex-col gap-14 px-4 md:px-20 ">
+          {/* First Listed Location */}
+          <div className="container flex items-center justify-center mx-auto relative">
+            <div className="ml-3 w-[136px] h-[204px] xl:w-[506px] xl:h-[527px]">
+              <LocationName name="Jackros" rounded />
+            </div>
+
+            <div className="w-[146px] h-[170px] relative -left-3 md:w-[300px] xl:w-[600px] xl:h-[400px]">
+              <MapComponent />
+            </div>
+          </div>
+
+          {/* Second Listed Location */}
+          <div className="container flex items-center justify-center mx-auto relative">
+            <div className="w-[146px] h-[170px] relative left-3 z-10 md:w-[300px] xl:w-[600px] xl:h-[400px]">
+              <MapComponent />
+            </div>
+
+            <div className="w-[136px] h-[204px] mr-3 xl:w-[506px] xl:h-[527px] ">
+              <LocationName name="Bulbula" rounded />
+            </div>
+          </div>
+
+          <div className="container flex items-center justify-center mx-auto relative">
+            <div className="w-[136px] h-[204px]  xl:w-[506px] xl:h-[527px] ">
+              <LocationName name="Mekanisa" rounded />
+            </div>
+
+            <div className="w-[146px] h-[170px] relative -left-3 md:w-[300px] xl:w-[600px] xl:h-[400px]">
+              <MapComponent />
+            </div>
+          </div>
+
+          <div className="container flex items-center justify-center mx-auto relative">
+            <div className="w-[146px] h-[170px] relative left-3 z-10 md:w-[300px] xl:w-[600px] xl:h-[400px]">
+              <MapComponent />
+            </div>
+
+            <div className="w-[136px] h-[204px] mr-3 xl:h-[527px] xl:w-[506px]">
+              <LocationName
+                name="Welo Sefer"
+                message="(Coming Soon)"
+                rounded
+                closed
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* <section>
         <h2 className={h2Style}>Our sites</h2>
         <div className="flex flex-col gap-14 px-4 md:px-20">
           <div className="container  flex flex-col  mx-auto relative xl:flex-row xl:items-center">
@@ -130,7 +183,7 @@ function HomePage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Contact Section */}
       <section>

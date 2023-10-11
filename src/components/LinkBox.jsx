@@ -10,7 +10,7 @@ function LinkBox({ content }) {
       to="/blog/id"
       className="transition duration-1000 flex h-full w-full relative font-light group cursor-pointer"
     >
-      <p className="z-20 text-white leading-tight md:text-3xl xl:text-[49px] w-[380px] m-14">
+      <p className="z-20 text-white leading-tight md:text-3xl xl:text-[49px] xl:leading-normal w-[380px] m-14">
         {content}
       </p>
 

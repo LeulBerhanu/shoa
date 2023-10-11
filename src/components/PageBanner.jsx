@@ -1,7 +1,7 @@
 import React from "react";
 import house from "../img/house.png";
 
-function PageBanner({ name, content, footer }) {
+function PageBanner({ name, content, footer, center, rounded }) {
   const bgImage = {
     backgroundImage: `url(${house})`,
     backgroundPosition: "center",
@@ -10,10 +10,19 @@ function PageBanner({ name, content, footer }) {
   };
 
   return (
-    <div style={bgImage} className="flex items-center relative ">
+    <div
+      style={bgImage}
+      className={`flex items-center relative border ${
+        rounded ? "rounded-[15px]" : ""
+      }`}
+    >
       <div className="container px-5 mx-auto z-10 relative md:px-20">
         {name && (
-          <p className="py-14 text-xl leading-none text-white  xl:text-4xl">
+          <p
+            className={`${
+              center ? "text-center" : "text-left"
+            } py-14 text-xl leading-none text-white  xl:text-4xl`}
+          >
             {name}
           </p>
         )}
@@ -29,7 +38,11 @@ function PageBanner({ name, content, footer }) {
           </p>
         )}
       </div>
-      <div className=" absolute w-full h-full bg-primary_light/[.50] "></div>
+      <div
+        className={` absolute w-full h-full bg-primary_light/[.50] ${
+          rounded ? "rounded-[15px]" : ""
+        }`}
+      ></div>
     </div>
   );
 }
