@@ -31,7 +31,7 @@ function AboutUsPage() {
             className="absolute px-4 md:px-[122px] py-[60px]"
           />
 
-          <p className="hidden absolute right-7 text-white text-justify bottom-6  leading-tight w-80 md:block xl:w-[833px] xl:bottom-4 xl:right-9 xl:text-[28px]">
+          <p className="hidden absolute  right-7 text-white text-justify bottom-6 leading-tight w-80 md:block xl:w-[833px] xl:bottom-4 xl:right-9 xl:text-[28px]">
             Shoa is a well-known brand name in Ethiopia for over 6o years in
             different sectors, though mainly people are fond of the merchandise
             business we are in. The shoa supermarket chains are one of the
@@ -44,8 +44,8 @@ function AboutUsPage() {
         </div>
       </div>
 
-      <div className="px-4 text-sm container mx-auto text-justify leading-normal md:px-20 xl:text-[28px]">
-        <p className="my-16">
+      <div className="px-4 text-xs container mx-auto text-justify leading-normal md:px-20 xl:text-[28px]">
+        <p className="my-8 md:my-16">
           Shoa is a well-known brand name in Ethiopia for over 6o years in
           different sectors, though mainly people are fond of the merchandise
           business we are in. The shoa supermarket chains are one of the leading
@@ -69,7 +69,7 @@ function AboutUsPage() {
           <li>Affordable</li>
           <li>Suitablle Contemporaty Ethiopian life</li>
         </ul>
-        <p className="my-16">
+        <p className="my-8 md:my-16">
           SHOA being the most known and trustworthy brand in other business
           lines for over half a century, has come to deliver solution to the
           most concerning housing challenges.
@@ -96,7 +96,7 @@ function AboutUsPage() {
       </div>
 
       <section>
-        <div className="px-4  container flex flex-col gap-4 justify-between mx-auto object-cover py-14 md:px-20 xl:flex-row ">
+        <div className="px-4  container flex flex-col gap-4 justify-between mx-auto object-cover py-5 md:py-14 md:px-20 xl:flex-row ">
           <div
             style={bgImage}
             className="relative h-[300px] rounded-[15px] md:w-[582px] md:h-[645px]"
@@ -113,8 +113,8 @@ function AboutUsPage() {
       </section>
 
       <section>
-        <div className="px-4 md:px-20 container mx-auto xl:text-[28px] text-justify mb-56">
-          <p className="my-16">
+        <div className="px-4 container mx-auto text-xs text-justify  md:px-20  xl:text-[28px]">
+          <p className="my-8 md:my-16">
             Recently to tackle the sever problem in shortage and expensiveness
             of housing, we joined the real estate sector with adequate resources
             like, land, finance and the right expertise in the industry. To
@@ -122,7 +122,7 @@ function AboutUsPage() {
             and handpicked partners handling important tasks while we focused on
             the major task.
           </p>
-          <p className="my-16">
+          <p className="my-8 md:my-16">
             In every sector being the first or the late comer both have
             advantages and disadvantages. We believe, us joining the sector
             recently, brought much of an advantage than disadvantage. We get to

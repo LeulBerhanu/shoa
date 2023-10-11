@@ -3,19 +3,19 @@ import house from "../../img/house.png";
 
 function SmallCard({ discountBadge, onSaleBadge }) {
   return (
-    <div className="flex flex-col gap-9 md:items-center px-5 py-4 shadow-boxShadow md:w-[610px] rounded-2xl relative md:flex-row">
-      <img src={house} className="max-w-[278px]" alt="house" />
+    <div className="flex flex-col gap-x-9 gap-y-4 md:items-center px-5 py-12 shadow-boxShadow md:w-[610px] rounded-2xl relative md:flex-row">
+      <img src={house} className="max-w-[244px]" alt="house" />
       {/* Card Body */}
-      <div className="flex flex-col gap-y-5">
+      <div className="flex flex-col ">
         {/* Title and Price */}
         <div>
           {/* Title */}
-          <h3 className=" capitalize break-words text-2xl">
+          <h3 className="leading-none capitalize break-words text-[28px]">
             Bole bulbula site, <br /> two bedroom
           </h3>
 
           {/* Price */}
-          <p className="text-base font-medium">$97,000/sqm</p>
+          <p className="text-base font-medium py-3">$97,000/sqm</p>
         </div>
 
         {/* Details */}

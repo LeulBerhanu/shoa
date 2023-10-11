@@ -45,7 +45,7 @@ function ProjectsPage() {
         </div>
 
         {/* Search Result */}
-        <div className="container mx-auto px-4  flex flex-col gap-8 md:px-20">
+        <div className="container mx-auto px-4  flex flex-col  gap-8 items-center md:px-20">
           <Card />
           <Card />
           <Card />

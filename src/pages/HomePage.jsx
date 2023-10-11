@@ -11,12 +11,12 @@ import Carousel from "../components/Image Carousel/Carousel";
 import { HiOutlineArrowUpRight } from "react-icons/hi2";
 import LocationName from "../components/LocationName";
 
-const h2Style = " text-center capitalize text-xl md:text-2xl xl:text-4xl";
+const h2Style = " px-8 text-center capitalize text-[28px] xl:text-4xl";
 
 function HomePage() {
   return (
     <>
-      <h1 className="text-2xl text-center capitalize md:text-[40px] xl:text-[80px]">
+      <h1 className=" text-center capitalize text-[40px] xl:text-[80px]">
         Opening doors, <br /> building communities!
       </h1>
 
@@ -24,7 +24,10 @@ function HomePage() {
         <div className="h-[620px] md:hidden ">
           <SwiperComponent slides="1" />
         </div>
-        <div className="hidden h-[270px] md:block xl:h-[470px] ">
+        <div className="hidden md:block lg:hidden h-[470px] ">
+          <SwiperComponent slides="1" />
+        </div>
+        <div className="hidden lg:block h-[400px] ">
           <SwiperComponent slides="2" />
         </div>
       </section>
@@ -42,15 +45,15 @@ function HomePage() {
 
       <section id="blog_section">
         <h2 className={h2Style}>Blog</h2>
-        <div className="container mx-auto flex flex-col  text-sm md:text-2xl md:grid md:grid-cols-2 auto-rows-fr xl:flex xl:flex-row xl:text-4xl xl:h-[323px] xl:items-stretch">
-          <div className="relative border p-5 md:p-11">
+        <div className="container mx-auto px-7 gap-y-4 flex flex-col text-center text-[28px]  auto-rows-fr md:text-2xl md:grid md:grid-cols-2 xl:flex xl:flex-row xl:text-4xl xl:h-[323px] xl:items-stretch">
+          <div className="relative border py-20 leading-none md:p-11">
             <a href="#">Housing prices in Addis Ababa is changing</a>
             <i className="absolute bottom-2 right-2 md:bottom-5 md:right-5">
               <HiOutlineArrowUpRight />
             </i>
           </div>
 
-          <div className="relative border p-5 md:p-11">
+          <div className="relative border py-20 leading-none md:p-11">
             <a href="#">
               Is the current inflation affecting real estate owners
             </a>
@@ -59,7 +62,7 @@ function HomePage() {
             </i>
           </div>
 
-          <div className="relative border p-5 md:p-11">
+          <div className="relative border py-20 leading-none md:p-11">
             <a href="#">What’s new at shoa real estate listings</a>
             <i className="absolute bottom-2 right-2 md:bottom-5 md:right-5">
               <HiOutlineArrowUpRight />

@@ -13,11 +13,11 @@ function Footer() {
         <div className=" flex flex-col gap-8 px-11 py-12 border-r">
           {/* Contact */}
           <div className="flex justify-between">
-            <div className="capitalize tracking-wide font-bold text xl:text-[28px]">
+            <div className="capitalize tracking-wide font-bold text-[22px] xl:text-[28px]">
               {/* Phone */}
               <p>+251 912121212</p>
               {/* location */}
-              <div className="text-white opacity-50 ">
+              <div className="text-white mt-9 opacity-50 ">
                 <p>Megenagna,</p>
                 <p>addis ababa, ethiopia</p>
               </div>
@@ -37,7 +37,7 @@ function Footer() {
           </button>
 
           {/* Paragraph Content */}
-          <p className="text-sm text-justify max-w-[500px] xl:text-xl">
+          <p className="text-base max-w-[500px] xl:text-xl">
             If you're ready to find your perfect retreat, our real estate
             landing page is the perfect place to start. Browse our listings and
             discover homes that seamlessly blend natural design with modern
@@ -45,7 +45,7 @@ function Footer() {
             one of our agents today.
           </p>
 
-          <button className=" bg-white shadow-sm capitalize text-primary_light rounded-[10px] font-medium py-2 px-3 md:hidden xl:py-4 xl:px-6  xl:text-2xl">
+          <button className=" bg-white shadow-sm capitalize text-primary_light rounded-[10px] font-medium py-2 px-3  md:hidden xl:py-4 xl:px-6  text-2xl">
             let's talk
           </button>
 
