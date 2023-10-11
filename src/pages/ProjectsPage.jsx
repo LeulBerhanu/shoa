@@ -35,7 +35,7 @@ function ProjectsPage() {
           <h2 className="capitalize md:text-3xl">4 Properties Found</h2>
           <select
             style={{ boxShadow: "0px 0px 11px 1px #00000040" }}
-            className="w-60 mb-7 text-xs p-3 xl:p-5 rounded-[15px] font-medium md:w-44 xl:text-base"
+            className="w-60 mb-7 p-3 xl:p-5 rounded-[15px] font-medium md:w-44 xl:text-base"
           >
             <option value="">Sort By (any)</option>
             <option value="">Option 1</option>

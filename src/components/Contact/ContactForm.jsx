@@ -7,7 +7,7 @@ const labelStyles = "text-white cursor-pointer";
 
 function ContactForm() {
   return (
-    <form className="container flex flex-col gap-y-2 font-medium text-sm md:gap-y-6 md:text-2xl">
+    <form className="container flex flex-col gap-y-2 font-medium md:gap-y-6 md:text-2xl">
       <div className={inputContainerStyles}>
         <label htmlFor="name" className={labelStyles}>
           Name
@@ -45,7 +45,7 @@ function ContactForm() {
 
       <button
         type="submit"
-        className="text-sm bg-primary_light text-white p-4 rounded-[5px] md:text-base"
+        className=" bg-primary_light text-white p-4 rounded-[5px] md:text-base"
       >
         Send Message
       </button>

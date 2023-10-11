@@ -81,14 +81,14 @@ function HomePage() {
               <LocationName name="Jackros" rounded />
             </div>
 
-            <div className="w-[146px] h-[170px] relative -left-3 md:w-[300px] xl:w-[600px] xl:h-[400px]">
+            <div className="w-[200px] h-[170px] relative -left-3 md:w-[300px] xl:w-[600px] xl:h-[400px]">
               <MapComponent />
             </div>
           </div>
 
           {/* Second Listed Location */}
           <div className="container flex items-center justify-center mx-auto relative">
-            <div className="w-[146px] h-[170px] relative left-3 z-10 md:w-[300px] xl:w-[600px] xl:h-[400px]">
+            <div className="w-[200px] h-[170px] relative left-3 z-10 md:w-[300px] xl:w-[600px] xl:h-[400px]">
               <MapComponent />
             </div>
 
@@ -102,13 +102,13 @@ function HomePage() {
               <LocationName name="Mekanisa" rounded />
             </div>
 
-            <div className="w-[146px] h-[170px] relative -left-3 md:w-[300px] xl:w-[600px] xl:h-[400px]">
+            <div className="w-[200px] h-[170px] relative -left-3 md:w-[300px] xl:w-[600px] xl:h-[400px]">
               <MapComponent />
             </div>
           </div>
 
           <div className="container flex items-center justify-center mx-auto relative">
-            <div className="w-[146px] h-[170px] relative left-3 z-10 md:w-[300px] xl:w-[600px] xl:h-[400px]">
+            <div className="w-[200px] h-[170px] relative left-3 z-10 md:w-[300px] xl:w-[600px] xl:h-[400px]">
               <MapComponent />
             </div>
 
