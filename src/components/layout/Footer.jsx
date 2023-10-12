@@ -77,7 +77,7 @@ function Footer() {
         {/* *** Right Column *** */}
         <div className="hidden md:block justify-self-center self-center px-11 py-12 ">
           <div className="bg-[#C3CCD2] p-10 rounded-md">
-            <p className="mb-8 text-center text-3xl">Currency Converter</p>
+            <p className="mb-8 text-center text-4xl">Currency Converter</p>
 
             <CurrencyConvertor />
           </div>

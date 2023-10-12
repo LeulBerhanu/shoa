@@ -41,7 +41,7 @@ function CurrencyConvertor() {
   }
 
   return (
-    <div className="flex flex-col gap-8 text-black text-lg md:text-3xl">
+    <div className="flex flex-col gap-8 text-black text-2xl md:text-3xl">
       <div>
         <label>
           {swapCurrency ? (
@@ -63,7 +63,7 @@ function CurrencyConvertor() {
             type="text"
             value={currency1}
             onChange={(e) => setCurrency1(e.target.value)}
-            className="w-full mt-1 px-3 py-2 text-black rounded-md"
+            className="w-full mt-1 px-3 py-2 text-black rounded-md outline-none"
           />
         </label>
       </div>
@@ -97,7 +97,7 @@ function CurrencyConvertor() {
             disabled
             value={currency2}
             onChange={(e) => setCurrency2(e.target.value)}
-            className="w-full mt-1 px-3 py-2 text-black rounded-md"
+            className="w-full mt-1 px-3 py-2 text-black rounded-md outline-none"
           />
         </label>
       </div>
