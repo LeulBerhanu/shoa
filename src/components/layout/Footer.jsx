@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { HiOutlineArrowUp } from "react-icons/hi";
 import { AiFillInstagram, AiFillFacebook } from "react-icons/ai";
 import { FaLinkedinIn } from "react-icons/fa";
 import { RiTwitterXFill } from "react-icons/ri";
 import copyright from "../../img/ph_copyright-thin.svg";
+
+import CurrencyConvertor from "../CurrencyConvertor";
 
 function Footer() {
   return (
@@ -49,8 +51,11 @@ function Footer() {
             let's talk
           </button>
 
-          <div className="bg-slate-400 justify-self-end px-11 py-12 md:hidden ">
-            <p>currency converter</p>
+          <div className="justify-self-end text-xs px-11 py-12 md:hidden ">
+            <div className="bg-[#C3CCD2] p-10 rounded-md">
+              <p className="mb-5 text-center">Currency Converter</p>
+              <CurrencyConvertor />
+            </div>
           </div>
 
           {/* Footer's footer */}
@@ -70,8 +75,11 @@ function Footer() {
         </div>
 
         {/* *** Right Column *** */}
-        <div className="hidden md:block justify-self-end  px-11 py-12">
-          <p>currency converter</p>
+        <div className="hidden md:block justify-self-end px-11 py-12 ">
+          <div className="bg-[#C3CCD2] p-10 rounded-md">
+            <p className="mb-5 text-center">Currency Converter</p>
+            <CurrencyConvertor />
+          </div>
         </div>
       </div>
     </footer>
