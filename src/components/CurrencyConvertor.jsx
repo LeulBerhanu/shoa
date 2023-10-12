@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { fetchExchangeRates } from "../services/fxService";
 import { AiOutlineSwap } from "react-icons/ai";
+import { US, ET } from "country-flag-icons/react/3x2";
 
 function CurrencyConvertor() {
   const [currency1, setCurrency1] = useState(1);
@@ -40,15 +41,29 @@ function CurrencyConvertor() {
   }
 
   return (
-    <div className="flex flex-col gap-3 text-black">
+    <div className="flex flex-col gap-8 text-black text-lg md:text-3xl">
       <div>
-        <label className="px-1">
-          {swapCurrency ? "ETB" : "USD"}
+        <label>
+          {swapCurrency ? (
+            <div className="flex items-end gap-x-2">
+              <p>ETB</p>
+              <div className="w-5 h-5 md:w-7 md:h-7">
+                <ET title="Ethiopia" />
+              </div>
+            </div>
+          ) : (
+            <div className="flex items-end gap-x-2">
+              <p>USD</p>
+              <div className="w-5 h-5 md:w-7 md:h-7">
+                <US title="United States" />
+              </div>
+            </div>
+          )}
           <input
             type="text"
             value={currency1}
             onChange={(e) => setCurrency1(e.target.value)}
-            className="w-full px-2 text-black rounded-md"
+            className="w-full mt-1 px-3 py-2 text-black rounded-md"
           />
         </label>
       </div>
@@ -61,13 +76,28 @@ function CurrencyConvertor() {
       </button>
 
       <div>
-        <label className="px-1">
-          {swapCurrency ? "USD" : "ETB"}
+        <label>
+          {swapCurrency ? (
+            <div className="flex items-end gap-x-2">
+              <p>USD</p>
+              <div className="w-5 h-5 md:w-7 md:h-7">
+                <US title="United States" />
+              </div>
+            </div>
+          ) : (
+            <div className="flex items-end gap-x-2">
+              <p>ETB</p>
+              <div className="w-5 h-5 md:w-7 md:h-7">
+                <ET title="Ethiopia" />{" "}
+              </div>
+            </div>
+          )}
           <input
             type="text"
+            disabled
             value={currency2}
             onChange={(e) => setCurrency2(e.target.value)}
-            className="w-full px-2 text-black rounded-md"
+            className="w-full mt-1 px-3 py-2 text-black rounded-md"
           />
         </label>
       </div>

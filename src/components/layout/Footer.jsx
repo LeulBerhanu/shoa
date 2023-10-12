@@ -51,7 +51,7 @@ function Footer() {
             let's talk
           </button>
 
-          <div className="justify-self-end text-xs px-11 py-12 md:hidden ">
+          <div className="justify-self-end text-xl  md:hidden ">
             <div className="bg-[#C3CCD2] p-10 rounded-md">
               <p className="mb-5 text-center">Currency Converter</p>
               <CurrencyConvertor />
@@ -75,9 +75,10 @@ function Footer() {
         </div>
 
         {/* *** Right Column *** */}
-        <div className="hidden md:block justify-self-end px-11 py-12 ">
+        <div className="hidden md:block justify-self-center self-center px-11 py-12 ">
           <div className="bg-[#C3CCD2] p-10 rounded-md">
-            <p className="mb-5 text-center">Currency Converter</p>
+            <p className="mb-8 text-center text-3xl">Currency Converter</p>
+
             <CurrencyConvertor />
           </div>
         </div>
