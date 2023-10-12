@@ -51,7 +51,7 @@ function Footer() {
             let's talk
           </button>
 
-          <div className="justify-self-end text-xl  md:hidden ">
+          <div className="justify-self-end text-2xl  md:hidden ">
             <div className="bg-[#C3CCD2] p-10 rounded-md">
               <p className="mb-5 text-center">Currency Converter</p>
               <CurrencyConvertor />
