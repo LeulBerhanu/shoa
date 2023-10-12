@@ -45,16 +45,16 @@ function CurrencyConvertor() {
       <div>
         <label>
           {swapCurrency ? (
-            <div className="flex items-end gap-x-2">
+            <div className="flex items-center gap-x-2">
               <p>ETB</p>
-              <div className="w-5 h-5 md:w-7 md:h-7">
+              <div className="flex w-5 h-5 md:w-7 md:h-7">
                 <ET title="Ethiopia" />
               </div>
             </div>
           ) : (
-            <div className="flex items-end gap-x-2">
+            <div className="flex items-center gap-x-2">
               <p>USD</p>
-              <div className="w-5 h-5 md:w-7 md:h-7">
+              <div className="flex w-5 h-5 md:w-7 md:h-7">
                 <US title="United States" />
               </div>
             </div>
@@ -78,16 +78,16 @@ function CurrencyConvertor() {
       <div>
         <label>
           {swapCurrency ? (
-            <div className="flex items-end gap-x-2">
+            <div className="flex items-center gap-x-2">
               <p>USD</p>
-              <div className="w-5 h-5 md:w-7 md:h-7">
+              <div className="flex w-5 h-5 md:w-7 md:h-7">
                 <US title="United States" />
               </div>
             </div>
           ) : (
-            <div className="flex items-end gap-x-2">
+            <div className="flex items-center gap-x-2">
               <p>ETB</p>
-              <div className="w-5 h-5 md:w-7 md:h-7">
+              <div className="flex w-5 h-5 md:w-7 md:h-7">
                 <ET title="Ethiopia" />{" "}
               </div>
             </div>
