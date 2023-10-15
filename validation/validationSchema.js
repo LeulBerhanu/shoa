@@ -3,6 +3,7 @@ const { body } = require("express-validator");
 const createBlogSchema = [
   body("title").trim().notEmpty(),
   body("body").trim().notEmpty(),
+  body("readTime").trim().notEmpty(),
 ];
 
 const updateBlogSchema = [
