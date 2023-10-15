@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import Axios from "axios";
 import Card from "../components/card/Card";
 import Hero from "../components/Hero";
 import SmallCard from "../components/card/SmallCard";
