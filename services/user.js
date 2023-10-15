@@ -21,9 +21,10 @@ const createUserService = async (req, res) => {
 };
 const getAllUserService = async (req, res) => {
   try {
-    const users = User.find({});
+    const users = await User.find({}, { password: 0, __v: 0 });
     return res.status(201).json({ users });
   } catch (err) {
+    console.log(err);
     return res.status(500).json({ msg: "Failed to fetch all users." });
   }
 };
