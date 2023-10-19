@@ -11,6 +11,9 @@ import ProjectDetailsPage from "./pages/ProjectDetailsPage";
 import ContactUsPage from "./pages/ContactUsPage";
 import BlogPage from "./pages/BlogPage";
 import BlogPageNews from "./pages/BlogPageNews";
+import Dashboard from "./Admin/Pages/Dashboard";
+import AdminLayout from "./Admin/Components/Layout/AdminLayout";
+import Site from "./Admin/Pages/Site";
 
 function App() {
   return (
@@ -27,6 +30,11 @@ function App() {
         />
         <Route path="about-us" element={<AboutUsPage />} />
         <Route path="contact-us" element={<ContactUsPage />} />
+      </Route>
+
+      <Route path="/admin" element={<AdminLayout />}>
+        <Route index element={<Dashboard />} />
+        <Route path="site" element={<Site />} />
       </Route>
     </Routes>
   );
