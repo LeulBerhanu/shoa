@@ -16,5 +16,5 @@
 }
 
 .primaryBtn {
-  @apply text-xl text-white p-4 rounded-lg bg-[#0E344B];
+  @apply text-xl text-white p-4 rounded-lg bg-[#0E344B] w-36;
 }
