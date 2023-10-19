@@ -48,15 +48,15 @@ function ProjectsPage() {
             className="w-60 mb-7 p-3 xl:p-5 rounded-[15px] font-medium md:w-44 xl:text-base"
           >
             <option value="">Sort By (any)</option>
-            <option value="">Option 1</option>
-            <option value="">Option 2</option>
-            <option value="">Option 3</option>
+            <option value="">Ascending</option>
+            <option value="">Descending</option>
           </select>
         </div>
 
         {/* Search Result */}
         <div className="container mx-auto px-4  flex flex-col  gap-8 items-center md:px-20">
-          {properties && properties.map((item) => <Card item={item} />)}
+          {properties &&
+            properties.map((item) => <Card key={item._id} item={item} />)}
         </div>
       </section>
     </div>

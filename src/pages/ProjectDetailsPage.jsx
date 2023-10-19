@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import house from "../img/house.png";
 import floorPlan from "../img/floorPlan.jpg";
 import shoaLogo from "../img/shoaLogo.svg";
@@ -13,8 +13,20 @@ import saleTag from "../img/detailPageIcons/saleTag.svg";
 import MapComponent from "../components/MapComponent";
 import OnSaleBadge from "../components/OnSaleBadge";
 import CallCard from "../components/card/CallCard";
+import LocationComp from "../components/LocationComp";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
 function ProjectDetailsPage() {
+  const { id } = useParams();
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:4000/api/property/${id}`)
+      // .then((res) => console.log("response", res));
+      .then((res) => console.log(res));
+  }, []);
+
   return (
     <div>
       <div className="container mx-auto px-8 md:px-20">
@@ -156,7 +168,7 @@ function ProjectDetailsPage() {
           <h2>Location:</h2>
           <div className="flex flex-col  gap-x-11 gap-y-8 xl:flex-row">
             <div className="h-[300px]  xl:h-auto xl:flex-1">
-              <MapComponent />
+              <LocationComp />
             </div>
             <div className="xl:w-[444px] ">
               <CallCard />

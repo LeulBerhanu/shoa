@@ -3,6 +3,7 @@ import house from "../img/house.png";
 import ContactComponent from "../components/Contact/ContactComponent";
 import MapComponent from "../components/MapComponent";
 import PageBanner from "../components/PageBanner";
+import LocationComp from "../components/LocationComp";
 
 function ContactUsPage() {
   return (
@@ -14,7 +15,7 @@ function ContactUsPage() {
       </div>
 
       <div className=" container h-[300px] mx-auto px-4 md:px-20 xl:h-[622px]">
-        <MapComponent />
+        <LocationComp />
       </div>
     </div>
   );

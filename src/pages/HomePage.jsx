@@ -1,30 +1,33 @@
 import React, { useEffect, useState } from "react";
-import Axios from "axios";
-import Card from "../components/card/Card";
 import Hero from "../components/Hero";
 import SmallCard from "../components/card/SmallCard";
 import MapComponent from "../components/MapComponent";
 import SwiperComponent from "../components/SwiperComponent";
 import ContactComponent from "../components/Contact/ContactComponent";
-import ImageCarousel from "../components/Image Carousel/ImageCarousel";
-import Carousel from "../components/Image Carousel/Carousel";
 // Icons
-import { HiOutlineArrowUpRight } from "react-icons/hi2";
 import LocationName from "../components/LocationName";
-import PageBanner from "../components/PageBanner";
 import LinkBoxHomePage from "../components/LinkBoxHomePage";
 import axios from "axios";
+import LocationComp from "../components/LocationComp";
 
 const h2Style = " px-8 text-center capitalize text-[28px] xl:text-4xl";
 
 function HomePage() {
   const [blogs, setBlogs] = useState(null);
+  const [sites, setSites] = useState(null);
 
   useEffect(() => {
     axios
       .get("http://localhost:4000/api/blog")
       .then((res) => res.data.blogs)
       .then((data) => setBlogs(data));
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:4000/api/site")
+      .then((res) => res.data.sites)
+      .then((data) => setSites(data));
   }, []);
 
   return (
@@ -71,39 +74,36 @@ function HomePage() {
       <section>
         <h2 className={h2Style}>Our sites</h2>
         <div className="flex flex-col gap-14 px-4 md:px-20 ">
-          {/* First Listed Location */}
-          <div className="container flex items-center justify-center mx-auto relative">
-            <div className="ml-3 w-[136px] h-[204px] xl:w-[506px] xl:h-[527px]">
-              <LocationName name="Jackros" rounded />
-            </div>
+          {sites &&
+            sites.map((site, index) => (
+              <div
+                className={`container flex items-center justify-center mx-auto relative `}
+              >
+                {index % 2 === 0 ? (
+                  <>
+                    <div className="ml-3 w-[136px] h-[204px] xl:w-[506px] xl:h-[527px]">
+                      <LocationName name={site.title} rounded />
+                    </div>
 
-            <div className="w-[200px] h-[170px] relative -left-3 md:w-[300px] xl:w-[600px] xl:h-[400px]">
-              <MapComponent />
-            </div>
-          </div>
+                    <div className="w-[200px] h-[170px] relative -left-3 md:w-[300px] xl:w-[600px] xl:h-[400px]">
+                      <MapComponent location={site.location} />
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="w-[200px] h-[170px] relative left-3 z-10 md:w-[300px] xl:w-[600px] xl:h-[400px]">
+                      <MapComponent location={site.location} />
+                    </div>
 
-          {/* Second Listed Location */}
-          <div className="container flex items-center justify-center mx-auto relative">
-            <div className="w-[200px] h-[170px] relative left-3 z-10 md:w-[300px] xl:w-[600px] xl:h-[400px]">
-              <MapComponent />
-            </div>
+                    <div className="w-[136px] h-[204px] mr-3 xl:w-[506px] xl:h-[527px] ">
+                      <LocationName name={site.title} rounded />
+                    </div>
+                  </>
+                )}
+              </div>
+            ))}
 
-            <div className="w-[136px] h-[204px] mr-3 xl:w-[506px] xl:h-[527px] ">
-              <LocationName name="Bulbula" rounded />
-            </div>
-          </div>
-
-          <div className="container flex items-center justify-center mx-auto relative">
-            <div className="w-[136px] h-[204px]  xl:w-[506px] xl:h-[527px] ">
-              <LocationName name="Mekanisa" rounded />
-            </div>
-
-            <div className="w-[200px] h-[170px] relative -left-3 md:w-[300px] xl:w-[600px] xl:h-[400px]">
-              <MapComponent />
-            </div>
-          </div>
-
-          <div className="container flex items-center justify-center mx-auto relative">
+          {/* <div className="container flex items-center justify-center mx-auto relative">
             <div className="w-[200px] h-[170px] relative left-3 z-10 md:w-[300px] xl:w-[600px] xl:h-[400px]">
               <MapComponent />
             </div>
@@ -116,7 +116,7 @@ function HomePage() {
                 closed
               />
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
 
@@ -195,7 +195,7 @@ function HomePage() {
 
         {/* <LocationMap /> */}
         <div className=" container px-4 h-[250px]  mx-auto md:px-20 md:h-[450px] xl:w-[994px]">
-          <MapComponent />
+          <LocationComp />
         </div>
       </section>
     </>
