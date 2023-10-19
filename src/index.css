@@ -14,3 +14,7 @@
     margin: 32px 0;
   }
 }
+
+.primaryBtn {
+  @apply text-xl text-white p-4 rounded-lg bg-[#0E344B];
+}

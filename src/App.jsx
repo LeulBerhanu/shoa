@@ -14,6 +14,8 @@ import BlogPageNews from "./pages/BlogPageNews";
 import Dashboard from "./Admin/Pages/Dashboard";
 import AdminLayout from "./Admin/Components/Layout/AdminLayout";
 import Site from "./Admin/Pages/Site";
+import AddSite from "./Admin/Pages/Site/AddSite";
+import SiteLayout from "./Admin/Pages/Site/SiteLayout";
 
 function App() {
   return (
@@ -34,7 +36,10 @@ function App() {
 
       <Route path="/admin" element={<AdminLayout />}>
         <Route index element={<Dashboard />} />
-        <Route path="site" element={<Site />} />
+        <Route path="site" element={<SiteLayout />}>
+          <Route index element={<Site />} />
+          <Route path="add-site" element={<AddSite />} />
+        </Route>
       </Route>
     </Routes>
   );

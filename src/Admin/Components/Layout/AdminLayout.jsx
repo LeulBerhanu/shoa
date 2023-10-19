@@ -1,15 +1,14 @@
 import React from "react";
-import Dashboard from "../../Pages/Dashboard";
 import { Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import Footer from "./Footer";
 
 function AdminLayout() {
   return (
-    <div className="flex container mx-auto bg-black/5 h-screen">
+    <div className="flex container mx-auto min-h-screen bg-black/5 ">
       <Sidebar />
       <div className="flex flex-col w-full">
-        <div className="flex-1 ">
+        <div className="flex-1">
           <Outlet />
         </div>
         <Footer />
