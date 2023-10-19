@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import Card from "../components/card/Card";
 import Hero from "../components/Hero";
@@ -12,10 +12,21 @@ import Carousel from "../components/Image Carousel/Carousel";
 import { HiOutlineArrowUpRight } from "react-icons/hi2";
 import LocationName from "../components/LocationName";
 import PageBanner from "../components/PageBanner";
+import LinkBoxHomePage from "../components/LinkBoxHomePage";
+import axios from "axios";
 
 const h2Style = " px-8 text-center capitalize text-[28px] xl:text-4xl";
 
 function HomePage() {
+  const [blogs, setBlogs] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:4000/api/blog")
+      .then((res) => res.data.blogs)
+      .then((data) => setBlogs(data));
+  }, []);
+
   return (
     <>
       <h1 className="px-6 text-center capitalize text-[40px] xl:text-[80px]">
@@ -48,28 +59,12 @@ function HomePage() {
       <section id="blog_section">
         <h2 className={h2Style}>Blog</h2>
         <div className="container mx-auto px-7 gap-y-4 flex flex-col text-center text-[28px]  auto-rows-fr md:text-2xl md:grid md:grid-cols-2 xl:flex xl:flex-row xl:text-4xl xl:h-[323px] xl:items-stretch">
-          <div className="relative border py-20 leading-none md:p-11">
-            <a href="#">Housing prices in Addis Ababa is changing</a>
-            <i className="absolute bottom-2 right-2 md:bottom-5 md:right-5">
-              <HiOutlineArrowUpRight />
-            </i>
-          </div>
-
-          <div className="relative border py-20 leading-none md:p-11">
-            <a href="#">
-              Is the current inflation affecting real estate owners
-            </a>
-            <i className="absolute bottom-2 right-2 md:bottom-5 md:right-5">
-              <HiOutlineArrowUpRight />
-            </i>
-          </div>
-
-          <div className="relative border py-20 leading-none md:p-11">
-            <a href="#">What’s new at shoa real estate listings</a>
-            <i className="absolute bottom-2 right-2 md:bottom-5 md:right-5">
-              <HiOutlineArrowUpRight />
-            </i>
-          </div>
+          {blogs &&
+            blogs.map((blog) => (
+              <div key={blog._id}>
+                <LinkBoxHomePage content={blog.title} id={blog._id} />
+              </div>
+            ))}
         </div>
       </section>
 

@@ -6,7 +6,6 @@ import LinkBox from "../components/LinkBox";
 
 function BlogPage() {
   const [blogs, setBlogs] = useState(null);
-  console.log("blogs", blogs);
 
   useEffect(() => {
     Axios.get("http://localhost:4000/api/blog")

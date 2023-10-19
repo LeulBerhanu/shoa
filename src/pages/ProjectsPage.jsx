@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import SearchBar from "../components/SearchBar";
 import Filters from "../components/Filters";
 import Card from "../components/card/Card";
 import bedroom from "../img/bedroom.png";
 import PageBanner from "../components/PageBanner";
+import axios from "axios";
 
 function ProjectsPage() {
+  const [properties, setProperties] = useState("");
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:4000/api/property")
+      .then((res) => res.data.properties)
+      .then((data) => setProperties(data));
+  }, []);
+
   return (
     <div>
       {/* <div
@@ -46,10 +56,7 @@ function ProjectsPage() {
 
         {/* Search Result */}
         <div className="container mx-auto px-4  flex flex-col  gap-8 items-center md:px-20">
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          {properties && properties.map((item) => <Card item={item} />)}
         </div>
       </section>
     </div>

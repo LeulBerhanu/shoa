@@ -1,4 +1,5 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import axios from "axios";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -14,6 +15,15 @@ import { Autoplay, Pagination } from "swiper/modules";
 import Card from "./card/Card";
 
 export default function SwiperComponent({ slides }) {
+  const [properties, setProperties] = useState("");
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:4000/api/property")
+      .then((res) => res.data.properties)
+      .then((data) => setProperties(data));
+  }, []);
+
   return (
     <>
       <Swiper
@@ -31,7 +41,19 @@ export default function SwiperComponent({ slides }) {
         modules={[Autoplay, Pagination]}
         className="mySwiper w-full h-full"
       >
-        <SwiperSlide className="flex justify-center items-center object-cover">
+        {properties &&
+          properties.map((item) => (
+            <SwiperSlide
+              key={item._id}
+              className="flex justify-center items-center object-cover"
+            >
+              <div className="object-cover">
+                <Card item={item} />
+              </div>
+            </SwiperSlide>
+          ))}
+
+        {/* <SwiperSlide className="flex justify-center items-center object-cover">
           <div className=" object-cover">
             <Card />
           </div>
@@ -75,7 +97,7 @@ export default function SwiperComponent({ slides }) {
           <div className=" object-cover">
             <Card />
           </div>
-        </SwiperSlide>
+        </SwiperSlide> */}
       </Swiper>
     </>
   );
