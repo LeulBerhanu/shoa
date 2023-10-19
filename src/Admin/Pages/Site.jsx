@@ -1,6 +1,7 @@
 import React from "react";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { MdSwapVert } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const tableBtn =
   "w-[60px] h-[40px]  flex items-center justify-center  px-4 py-3 font-medium border-2 border-black/25 rounded-lg";
@@ -11,7 +12,9 @@ function Site() {
       <section className="px-10">
         <div className="flex justify-between items-center mt-9">
           <h2 className="text-2xl font-bold">Sites list</h2>
-          <button className="primaryBtn">+ Add Site</button>
+          <button className="primaryBtn">
+            <Link to="add-site"> + Add Site</Link>
+          </button>
         </div>
 
         <div className="p-10 bg-white rounded-lg shadow-boxShadow">
@@ -51,7 +54,9 @@ function Site() {
                 </td>
                 <td>
                   <div className="flex gap-x-3">
-                    <button className={`${tableBtn} bg-white`}>Edit</button>
+                    <button className={`${tableBtn} bg-white`}>
+                      <Link to="edit-site">Edit</Link>
+                    </button>
                     <button className={`${tableBtn} bg-white`}>
                       <RiDeleteBin6Line />
                     </button>
@@ -71,7 +76,9 @@ function Site() {
                 </td>
                 <td>
                   <div className="flex gap-x-3">
-                    <button className={`${tableBtn} bg-white`}>Edit</button>
+                    <button className={`${tableBtn} bg-white`}>
+                      <Link to="edit-site">Edit</Link>
+                    </button>
                     <button className={`${tableBtn} bg-white`}>
                       <RiDeleteBin6Line />
                     </button>
@@ -91,7 +98,9 @@ function Site() {
                 </td>
                 <td>
                   <div className="flex gap-x-3">
-                    <button className={`${tableBtn} bg-white`}>Edit</button>
+                    <button className={`${tableBtn} bg-white`}>
+                      <Link to="edit-site">Edit</Link>
+                    </button>
                     <button className={`${tableBtn} bg-white`}>
                       <RiDeleteBin6Line />
                     </button>
@@ -111,7 +120,9 @@ function Site() {
                 </td>
                 <td>
                   <div className="flex gap-x-3">
-                    <button className={`${tableBtn} bg-white`}>Edit</button>
+                    <button className={`${tableBtn} bg-white`}>
+                      <Link to="edit-site">Edit</Link>
+                    </button>
                     <button className={`${tableBtn} bg-white`}>
                       <RiDeleteBin6Line />
                     </button>
@@ -131,7 +142,9 @@ function Site() {
                 </td>
                 <td>
                   <div className="flex gap-x-3">
-                    <button className={`${tableBtn} bg-white`}>Edit</button>
+                    <button className={`${tableBtn} bg-white`}>
+                      <Link to="edit-site">Edit</Link>
+                    </button>
                     <button className={`${tableBtn} bg-white`}>
                       <RiDeleteBin6Line />
                     </button>
@@ -151,7 +164,9 @@ function Site() {
                 </td>
                 <td>
                   <div className="flex gap-x-3">
-                    <button className={`${tableBtn} bg-white`}>Edit</button>
+                    <button className={`${tableBtn} bg-white`}>
+                      <Link to="edit-site">Edit</Link>
+                    </button>
                     <button className={`${tableBtn} bg-white`}>
                       <RiDeleteBin6Line />
                     </button>

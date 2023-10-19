@@ -16,6 +16,7 @@ import AdminLayout from "./Admin/Components/Layout/AdminLayout";
 import Site from "./Admin/Pages/Site";
 import AddSite from "./Admin/Pages/Site/AddSite";
 import SiteLayout from "./Admin/Pages/Site/SiteLayout";
+import EditSite from "./Admin/Pages/Site/EditSite";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
         <Route path="site" element={<SiteLayout />}>
           <Route index element={<Site />} />
           <Route path="add-site" element={<AddSite />} />
+          <Route path="edit-site" element={<EditSite />} />
         </Route>
       </Route>
     </Routes>

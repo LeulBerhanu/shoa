@@ -9,12 +9,24 @@ function Sidebar() {
     <div className="flex flex-col gap-20 items-center w-[368px] bg-white">
       <img src={shoa} alt="shoa logo" className="w-24 my-11" />
       <ul className="flex flex-col text-2xl">
-        <Link className={navLinkStyle}>Dashboard</Link>
-        <Link className={navLinkStyle}>Site</Link>
-        <Link className={navLinkStyle}>Featured Site</Link>
-        <Link className={navLinkStyle}>Property</Link>
-        <Link className={navLinkStyle}>Blog</Link>
-        <Link className={navLinkStyle}>Contact us</Link>
+        <Link to="." className={navLinkStyle}>
+          Dashboard
+        </Link>
+        <Link to="site" className={navLinkStyle}>
+          Site
+        </Link>
+        <Link to="" className={navLinkStyle}>
+          Featured Site
+        </Link>
+        <Link to="" className={navLinkStyle}>
+          Property
+        </Link>
+        <Link to="" className={navLinkStyle}>
+          Blog
+        </Link>
+        <Link to="" className={navLinkStyle}>
+          Contact us
+        </Link>
       </ul>
     </div>
   );
