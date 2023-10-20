@@ -156,10 +156,12 @@ function ProjectsPage() {
 
         {/* Search Result */}
         <div className="container mx-auto px-4  flex flex-col  gap-8 items-center md:px-20">
-          {filteredProperties &&
-            filteredProperties.map((item) => (
-              <Card key={item._id} item={item} />
-            ))}
+          {filteredProperties
+            ? filteredProperties.map((item) => (
+                <Card key={item._id} item={item} />
+              ))
+            : properties &&
+              properties.map((item) => <Card key={item._id} item={item} />)}
         </div>
       </section>
     </div>
