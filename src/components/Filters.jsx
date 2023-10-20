@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Filters() {
   return (
     <div className="container flex flex-col  gap-2 justify-between mx-auto md:grid md:grid-cols-2 md:gap-2 xl:gap-4 xl:text-base">
       {/* Location */}
-      <select className="w-full p-3 rounded-[15px] font-medium outline-none xl:p-5 ">
+      <select
+        value={filters.location}
+        onChange={(e) => handleSelectChange(e, "location")}
+        className="w-full p-3 rounded-[15px] font-medium outline-none xl:p-5 "
+      >
         <option value="">Location (any)</option>
         <option value="">Jackros</option>
         <option value="">Bulbula</option>
@@ -13,14 +17,22 @@ function Filters() {
       </select>
 
       {/* Property Status (any) */}
-      <select className="w-full p-3 rounded-[15px] font-medium outline-none xl:p-5 ">
+      <select
+        value={filters.location}
+        onChange={(e) => handleSelectChange(e, "status")}
+        className="w-full p-3 rounded-[15px] font-medium outline-none xl:p-5 "
+      >
         <option value="">Property Status (any)</option>
         <option value="">Finished</option>
         <option value="">Semi Finished</option>
       </select>
 
       {/* Keyword */}
-      <select className="w-full p-3 rounded-[15px] font-medium outline-none xl:p-5 ">
+      <select
+        value={filters.location}
+        onChange={(e) => handleSelectChange(e, "sale")}
+        className="w-full p-3 rounded-[15px] font-medium outline-none xl:p-5 "
+      >
         <option value="">Sale (any)</option>
         <option value="">Sold out</option>
         <option value="">On sale</option>
@@ -28,7 +40,11 @@ function Filters() {
       </select>
 
       {/* Property Type*/}
-      <select className="w-full p-3 rounded-[15px] font-medium outline-none xl:p-5 ">
+      <select
+        value={filters.location}
+        onChange={(e) => handleSelectChange(e, "type")}
+        className="w-full p-3 rounded-[15px] font-medium outline-none xl:p-5 "
+      >
         <option value="">Property Type (any)</option>
         <option value="">Apartment</option>
         <option value="">Villa</option>

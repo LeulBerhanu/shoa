@@ -20,11 +20,16 @@ import axios from "axios";
 function ProjectDetailsPage() {
   const { id } = useParams();
 
+  const getting = async () => {
+    try {
+      await axios.get(`http://localhost:4000/api/property/${id}`);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   useEffect(() => {
-    axios
-      .get(`http://localhost:4000/api/property/${id}`)
-      // .then((res) => console.log("response", res));
-      .then((res) => console.log(res));
+    getting();
   }, []);
 
   return (

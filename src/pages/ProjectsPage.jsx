@@ -8,6 +8,20 @@ import axios from "axios";
 
 function ProjectsPage() {
   const [properties, setProperties] = useState("");
+  console.log(properties);
+
+  const [filters, setFilters] = useState({
+    location: "",
+    sale: "",
+    status: "",
+    type: "",
+  });
+
+  console.log("filters", filters);
+
+  const [filteredProperties, setFilteredProperties] = useState("");
+
+  console.log("filtered", filteredProperties);
 
   useEffect(() => {
     axios
@@ -15,6 +29,50 @@ function ProjectsPage() {
       .then((res) => res.data.properties)
       .then((data) => setProperties(data));
   }, []);
+
+  const handleSelectChange = (event, filterType) => {
+    console.log("handling change...");
+    const value = event.target.value;
+    console.log("value", value);
+    setFilters({
+      ...filters,
+      [filterType]: value,
+    });
+  };
+
+  useEffect(() => {
+    const filteredProperties = handleFilter(filters);
+    setFilteredProperties(filteredProperties);
+  }, [filters]);
+
+  const handleFilter = () => {
+    const { location, sale, status, type } = filters;
+    let result = properties;
+
+    console.log("sale", status);
+
+    if (location) {
+      result = result.filter((property) => property.name === location);
+    }
+
+    if (sale) {
+      result = result.filter((property) => property.sellingStatus === sale);
+    }
+
+    if (status) {
+      result = result.filter((property) => property.buildingStatus === status);
+    }
+
+    if (type) {
+      result = result.filter((property) => property.type === type);
+    }
+
+    if (!type && !location && !status && !sale) {
+      result = properties;
+    }
+
+    return result;
+  };
 
   return (
     <div>
@@ -35,7 +93,50 @@ function ProjectsPage() {
         content={
           <div className="flex flex-col gap-5 md:px-10 xl:px-36">
             <SearchBar />
-            <Filters />
+            <div className="container flex flex-col  gap-2 justify-between mx-auto md:grid md:grid-cols-2 md:gap-2 xl:gap-4 xl:text-base">
+              {/* Location */}
+              <select
+                onChange={(e) => handleSelectChange(e, "location")}
+                className="w-full p-3 rounded-[15px] font-medium outline-none xl:p-5 "
+              >
+                <option value="">Location (any)</option>
+                <option value="Jackros">Jackros</option>
+                <option value="Bulbula">Bulbula</option>
+                <option value="Mekanisa">Mekanisa</option>
+                <option value="Welo Sefer">Welo Sefer</option>
+              </select>
+
+              {/* Property Status (any) */}
+              <select
+                onChange={(e) => handleSelectChange(e, "status")}
+                className="w-full p-3 rounded-[15px] font-medium outline-none xl:p-5 "
+              >
+                <option value="">Property Status (any)</option>
+                <option value="Finished">Finished</option>
+                <option value="Semi Finished">Semi Finished</option>
+              </select>
+
+              {/* Keyword */}
+              <select
+                onChange={(e) => handleSelectChange(e, "sale")}
+                className="w-full p-3 rounded-[15px] font-medium outline-none xl:p-5 "
+              >
+                <option value="">Sale (any)</option>
+                <option value="Sold out">Sold out</option>
+                <option value="On sale">On sale</option>
+                <option value="Discount">Discount</option>
+              </select>
+
+              {/* Property Type*/}
+              <select
+                onChange={(e) => handleSelectChange(e, "type")}
+                className="w-full p-3 rounded-[15px] font-medium outline-none xl:p-5 "
+              >
+                <option value="">Property Type (any)</option>
+                <option value="Apartment">Apartment</option>
+                <option value="Villa">Villa</option>
+              </select>
+            </div>
           </div>
         }
       />
@@ -55,8 +156,10 @@ function ProjectsPage() {
 
         {/* Search Result */}
         <div className="container mx-auto px-4  flex flex-col  gap-8 items-center md:px-20">
-          {properties &&
-            properties.map((item) => <Card key={item._id} item={item} />)}
+          {filteredProperties &&
+            filteredProperties.map((item) => (
+              <Card key={item._id} item={item} />
+            ))}
         </div>
       </section>
     </div>
