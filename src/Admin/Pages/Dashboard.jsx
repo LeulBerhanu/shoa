@@ -1,10 +1,9 @@
 import React from "react";
-import Sidebar from "../Components/Layout/Sidebar";
 import Header from "../Components/Header";
 
 function Dashboard() {
   return (
-    <div className="w-full">
+    <div>
       <Header currentPage="Dashboard" />
     </div>
   );

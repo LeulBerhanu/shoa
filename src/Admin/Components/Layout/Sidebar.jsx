@@ -18,10 +18,10 @@ function Sidebar() {
         <Link to="" className={navLinkStyle}>
           Featured Site
         </Link>
-        <Link to="" className={navLinkStyle}>
+        <Link to="property" className={navLinkStyle}>
           Property
         </Link>
-        <Link to="" className={navLinkStyle}>
+        <Link to="blog" className={navLinkStyle}>
           Blog
         </Link>
         <Link to="" className={navLinkStyle}>

@@ -17,10 +17,21 @@ import Site from "./Admin/Pages/Site";
 import AddSite from "./Admin/Pages/Site/AddSite";
 import SiteLayout from "./Admin/Pages/Site/SiteLayout";
 import EditSite from "./Admin/Pages/Site/EditSite";
+import PropertyPage from "./Admin/Pages/PropertyPage";
+import AdminBlogPage from "./Admin/Pages/BlogPage";
+import PropertyLayout from "./Admin/Pages/Property/PropertyLayout";
+import AddProperty from "./Admin/Pages/Property/AddProperty";
+import EditProperty from "./Admin/Pages/Property/EditProperty";
+import BlogLayout from "./Admin/Pages/Blog/BlogLayout";
+import AddBlog from "./Admin/Pages/Blog/AddBlog";
+import EditBlog from "./Admin/Pages/Blog/EditBlog";
+import LoginPage from "./pages/LoginPage";
 
 function App() {
   return (
     <Routes>
+      <Route path="/login" element={<LoginPage />} />
+
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
         <Route path="blog" element={<BlogPage />} />
@@ -41,6 +52,16 @@ function App() {
           <Route index element={<Site />} />
           <Route path="add-site" element={<AddSite />} />
           <Route path="edit-site" element={<EditSite />} />
+        </Route>
+        <Route path="property" element={<PropertyLayout />}>
+          <Route index element={<PropertyPage />} />
+          <Route path="add-property" element={<AddProperty />} />
+          <Route path="edit-property" element={<EditProperty />} />
+        </Route>
+        <Route path="blog" element={<BlogLayout />}>
+          <Route index element={<AdminBlogPage />} />
+          <Route path="add-blog" element={<AddBlog />} />
+          <Route path="edit-blog" element={<EditBlog />} />
         </Route>
       </Route>
     </Routes>
