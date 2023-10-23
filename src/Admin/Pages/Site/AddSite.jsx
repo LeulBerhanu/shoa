@@ -19,9 +19,6 @@ function AddSite() {
     title: "jemo",
     location: "hadfsjklafbds kmfkj",
   });
-  console.log(data);
-
-  // useEffect(() => {}, [handleSubmit]);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -48,7 +45,7 @@ function AddSite() {
       <form action="" onSubmit={handleSubmit}>
         <div className="flex flex-col gap-y-9 bg-white rounded-lg p-10">
           {/* Title/Price and Image */}
-          <div className="flex w-1/2 gap-x-12">
+          <div className="flex  gap-x-12">
             {/* Title and Price */}
             <div className="flex flex-col gap-y-9  w-full">
               <div className="flex flex-col">
@@ -56,6 +53,7 @@ function AddSite() {
                   Name
                 </label>
                 <input
+                  required
                   id="name"
                   type="text"
                   placeholder="Enter name"
@@ -74,6 +72,7 @@ function AddSite() {
                   Map Location
                 </label>
                 <input
+                  required
                   id="readTime"
                   type="text"
                   placeholder="Enter location name"
@@ -88,20 +87,33 @@ function AddSite() {
               </div>
 
               <div className="flex flex-col">
-                <label htmlFor="readTime" className="text-2xl mb-6"></label>
+                <label htmlFor="readTime" className="text-2xl mb-6">
+                  Remark
+                </label>
                 <input
                   id="readTime"
                   type="text"
-                  placeholder="Enter location name"
+                  placeholder="Enter remark"
                   className="h-[70px] p-5 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none"
                   onChange={(e) =>
                     setData((prevData) => ({
                       ...prevData,
-                      location: e.target.value,
+                      remark: e.target.value,
                     }))
                   }
                 />
               </div>
+            </div>
+            <div className="flex flex-col  w-full">
+              <label htmlFor="price" className="text-2xl mb-6">
+                Image
+              </label>
+              <input
+                id="price"
+                type="file"
+                placeholder="Enter price"
+                className="h-full p-5 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none"
+              />
             </div>
           </div>
 
