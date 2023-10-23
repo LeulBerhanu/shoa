@@ -1,10 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import UploadImage from "../UploadImage";
+import axios from "axios";
 
 function CreateForm() {
+  const [image, setImage] = useState({});
+
+  const [sites, setSites] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:4000/api/site")
+      .then((res) => setSites(res.data.sites));
+  }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <div className="px-10">
       <h2 className="font-bold">Add Property</h2>
-      <form action="">
+      <form action="" onSubmit={handleSubmit}>
         <div className="flex flex-col gap-y-9 bg-white rounded-lg p-10">
           {/* Title/Price and Image */}
           <div className="flex w-full gap-x-3">
@@ -32,6 +48,15 @@ function CreateForm() {
                   placeholder="Enter price"
                   className="h-[70px] p-5 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none"
                 />
+              </div>
+
+              <div className="flex flex-col">
+                <label className="text-2xl mb-6">Property Type</label>
+                <select className="h-[70px] p-5 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none">
+                  <option value="">--Choose property type--</option>
+                  <option value="apartment">Apartment</option>
+                  <option value="villa">Villa</option>
+                </select>
               </div>
 
               <div className="flex flex-col">
@@ -95,23 +120,24 @@ function CreateForm() {
               </div>
 
               <div className="flex flex-col">
-                <label htmlFor="siteName" className="text-2xl mb-6">
-                  Site Name
-                </label>
-                <input
-                  id="siteName"
-                  type="text"
-                  placeholder="Enter location name"
-                  className="h-[70px] p-5 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none"
-                />
+                <label className="text-2xl mb-6">Site</label>
+                <select className="h-[70px] p-5 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none">
+                  <option value="">--Choose site--</option>
+                  {sites &&
+                    sites.map((site) => (
+                      <option key={site._id} value={site.title}>
+                        {site.title}
+                      </option>
+                    ))}
+                </select>
               </div>
 
               <div className="flex flex-col">
                 <label className="text-2xl mb-6">Building Status</label>
                 <select className="h-[70px] p-5 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none">
                   <option value="">--Choose building status--</option>
-                  <option value="">Semi Finished</option>
-                  <option value="">Finished</option>
+                  <option value="semi-finished">Semi Finished</option>
+                  <option value="finished">Finished</option>
                 </select>
               </div>
 
@@ -119,8 +145,9 @@ function CreateForm() {
                 <label className="text-2xl mb-6">Selling Status</label>
                 <select className="h-[70px] p-5 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none">
                   <option value="">--Choose selling status--</option>
-                  <option value="">Semi Finished</option>
-                  <option value="">Finished</option>
+                  <option value="sold-out">Sold Out</option>
+                  <option value="on-sale">On Sale</option>
+                  <option value="discount">Discount</option>
                 </select>
               </div>
 
@@ -139,11 +166,9 @@ function CreateForm() {
             <div className="flex flex-col gap-y-9">
               <div className="flex flex-col w-full">
                 <label className="text-2xl mb-6">Image</label>
-                <input
-                  type="file"
-                  placeholder="Enter price"
-                  className="h-full p-5  placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none"
-                />
+                <div className="h-full p-1 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none">
+                  <UploadImage image={image} setImage={setImage} />
+                </div>
               </div>
 
               <div className="flex flex-col  w-full">

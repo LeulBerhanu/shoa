@@ -54,12 +54,12 @@ function App() {
         <Route path="site" element={<SiteLayout />}>
           <Route index element={<Site />} />
           <Route path="add-site" element={<AddSite />} />
-          <Route path="edit-site" element={<EditSite />} />
+          <Route path="edit-site/:id" element={<EditSite />} />
         </Route>
         <Route path="property" element={<PropertyLayout />}>
           <Route index element={<PropertyPage />} />
           <Route path="add-property" element={<AddProperty />} />
-          <Route path="edit-property" element={<EditProperty />} />
+          <Route path="edit-property/:id" element={<EditProperty />} />
         </Route>
         <Route path="blog" element={<BlogLayout />}>
           <Route index element={<AdminBlogPage />} />

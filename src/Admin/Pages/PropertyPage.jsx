@@ -42,9 +42,9 @@ function PropertyPage() {
       <section className="px-10">
         <div className="flex justify-between items-center mt-9">
           <h2 className="text-2xl font-bold">Properties list</h2>
-          <button className="primaryBtn ">
-            <Link to="add-property">+ Add Property</Link>
-          </button>
+          <Link to="add-property">
+            <button className="primaryBtn ">+ Add Property</button>
+          </Link>
         </div>
 
         <div className="p-10 bg-white rounded-lg shadow-boxShadow">
@@ -86,7 +86,7 @@ function PropertyPage() {
                     </td>
                     <td>
                       <div className="flex gap-x-3">
-                        <Link to={`edit-site/${property._id}`}>
+                        <Link to={`edit-property/${property._id}`}>
                           <button className={`${tableBtn} bg-white`}>
                             Edit
                           </button>

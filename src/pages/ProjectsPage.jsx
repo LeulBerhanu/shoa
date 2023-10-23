@@ -45,7 +45,7 @@ function ProjectsPage() {
     let result = properties;
 
     if (location) {
-      result = result.filter((property) => property.name === location);
+      result = result.filter((property) => property.mapLocation === location);
     }
 
     if (sale) {

@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import assets from "../../assets/assets.gif";
 import axios from "axios";
 
-export default function UploadImage() {
+export default function UploadImage({ image, setImage }) {
   const [loading, setLoading] = useState(false);
-  const [url, setUrl] = useState("");
+  const [finished, setFinished] = useState(false);
+
+  useEffect(() => {
+    finished
+      ? setTimeout(() => {
+          setFinished(false);
+        }, 3000)
+      : null;
+  }, [finished]);
 
   const convertBase64 = (file) => {
     return new Promise((resolve, reject) => {
@@ -22,46 +30,15 @@ export default function UploadImage() {
     });
   };
 
-  function uploadSingleImage(base64) {
-    setLoading(true);
-    axios
-      .post("http://localhost:4000/api/site/uploadImage", { image: base64 })
-      .then((res) => {
-        setUrl(res.data);
-        alert("Image uploaded Succesfully");
-      })
-      .then(() => setLoading(false))
-      .catch(console.log);
-  }
-
-  function uploadMultipleImages(images) {
-    setLoading(true);
-    axios
-      .post("http://localhost:4000/uploadMultipleImages", { images })
-      .then((res) => {
-        setUrl(res.data);
-        alert("Image uploaded Succesfully");
-      })
-      .then(() => setLoading(false))
-      .catch(console.log);
-  }
-
   const uploadImage = async (event) => {
+    setLoading(true);
     const files = event.target.files;
     console.log(files.length);
 
-    if (files.length === 1) {
-      const base64 = await convertBase64(files[0]);
-      uploadSingleImage(base64);
-      return;
-    }
-
-    const base64s = [];
-    for (var i = 0; i < files.length; i++) {
-      var base = await convertBase64(files[i]);
-      base64s.push(base);
-    }
-    uploadMultipleImages(base64s);
+    const base64 = await convertBase64(files[0]);
+    setImage(base64);
+    setLoading(false);
+    setFinished(true);
   };
 
   function UploadInput() {
@@ -88,11 +65,10 @@ export default function UploadImage() {
               ></path>
             </svg>
             <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-              <span className="font-semibold">Click to upload</span> or drag and
-              drop
+              <span className="font-semibold">Click to upload</span>
             </p>
             <p className="text-xs text-gray-500 dark:text-gray-400">
-              SVG, PNG, JPG or GIF (MAX. 800x400px)
+              SVG, PNG, or JPG (MAX. 500KB)
             </p>
           </div>
           <input
@@ -108,22 +84,7 @@ export default function UploadImage() {
   }
 
   return (
-    <div className="flex justify-center flex-col m-8 ">
-      <div>
-        <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">
-          Upload Photo
-        </h2>
-      </div>
-      <div>
-        {url && (
-          <div>
-            Access you file at{" "}
-            <a href={url} target="_blank" rel="noopener noreferrer">
-              {url}
-            </a>
-          </div>
-        )}
-      </div>
+    <div className="flex justify-center flex-col m-8 relative">
       <div>
         {loading ? (
           <div className="flex items-center justify-center">
@@ -132,6 +93,13 @@ export default function UploadImage() {
         ) : (
           <UploadInput />
         )}
+        <div className="flex gap-x-2 items-center justify-center mt-3 ">
+          {finished && (
+            <p className="absolute -bottom-8 bg-green-500 py-2 px-5 rounded-lg">
+              Image uploaded
+            </p>
+          )}
+        </div>
       </div>
     </div>
   );
