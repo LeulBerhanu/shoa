@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 const inputContainerStyles =
   "flex bg-[#C3CCD2]/[.5] py-2 px-3 rounded md:py-4 md:px-5 ";
@@ -13,27 +14,78 @@ function ContactForm() {
     message: "",
   });
 
+  console.log(data);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    setData({
+      name: "",
+      email: "",
+      subject: "",
+      message: "",
+    });
+
+    try {
+      const res = await axios.post("http://localhost:4000/api/contact", data);
+
+      console.log(res.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
-    <form className="container flex flex-col gap-y-2 font-medium md:gap-y-6 md:text-2xl">
+    <form
+      onSubmit={handleSubmit}
+      className="container flex flex-col gap-y-2 font-medium md:gap-y-6 md:text-2xl"
+    >
       <div className={inputContainerStyles}>
         <label htmlFor="name" className={labelStyles}>
           Name
         </label>
-        <input id="name" type="text" className={inputStyles} />
+        <input
+          required
+          id="name"
+          type="text"
+          className={inputStyles}
+          value={data.name}
+          onChange={(e) =>
+            setData((prev) => ({ ...prev, name: e.target.value }))
+          }
+        />
       </div>
 
       <div className={inputContainerStyles}>
         <label htmlFor="email" className={labelStyles}>
           Email
         </label>
-        <input id="email" type="email" className={inputStyles} />
+        <input
+          required
+          id="email"
+          type="email"
+          className={inputStyles}
+          value={data.email}
+          onChange={(e) =>
+            setData((prev) => ({ ...prev, email: e.target.value }))
+          }
+        />
       </div>
 
       <div className={inputContainerStyles}>
         <label htmlFor="subject" className={labelStyles}>
           Subject
         </label>
-        <input id="subject" type="subject" className={inputStyles} />
+        <input
+          required
+          id="subject"
+          type="subject"
+          className={inputStyles}
+          value={data.subject}
+          onChange={(e) =>
+            setData((prev) => ({ ...prev, subject: e.target.value }))
+          }
+        />
       </div>
 
       <div className={inputContainerStyles}>
@@ -41,12 +93,17 @@ function ContactForm() {
           Message
         </label>
         <textarea
+          required
           name="textarea"
           id="textarea"
           style={{ width: "100%", minHeight: "100px", maxHeight: "300px" }}
           cols="50"
           rows="4"
           className="bg-transparent ml-5 outline-none"
+          value={data.message}
+          onChange={(e) =>
+            setData((prev) => ({ ...prev, message: e.target.value }))
+          }
         ></textarea>
       </div>
 

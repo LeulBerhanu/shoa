@@ -8,7 +8,7 @@ const tableBtn =
   "w-[60px] h-[40px]  flex items-center justify-center  px-4 py-3 font-medium border-2 border-black/25 rounded-lg";
 
 function PropertyPage() {
-  const [properties, setProperties] = useState("");
+  const [properties, setProperties] = useState([]);
 
   useEffect(() => {
     axios
@@ -16,6 +16,26 @@ function PropertyPage() {
       .then((res) => res.data.properties)
       .then((data) => setProperties(data));
   }, []);
+
+  const handleDelete = async (id, idx) => {
+    try {
+      const res = await axios.delete(
+        `http://localhost:4000/api/property/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+
+      // const prop = properties.splice(idx, 1);
+      // console.log(prop);
+      // setProperties(prop);
+      console.log(res);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
     <div>
@@ -66,10 +86,15 @@ function PropertyPage() {
                     </td>
                     <td>
                       <div className="flex gap-x-3">
-                        <button className={`${tableBtn} bg-white`}>
-                          <Link to={`edit-site/${property._id}`}>Edit</Link>
-                        </button>
-                        <button className={`${tableBtn} bg-white`}>
+                        <Link to={`edit-site/${property._id}`}>
+                          <button className={`${tableBtn} bg-white`}>
+                            Edit
+                          </button>
+                        </Link>
+                        <button
+                          className={`${tableBtn} bg-white`}
+                          onClick={() => handleDelete(property._id, idx)}
+                        >
                           <RiDeleteBin6Line />
                         </button>
                       </div>

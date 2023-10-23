@@ -17,6 +17,23 @@ function Site() {
       .then((data) => setSites(data));
   }, []);
 
+  const handleDelete = async (id, idx) => {
+    try {
+      const res = await axios.delete(`http://localhost:4000/api/site/${id}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+
+      // const prop = properties.splice(idx, 1);
+      // console.log(prop);
+      // setProperties(prop);
+      console.log(res);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <div>
       <section className="px-10">
@@ -69,7 +86,10 @@ function Site() {
                         <button className={`${tableBtn} bg-white`}>
                           <Link to={`edit-site/${site._id}`}>Edit</Link>
                         </button>
-                        <button className={`${tableBtn} bg-white`}>
+                        <button
+                          className={`${tableBtn} bg-white`}
+                          onClick={() => handleDelete(site._id)}
+                        >
                           <RiDeleteBin6Line />
                         </button>
                       </div>

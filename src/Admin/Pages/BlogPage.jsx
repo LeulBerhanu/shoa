@@ -17,6 +17,23 @@ function BlogPage() {
       .then((data) => setBlogs(data));
   }, []);
 
+  const handleDelete = async (id, idx) => {
+    try {
+      const res = await axios.delete(`http://localhost:4000/api/blog/${id}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+
+      // const prop = properties.splice(idx, 1);
+      // console.log(prop);
+      // setProperties(prop);
+      console.log(res);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <div>
       <section className="px-10">
@@ -66,10 +83,15 @@ function BlogPage() {
                     </td>
                     <td>
                       <div className="flex gap-x-3">
-                        <button className={`${tableBtn} bg-white`}>
-                          <Link to={`edit-blog/${blog._id}`}>Edit</Link>
-                        </button>
-                        <button className={`${tableBtn} bg-white`}>
+                        <Link to={`edit-blog/${blog._id}`}>
+                          <button className={`${tableBtn} bg-white`}>
+                            Edit
+                          </button>
+                        </Link>
+                        <button
+                          className={`${tableBtn} bg-white`}
+                          onClick={() => handleDelete(blog._id)}
+                        >
                           <RiDeleteBin6Line />
                         </button>
                       </div>

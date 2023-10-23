@@ -5,13 +5,11 @@ import { useParams } from "react-router-dom";
 function EditBlog() {
   const { id } = useParams();
 
-  const [blog, setBlog] = useState("");
-  // const [data, setData] = useState({
-  //   title: "",
-  //   body: "",
-  //   readTime: "",
-  // });
-  console.log(blog);
+  const [blog, setBlog] = useState({
+    title: "",
+    body: "",
+    readTime: "",
+  });
 
   useEffect(() => {
     axios
