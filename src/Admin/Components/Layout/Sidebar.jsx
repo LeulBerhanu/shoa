@@ -1,8 +1,12 @@
 import React from "react";
 import shoa from "../../../img/shoaLogo.svg";
 import { Link, NavLink } from "react-router-dom";
+import { BiSolidDashboard } from "react-icons/bi";
+import { FaCity } from "react-icons/fa";
+import { LiaBuildingSolid } from "react-icons/lia";
+import blogIcon from "../../../img/blog_svgrepo.com.svg";
 
-const navLinkStyle = "py-5";
+const navLinkStyle = "py-5 flex gap-x-2 items-center cursor-pointer";
 
 function Sidebar() {
   return (
@@ -10,22 +14,20 @@ function Sidebar() {
       <img src={shoa} alt="shoa logo" className="w-24 my-11" />
       <ul className="flex flex-col text-2xl">
         <Link to="." className={navLinkStyle}>
-          Dashboard
+          <BiSolidDashboard />
+          <p className="cursor-pointer">Dashboard</p>
         </Link>
         <Link to="site" className={navLinkStyle}>
-          Site
-        </Link>
-        <Link to="" className={navLinkStyle}>
-          Featured Site
+          <FaCity />
+          <p className="cursor-pointer">Site</p>
         </Link>
         <Link to="property" className={navLinkStyle}>
-          Property
+          <LiaBuildingSolid />
+          <p className="cursor-pointer">Property</p>
         </Link>
         <Link to="blog" className={navLinkStyle}>
-          Blog
-        </Link>
-        <Link to="" className={navLinkStyle}>
-          Contact us
+          <img src={blogIcon} />
+          <p className="cursor-pointer">Blog</p>
         </Link>
       </ul>
     </div>
