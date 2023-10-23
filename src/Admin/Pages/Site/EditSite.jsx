@@ -4,7 +4,7 @@ import EditForm from "../../Components/Create-Update-Form/EditForm";
 function EditSite() {
   return (
     <div className="px-10">
-      <h2 className="font-bold">Add Site</h2>
+      <h2 className="font-bold">Edit Site</h2>
       <form action="">
         <div className="flex flex-col gap-y-9 bg-white rounded-lg p-10">
           {/* Title/Price and Image */}

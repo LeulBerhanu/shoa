@@ -1,7 +1,8 @@
 import React from "react";
 import house from "../../img/house.png";
 
-function SmallCard({ discountBadge, onSaleBadge }) {
+function SmallCard({ item, discountBadge, onSaleBadge }) {
+  console.log("featured", item);
   return (
     <div className="flex flex-col gap-x-9 gap-y-4 md:items-center px-5 py-12 shadow-boxShadow md:w-[610px] rounded-2xl relative md:flex-row">
       <img src={house} className="max-w-[244px]" alt="house" />
@@ -11,18 +12,18 @@ function SmallCard({ discountBadge, onSaleBadge }) {
         <div>
           {/* Title */}
           <h3 className="leading-none capitalize break-words text-[28px]">
-            Bole bulbula site, <br /> two bedroom
+            {item?.name}
           </h3>
 
           {/* Price */}
-          <p className="text-base font-medium py-3">$97,000/sqm</p>
+          <p className="text-base font-medium py-3">${item?.price}/sqm</p>
         </div>
 
         {/* Details */}
         <ul className="flex flex-col text-xl  ">
-          <li>125sqm</li>
-          <li>2 Bedrooms</li>
-          <li>2 Bathrooms</li>
+          <li>{item?.size}</li>
+          <li>{item?.bedroom} Bedrooms</li>
+          <li>{item?.bathroom} Bathrooms</li>
         </ul>
       </div>
 

@@ -26,12 +26,11 @@ import BlogLayout from "./Admin/Pages/Blog/BlogLayout";
 import AddBlog from "./Admin/Pages/Blog/AddBlog";
 import EditBlog from "./Admin/Pages/Blog/EditBlog";
 import LoginPage from "./pages/LoginPage";
+import LoginProtected from "./LoginProtected";
 
 function App() {
   return (
     <Routes>
-      <Route path="/login" element={<LoginPage />} />
-
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
         <Route path="blog" element={<BlogPage />} />
@@ -44,6 +43,10 @@ function App() {
         />
         <Route path="about-us" element={<AboutUsPage />} />
         <Route path="contact-us" element={<ContactUsPage />} />
+      </Route>
+
+      <Route path="/login" element={<LoginProtected />}>
+        <Route index element={<LoginPage />} />
       </Route>
 
       <Route path="/admin" element={<AdminLayout />}>

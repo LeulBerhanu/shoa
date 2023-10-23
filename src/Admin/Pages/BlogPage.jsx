@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { MdSwapVert } from "react-icons/md";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const tableBtn =
   "w-[60px] h-[40px]  flex items-center justify-center  px-4 py-3 font-medium border-2 border-black/25 rounded-lg";
 
 function BlogPage() {
+  const [blogs, setBlogs] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:4000/api/blog")
+      .then((res) => res.data.blogs)
+      .then((data) => setBlogs(data));
+  }, []);
+
   return (
     <div>
       <section className="px-10">
@@ -41,138 +51,31 @@ function BlogPage() {
               </tr>
             </thead>
             <tbody className="[&>:nth-child(odd)]:bg-black/5 [&>*]:h-20">
-              <tr className="[&>*]:px-10">
-                <td>1</td>
-                <td>Bole Bulbula Site, Two bedroom</td>
-                <td>28 Oct 2023</td>
-                <td>
-                  <button
-                    className={`${tableBtn} border-2 border-[#A3CFBB] bg-[#D1E7DD]`}
-                  >
-                    Yes
-                  </button>
-                </td>
-                <td>
-                  <div className="flex gap-x-3">
-                    <button className={`${tableBtn} bg-white`}>
-                      <Link to="edit-site">Edit</Link>
-                    </button>
-                    <button className={`${tableBtn} bg-white`}>
-                      <RiDeleteBin6Line />
-                    </button>
-                  </div>
-                </td>
-              </tr>
-              <tr className="[&>*]:px-10">
-                <td>2</td>
-                <td>Bole Bulbula Site, Two bedroom</td>
-                <td>28 Oct 2023</td>
-                <td>
-                  <button
-                    className={`${tableBtn} border-2 border-[#F1AEB5] bg-[#F8D7DA]`}
-                  >
-                    No
-                  </button>
-                </td>
-                <td>
-                  <div className="flex gap-x-3">
-                    <button className={`${tableBtn} bg-white`}>
-                      <Link to="edit-site">Edit</Link>
-                    </button>
-                    <button className={`${tableBtn} bg-white`}>
-                      <RiDeleteBin6Line />
-                    </button>
-                  </div>
-                </td>
-              </tr>
-              <tr className="[&>*]:px-10">
-                <td>3</td>
-                <td>Bole Bulbula Site, Two bedroom</td>
-                <td>28 Oct 2023</td>
-                <td>
-                  <button
-                    className={`${tableBtn} border-2 border-[#A3CFBB] bg-[#D1E7DD]`}
-                  >
-                    Yes
-                  </button>
-                </td>
-                <td>
-                  <div className="flex gap-x-3">
-                    <button className={`${tableBtn} bg-white`}>
-                      <Link to="edit-site">Edit</Link>
-                    </button>
-                    <button className={`${tableBtn} bg-white`}>
-                      <RiDeleteBin6Line />
-                    </button>
-                  </div>
-                </td>
-              </tr>
-              <tr className="[&>*]:px-10">
-                <td>4</td>
-                <td>Bole Bulbula Site, Two bedroom</td>
-                <td>28 Oct 2023</td>
-                <td>
-                  <button
-                    className={`${tableBtn} border-2 border-[#A3CFBB] bg-[#D1E7DD]`}
-                  >
-                    Yes
-                  </button>
-                </td>
-                <td>
-                  <div className="flex gap-x-3">
-                    <button className={`${tableBtn} bg-white`}>
-                      <Link to="edit-site">Edit</Link>
-                    </button>
-                    <button className={`${tableBtn} bg-white`}>
-                      <RiDeleteBin6Line />
-                    </button>
-                  </div>
-                </td>
-              </tr>
-              <tr className="[&>*]:px-10">
-                <td>5</td>
-                <td>Bole Bulbula Site, Two bedroom</td>
-                <td>28 Oct 2023</td>
-                <td>
-                  <button
-                    className={`${tableBtn} border-2 border-[#A3CFBB] bg-[#D1E7DD]`}
-                  >
-                    Yes
-                  </button>
-                </td>
-                <td>
-                  <div className="flex gap-x-3">
-                    <button className={`${tableBtn} bg-white`}>
-                      <Link to="edit-site">Edit</Link>
-                    </button>
-                    <button className={`${tableBtn} bg-white`}>
-                      <RiDeleteBin6Line />
-                    </button>
-                  </div>
-                </td>
-              </tr>
-              <tr className="[&>*]:px-10">
-                <td>6</td>
-                <td>Bole Bulbula Site, Two bedroom</td>
-                <td>28 Oct 2023</td>
-                <td>
-                  <button
-                    className={`${tableBtn} border-2 border-[#F1AEB5] bg-[#F8D7DA]`}
-                  >
-                    No
-                  </button>
-                </td>
-                <td>
-                  <div className="flex gap-x-3">
-                    <button className={`${tableBtn} bg-white`}>
-                      <Link to="edit-site">Edit</Link>
-                    </button>
-                    <button className={`${tableBtn} bg-white`}>
-                      <RiDeleteBin6Line />
-                    </button>
-                  </div>
-                </td>
-              </tr>
+              {blogs &&
+                blogs.map((blog, idx) => (
+                  <tr key={blog._id} className="[&>*]:px-10">
+                    <td>{idx + 1}</td>
+                    <td>{blog.title}</td>
+                    <td>28 Oct 2023</td>
+                    <td>
+                      <button
+                        className={`${tableBtn} border-2 border-[#A3CFBB] bg-[#D1E7DD]`}
+                      >
+                        Yes
+                      </button>
+                    </td>
+                    <td>
+                      <div className="flex gap-x-3">
+                        <button className={`${tableBtn} bg-white`}>
+                          <Link to="edit-site">Edit</Link>
+                        </button>
+                        <button className={`${tableBtn} bg-white`}>
+                          <RiDeleteBin6Line />
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
             </tbody>
           </table>
         </div>

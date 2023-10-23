@@ -1,7 +1,9 @@
 import React from "react";
 import house from "../img/house.png";
 
-function LocationName({ name, message, closed, rounded }) {
+function LocationName({ name, message, closed, rounded, img }) {
+  console.log("imageee", img);
+
   return (
     <div
       className={`flex items-center justify-center relative h-full w-full ${
@@ -27,7 +29,7 @@ function LocationName({ name, message, closed, rounded }) {
         ></div>
       )}
       <img
-        src={house}
+        src={img}
         className={`w-full h-full object-cover ${
           rounded ? "rounded-[15px]" : ""
         }`}

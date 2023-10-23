@@ -8,8 +8,6 @@ function BlogPageNews() {
 
   const [blog, setBlog] = useState(null);
 
-  console.log("id", blog);
-
   useEffect(() => {
     axios
       .get(`http://localhost:4000/api/blog/${params.id}`)

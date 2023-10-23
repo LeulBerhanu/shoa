@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import house from "../img/house.png";
 import floorPlan from "../img/floorPlan.jpg";
 import shoaLogo from "../img/shoaLogo.svg";
@@ -19,10 +19,13 @@ import axios from "axios";
 
 function ProjectDetailsPage() {
   const { id } = useParams();
+  const [property, setProperty] = useState("");
 
   const getting = async () => {
     try {
-      await axios.get(`http://localhost:4000/api/property/${id}`);
+      await axios
+        .get(`http://localhost:4000/api/property/${id}`)
+        .then((res) => setProperty(res.data.property));
     } catch (err) {
       console.error(err);
     }
@@ -38,14 +41,14 @@ function ProjectDetailsPage() {
         <div className="relative">
           <div className="h-[164px] md:h-[419px] xl:h-[619px] mb-[40px]">
             <img
-              src={house}
+              src={property?.propertyImage?.url}
               alt=""
               className="w-full h-full object-cover rounded-[15px]"
             />
           </div>
-          <p className="absolute -bottom-7 text-xs md:text-base text-[#4A6778]">
+          {/* <p className="absolute -bottom-7 text-xs md:text-base text-[#4A6778]">
             Home\Projects\Semi finished\Bole bulbula apt
-          </p>
+          </p> */}
 
           {/* Project Id */}
           <div className="bg-white absolute bottom-3 right-3 text-xs px-3 py-2 md:px-5 md:py-3 rounded-[15px] xl:text-[28px]">
@@ -60,45 +63,47 @@ function ProjectDetailsPage() {
       </div>
 
       <div className="container mx-auto px-8  md:px-20">
-        <h1 className=" mb-3 text-[28px] md:text-3xl xl:text-[49px]">
-          Bole Bulbula Site, <br /> Two bedroom
+        <h1 className=" mb-8 text-[28px] md:text-3xl xl:text-[49px]">
+          {property && property.name}
         </h1>
-        <p className=" md:text-xl xl:text-[28px] text-[#4A6778]">$97,000/sqm</p>
+        <p className=" md:text-xl xl:text-[28px] text-[#4A6778]">
+          ${property?.price}/sqm
+        </p>
       </div>
 
       {/* Details box */}
       <div className="container mx-auto px-8 md:px-20">
         <div className="mt-4 flex relative text-white xl:text-[28px] rounded-[15px]">
-          <div className="z-10 flex flex-col mx-auto gap-y-10 p-10 md:grid md:grid-cols-2 md:grid-rows-2 xl:grid-cols-3">
+          <div className="z-10 flex flex-col mx-auto gap-y-10 p-10 md:grid md:grid-cols-2 md:grid-rows-2 xl:grid-cols-3 xl:gap-x-8">
             <div className="flex items-center gap-x-5">
               <i>
                 <img src={size} alt="" />
               </i>
-              <p>125sqm</p>
+              <p>{property?.size}</p>
             </div>
             <div className="flex items-center gap-x-5">
               <i>
                 <img src={apartment} alt="" />
               </i>
-              <p>Semi Finished</p>
+              <p>{property?.buildingStatus}</p>
             </div>
             <div className="flex items-center gap-x-5">
               <i>
                 <img src={saleTag} alt="" />
               </i>
-              <p>For Sale</p>
+              <p>{property?.sellingStatus}</p>
             </div>
             <div className="flex items-center gap-x-5">
               <i>
                 <img src={bedIcon} alt="" />
               </i>
-              <p>2 Bedrooms</p>
+              <p>{property?.bedroom} Bedrooms</p>
             </div>
             <div className="flex items-center gap-x-5">
               <i>
                 <img src={bath} alt="" />
               </i>
-              <p>2 Bathrooms</p>
+              <p>{property?.bathroom} Bathrooms</p>
             </div>
             <div className="flex items-center gap-x-5">
               <i>
@@ -108,9 +113,7 @@ function ProjectDetailsPage() {
                   className="w-[45px] h-[45px] object-cover"
                 />
               </i>
-              <p>
-                Bole bulbula, <br /> Addis Ababa
-              </p>
+              <p>{property?.siteName}</p>
             </div>
           </div>
           {/* Color-image Overlay */}
@@ -127,11 +130,7 @@ function ProjectDetailsPage() {
         <div className="container mx-auto px-8 md:px-20">
           <h2 className="mb-2 md:text-[49px]">Description:</h2>
           <p className="text-sm leading-normal xl:text-[28px] text-justify">
-            A two bedroom apartment that consists a wide living and dining area,
-            a roomy master bedroom with its master bathroom and a balcony, a
-            wide kitchen to bake and cook. The maids’ room can also function as
-            a store if you don’t need a maid. The second bedroom is also roomy
-            for a child or even an adult and shares the common bathroom.
+            {property?.description}
           </p>
         </div>
       </section>
@@ -173,7 +172,7 @@ function ProjectDetailsPage() {
           <h2>Location:</h2>
           <div className="flex flex-col  gap-x-11 gap-y-8 xl:flex-row">
             <div className="h-[300px]  xl:h-auto xl:flex-1">
-              <LocationComp />
+              <LocationComp url={property?.mapLocation} />
             </div>
             <div className="xl:w-[444px] ">
               <CallCard />

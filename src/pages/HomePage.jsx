@@ -15,6 +15,8 @@ const h2Style = " px-8 text-center capitalize text-[28px] xl:text-4xl";
 function HomePage() {
   const [blogs, setBlogs] = useState(null);
   const [sites, setSites] = useState(null);
+  const [properties, setProperties] = useState(null);
+  const [featuredProperties, setFeaturedProperties] = useState([]);
 
   useEffect(() => {
     axios
@@ -29,6 +31,21 @@ function HomePage() {
       .then((res) => res.data.sites)
       .then((data) => setSites(data));
   }, []);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:4000/api/property")
+      .then((res) => res.data.properties)
+      .then((data) => setProperties(data));
+  }, []);
+
+  useEffect(() => {
+    if (properties) {
+      setFeaturedProperties(properties.filter((item) => item.featured));
+    }
+  }, [properties]);
+
+  console.log("sites", sites);
 
   return (
     <>
@@ -54,8 +71,10 @@ function HomePage() {
       <section id="featured_properties_section">
         <h2 className={h2Style}>Featured properties</h2>
         <div className=" flex flex-col gap-11 justify-center items-center xl:flex-row ">
-          <SmallCard onSaleBadge />
-          <SmallCard discountBadge />
+          {featuredProperties &&
+            featuredProperties.map((item) => <SmallCard item={item} />)}
+
+          {/* <SmallCard discountBadge /> */}
         </div>
       </section>
 
@@ -82,7 +101,11 @@ function HomePage() {
                 {index % 2 === 0 ? (
                   <>
                     <div className="ml-3 w-[136px] h-[204px] xl:w-[506px] xl:h-[527px]">
-                      <LocationName name={site.title} rounded />
+                      <LocationName
+                        name={site.title}
+                        img={site?.siteImage?.url}
+                        rounded
+                      />
                     </div>
 
                     <div className="w-[200px] h-[170px] relative -left-3 md:w-[300px] xl:w-[600px] xl:h-[400px]">
@@ -96,7 +119,11 @@ function HomePage() {
                     </div>
 
                     <div className="w-[136px] h-[204px] mr-3 xl:w-[506px] xl:h-[527px] ">
-                      <LocationName name={site.title} rounded />
+                      <LocationName
+                        name={site.title}
+                        img={site?.siteImage?.url}
+                        rounded
+                      />
                     </div>
                   </>
                 )}
@@ -119,67 +146,6 @@ function HomePage() {
           </div> */}
         </div>
       </section>
-
-      {/* <section>
-        <h2 className={h2Style}>Our sites</h2>
-        <div className="flex flex-col gap-14 px-4 md:px-20">
-          <div className="container  flex flex-col  mx-auto relative xl:flex-row xl:items-center">
-            <p className="py-4 px-8 text-white text-lg font-medium rounded-2xl mb-3 bg-primary xl:hidden">
-              Jackros
-            </p>
-
-            <div className="hidden xl:w-[527px] xl:block ">
-              <LocationName name="Jackros" />
-            </div>
-
-            <div className="h-[300px] xl:absolute xl:z-20 xl:right-0 xl:w-[806px] xl:h-[418px] ">
-              <MapComponent />
-            </div>
-          </div>
-
-          <div className="container  flex flex-col  mx-auto relative xl:flex-row-reverse xl:items-center">
-            <p className="py-4 px-8 text-white text-lg font-medium rounded-2xl mb-3 bg-primary xl:hidden">
-              Bulbula
-            </p>
-
-            <div className="hidden xl:w-[527px] xl:block">
-              <LocationName name="Bulbula" />
-            </div>
-
-            <div className="h-[300px] xl:absolute xl:z-20  xl:left-0 xl:w-[806px] xl:h-[418px] ">
-              <MapComponent />
-            </div>
-          </div>
-
-          <div className="container  flex flex-col  mx-auto relative xl:flex-row xl:items-center">
-            <p className="py-4 px-8 text-white text-lg font-medium rounded-2xl mb-3 bg-primary xl:hidden">
-              Mekanisa
-            </p>
-
-            <div className="hidden xl:w-[527px] xl:block">
-              <LocationName name="Mekanisa" />
-            </div>
-
-            <div className="h-[300px] xl:absolute xl:z-20  xl:right-0 xl:w-[806px] xl:h-[418px] ">
-              <MapComponent />
-            </div>
-          </div>
-
-          <div className="container  flex flex-col  mx-auto relative xl:flex-row-reverse xl:items-center">
-            <p className="py-4 px-8 text-white text-lg font-medium rounded-2xl mb-3 bg-primary xl:hidden">
-              Welo Sefer <span className="opacity-50">(Coming Soon)</span>
-            </p>
-
-            <div className="hidden xl:w-[527px] xl:block">
-              <LocationName name="Wolo Sefer" message="(Coming Soon)" closed />
-            </div>
-
-            <div className="h-[300px] xl:absolute xl:z-20  xl:left-0 xl:w-[806px] xl:h-[418px] ">
-              <MapComponent />
-            </div>
-          </div>
-        </div>
-      </section> */}
 
       {/* Contact Section */}
       <section>

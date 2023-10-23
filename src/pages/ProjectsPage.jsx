@@ -8,7 +8,6 @@ import axios from "axios";
 
 function ProjectsPage() {
   const [properties, setProperties] = useState("");
-  console.log(properties);
 
   const [filters, setFilters] = useState({
     location: "",
@@ -17,11 +16,7 @@ function ProjectsPage() {
     type: "",
   });
 
-  console.log("filters", filters);
-
   const [filteredProperties, setFilteredProperties] = useState("");
-
-  console.log("filtered", filteredProperties);
 
   useEffect(() => {
     axios
@@ -48,8 +43,6 @@ function ProjectsPage() {
   const handleFilter = () => {
     const { location, sale, status, type } = filters;
     let result = properties;
-
-    console.log("sale", status);
 
     if (location) {
       result = result.filter((property) => property.name === location);
