@@ -1,10 +1,48 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 function EditBlog() {
+  const { id } = useParams();
+
+  const [blog, setBlog] = useState("");
+  // const [data, setData] = useState({
+  //   title: "",
+  //   body: "",
+  //   readTime: "",
+  // });
+  console.log(blog);
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:4000/api/blog/${id}`)
+      .then((res) => setBlog(res.data.blog));
+  }, []);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await axios.patch(
+        `http://localhost:4000/api/blog/${id}`,
+        blog,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+
+      console.log("Response", res.data);
+    } catch (err) {
+      console.error("Error: ", err);
+    }
+  };
+
   return (
     <div className="px-10">
       <h2 className="font-bold">Edit Blog</h2>
-      <form action="">
+      <form action="" onSubmit={handleSubmit}>
         <div className="flex flex-col gap-y-9 bg-white rounded-lg p-10">
           {/* Title/Price and Image */}
           <div className="flex w-full gap-x-12">
@@ -19,6 +57,10 @@ function EditBlog() {
                   type="text"
                   placeholder="Enter title"
                   className="h-[70px] p-5 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none"
+                  value={blog.title}
+                  onChange={(e) =>
+                    setBlog((prev) => ({ ...prev, title: e.target.value }))
+                  }
                 />
               </div>
 
@@ -31,6 +73,10 @@ function EditBlog() {
                   type="text"
                   placeholder="Enter read time"
                   className="h-[70px] p-5 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none"
+                  value={blog.readTime}
+                  onChange={(e) =>
+                    setBlog((prev) => ({ ...prev, readTime: e.target.value }))
+                  }
                 />
               </div>
             </div>
@@ -44,6 +90,10 @@ function EditBlog() {
                 type="description"
                 placeholder="Enter description"
                 className=" p-5 h-[233px] min-h-[70px] max-h-[233px] placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none"
+                value={blog.body}
+                onChange={(e) =>
+                  setBlog((prev) => ({ ...prev, body: e.target.value }))
+                }
               />
             </div>
           </div>

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Header from "../../Components/Header";
-import CreateForm from "../../Components/Create-Update-Form/CreateForm";
 import axios from "axios";
+import UploadImage from "../../Components/UploadImage";
 
 // {
 //   "_id": {
@@ -108,12 +107,15 @@ function AddSite() {
               <label htmlFor="price" className="text-2xl mb-6">
                 Image
               </label>
-              <input
+              <div className="bg-[#D9D9D940]/25 p-1 border">
+                <UploadImage />
+              </div>
+              {/* <input
                 id="price"
                 type="file"
                 placeholder="Enter price"
                 className="h-full p-5 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none"
-              />
+              /> */}
             </div>
           </div>
 

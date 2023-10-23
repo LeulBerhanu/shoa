@@ -67,7 +67,7 @@ function BlogPage() {
                     <td>
                       <div className="flex gap-x-3">
                         <button className={`${tableBtn} bg-white`}>
-                          <Link to="edit-site">Edit</Link>
+                          <Link to={`edit-blog/${blog._id}`}>Edit</Link>
                         </button>
                         <button className={`${tableBtn} bg-white`}>
                           <RiDeleteBin6Line />

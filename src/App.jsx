@@ -64,7 +64,7 @@ function App() {
         <Route path="blog" element={<BlogLayout />}>
           <Route index element={<AdminBlogPage />} />
           <Route path="add-blog" element={<AddBlog />} />
-          <Route path="edit-blog" element={<EditBlog />} />
+          <Route path="edit-blog/:id" element={<EditBlog />} />
         </Route>
       </Route>
     </Routes>
