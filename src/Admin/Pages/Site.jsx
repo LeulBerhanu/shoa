@@ -39,9 +39,9 @@ function Site() {
       <section className="px-10">
         <div className="flex justify-between items-center mt-9">
           <h2 className="text-2xl font-bold">Sites list</h2>
-          <button className="primaryBtn">
-            <Link to="add-site">+ Add Site</Link>
-          </button>
+          <Link to="add-site">
+            <button className="primaryBtn">+ Add Site</button>
+          </Link>
         </div>
 
         <div className="p-10 bg-white rounded-lg shadow-boxShadow ">

@@ -20,6 +20,7 @@ import axios from "axios";
 function ProjectDetailsPage() {
   const { id } = useParams();
   const [property, setProperty] = useState("");
+  console.log("property", property);
 
   const getting = async () => {
     try {
@@ -97,13 +98,13 @@ function ProjectDetailsPage() {
               <i>
                 <img src={bedIcon} alt="" />
               </i>
-              <p>{property?.bedroom} Bedrooms</p>
+              <p>{property?.bedRoom} Bedrooms</p>
             </div>
             <div className="flex items-center gap-x-5">
               <i>
                 <img src={bath} alt="" />
               </i>
-              <p>{property?.bathroom} Bathrooms</p>
+              <p>{property?.bathRoom} Bathrooms</p>
             </div>
             <div className="flex items-center gap-x-5">
               <i>

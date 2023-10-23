@@ -1,9 +1,10 @@
 import React from "react";
+import EditForm from "../../Components/Create-Update-Form/EditForm";
 
 function EditProperty() {
   return (
     <div>
-      <div>ssf</div>
+      <EditForm />
     </div>
   );
 }

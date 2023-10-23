@@ -1,11 +1,32 @@
 import React, { useEffect, useState } from "react";
 import UploadImage from "../UploadImage";
 import axios from "axios";
+import { FaCheck } from "react-icons/fa";
 
 function CreateForm() {
   const [image, setImage] = useState({});
 
+  const [data, setData] = useState({
+    name: "",
+    price: "",
+    size: "",
+    bedRoom: "",
+    bathRoom: "",
+    buildingStatus: "",
+    sellingStatus: "",
+    description: "",
+    mapLocation: "",
+    siteId: "",
+    featured: false,
+    featuredStatement: "",
+    propertyType: "",
+  });
+
   const [sites, setSites] = useState([]);
+  const [selectedSite, setSelectedSite] = useState("");
+  console.log(selectedSite);
+
+  console.log(data);
 
   useEffect(() => {
     axios
@@ -13,8 +34,28 @@ function CreateForm() {
       .then((res) => setSites(res.data.sites));
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    try {
+      const res = await axios.post(
+        "http://localhost:4000/api/property",
+        {
+          ...data,
+          propertyImage: image,
+          siteId: selectedSite,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+
+      console.log(res);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
@@ -23,7 +64,7 @@ function CreateForm() {
       <form action="" onSubmit={handleSubmit}>
         <div className="flex flex-col gap-y-9 bg-white rounded-lg p-10">
           {/* Title/Price and Image */}
-          <div className="flex w-full gap-x-3">
+          <div className="grid grid-cols-2 w-full gap-x-3">
             {/* Title and Price */}
             <div className="flex flex-col gap-y-9  w-full">
               <div className="flex flex-col">
@@ -35,6 +76,9 @@ function CreateForm() {
                   type="text"
                   placeholder="Enter name"
                   className="h-[70px] p-5 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none"
+                  onChange={(e) =>
+                    setData((prev) => ({ ...prev, name: e.target.value }))
+                  }
                 />
               </div>
 
@@ -47,12 +91,23 @@ function CreateForm() {
                   type="text"
                   placeholder="Enter price"
                   className="h-[70px] p-5 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none"
+                  onChange={(e) =>
+                    setData((prev) => ({ ...prev, price: e.target.value }))
+                  }
                 />
               </div>
 
               <div className="flex flex-col">
                 <label className="text-2xl mb-6">Property Type</label>
-                <select className="h-[70px] p-5 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none">
+                <select
+                  onChange={(e) =>
+                    setData((prev) => ({
+                      ...prev,
+                      propertyType: e.target.value,
+                    }))
+                  }
+                  className="h-[70px] p-5 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none"
+                >
                   <option value="">--Choose property type--</option>
                   <option value="apartment">Apartment</option>
                   <option value="villa">Villa</option>
@@ -68,6 +123,9 @@ function CreateForm() {
                   type="text"
                   placeholder="Enter size"
                   className="h-[70px] p-5 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none"
+                  onChange={(e) =>
+                    setData((prev) => ({ ...prev, size: e.target.value }))
+                  }
                 />
               </div>
 
@@ -77,9 +135,12 @@ function CreateForm() {
                 </label>
                 <input
                   id="bedroom"
-                  type="text"
+                  type="number"
                   placeholder="Enter number of bedroom"
                   className="h-[70px] p-5 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none"
+                  onChange={(e) =>
+                    setData((prev) => ({ ...prev, bedRoom: e.target.value }))
+                  }
                 />
               </div>
 
@@ -89,9 +150,12 @@ function CreateForm() {
                 </label>
                 <input
                   id="bathroom"
-                  type="text"
+                  type="number"
                   placeholder="Enter number of bathroom"
                   className="h-[70px] p-5 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none"
+                  onChange={(e) =>
+                    setData((prev) => ({ ...prev, bathRoom: e.target.value }))
+                  }
                 />
               </div>
 
@@ -104,6 +168,12 @@ function CreateForm() {
                   type="description"
                   placeholder="Enter description"
                   className=" p-5 h-[220px] min-h-[70px] max-h-[220px] placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none"
+                  onChange={(e) =>
+                    setData((prev) => ({
+                      ...prev,
+                      description: e.target.value,
+                    }))
+                  }
                 />
               </div>
 
@@ -116,25 +186,44 @@ function CreateForm() {
                   type="text"
                   placeholder="Enter location name"
                   className="h-[70px] p-5 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none"
+                  onChange={(e) =>
+                    setData((prev) => ({
+                      ...prev,
+                      mapLocation: e.target.value,
+                    }))
+                  }
                 />
               </div>
 
               <div className="flex flex-col">
                 <label className="text-2xl mb-6">Site</label>
-                <select className="h-[70px] p-5 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none">
+                <select
+                  onChange={(e) => setSelectedSite(e.target.value)}
+                  className="h-[70px] p-5 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none"
+                >
                   <option value="">--Choose site--</option>
                   {sites &&
-                    sites.map((site) => (
-                      <option key={site._id} value={site.title}>
-                        {site.title}
-                      </option>
-                    ))}
+                    sites.map((site) => {
+                      return (
+                        <option key={site._id} value={site._id}>
+                          {site.title}
+                        </option>
+                      );
+                    })}
                 </select>
               </div>
 
               <div className="flex flex-col">
                 <label className="text-2xl mb-6">Building Status</label>
-                <select className="h-[70px] p-5 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none">
+                <select
+                  onChange={(e) =>
+                    setData((prev) => ({
+                      ...prev,
+                      buildingStatus: e.target.value,
+                    }))
+                  }
+                  className="h-[70px] p-5 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none"
+                >
                   <option value="">--Choose building status--</option>
                   <option value="semi-finished">Semi Finished</option>
                   <option value="finished">Finished</option>
@@ -143,7 +232,15 @@ function CreateForm() {
 
               <div className="flex flex-col">
                 <label className="text-2xl mb-6">Selling Status</label>
-                <select className="h-[70px] p-5 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none">
+                <select
+                  onChange={(e) =>
+                    setData((prev) => ({
+                      ...prev,
+                      sellingStatus: e.target.value,
+                    }))
+                  }
+                  className="h-[70px] p-5 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none"
+                >
                   <option value="">--Choose selling status--</option>
                   <option value="sold-out">Sold Out</option>
                   <option value="on-sale">On Sale</option>
@@ -156,11 +253,37 @@ function CreateForm() {
                   type="checkbox"
                   id="featuredStatus"
                   className="text-5xl h-9 w-9"
+                  onChange={(e) =>
+                    setData((prev) => ({
+                      ...prev,
+                      featured: !prev.featured,
+                    }))
+                  }
                 />
                 <label htmlFor="featuredStatus" className="text-2xl mb-6">
                   Features Status
                 </label>
               </div>
+
+              {data?.featured ? (
+                <div className="flex flex-col">
+                  <label htmlFor="featuredStatement" className="text-2xl mb-6">
+                    Featured Statement
+                  </label>
+                  <input
+                    id="featuredStatement"
+                    type="text"
+                    placeholder="Enter featured statement"
+                    className="h-[70px] p-5 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none"
+                    onChange={(e) =>
+                      setData((prev) => ({
+                        ...prev,
+                        featuredStatement: e.target.value,
+                      }))
+                    }
+                  />
+                </div>
+              ) : null}
             </div>
 
             <div className="flex flex-col gap-y-9">

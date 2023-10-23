@@ -5,9 +5,12 @@ import Card from "../components/card/Card";
 import bedroom from "../img/bedroom.png";
 import PageBanner from "../components/PageBanner";
 import axios from "axios";
+import { AiOutlineSearch } from "react-icons/ai";
 
 function ProjectsPage() {
+  const [search, setSearch] = useState("");
   const [properties, setProperties] = useState("");
+  console.log(properties);
 
   const [filters, setFilters] = useState({
     location: "",
@@ -18,11 +21,19 @@ function ProjectsPage() {
 
   const [filteredProperties, setFilteredProperties] = useState("");
 
+  const [sites, setSites] = useState();
+  console.log(sites);
+
   useEffect(() => {
     axios
       .get("http://localhost:4000/api/property")
       .then((res) => res.data.properties)
       .then((data) => setProperties(data));
+
+    axios
+      .get("http://localhost:4000/api/site")
+      .then((res) => res.data.sites)
+      .then((data) => setSites(data));
   }, []);
 
   const handleSelectChange = (event, filterType) => {
@@ -35,17 +46,26 @@ function ProjectsPage() {
     });
   };
 
+  // useEffect(() => {
+  //   const filteredProperties = handleFilter(filters);
+  //   setFilteredProperties(filteredProperties);
+  // }, [filters]);
+
   useEffect(() => {
-    const filteredProperties = handleFilter(filters);
-    setFilteredProperties(filteredProperties);
-  }, [filters]);
+    if (properties) {
+      const filteredData = properties.filter((item) =>
+        item.siteName.includes(search)
+      );
+      setFilteredProperties(filteredData);
+    }
+  }, [search]);
 
   const handleFilter = () => {
     const { location, sale, status, type } = filters;
     let result = properties;
 
     if (location) {
-      result = result.filter((property) => property.mapLocation === location);
+      result = result.filter((property) => property.siteName === location);
     }
 
     if (sale) {
@@ -86,6 +106,19 @@ function ProjectsPage() {
         content={
           <div className="flex flex-col gap-5 md:px-10 xl:px-36">
             <SearchBar />
+            {/* Search Bar */}
+            {/* <div className="container mx-auto flex bg-white/[.75] items-center border capitalize rounded-[15px] px-4 py-3 justify-between xl:p-5 xl:text-lg">
+              <input
+                type="text"
+                placeholder="Find your home"
+                className=" placeholder-black bg-transparent w-full outline-none"
+                onChange={(e) => setSearch(e.target.value)}
+              />
+              <div className="xl:text-2xl">
+                <AiOutlineSearch />
+              </div>
+            </div> */}
+
             <div className="container flex flex-col  gap-2 justify-between mx-auto md:grid md:grid-cols-2 md:gap-2 xl:gap-4 xl:text-base">
               {/* Location */}
               <select
@@ -93,10 +126,12 @@ function ProjectsPage() {
                 className="w-full p-3 rounded-[15px] font-medium outline-none xl:p-5 "
               >
                 <option value="">Location (any)</option>
-                <option value="Jackros">Jackros</option>
-                <option value="Bulbula">Bulbula</option>
-                <option value="Mekanisa">Mekanisa</option>
-                <option value="Welo Sefer">Welo Sefer</option>
+                {sites &&
+                  sites.map((site) => (
+                    <option key={site._id} value={site.title}>
+                      {site.title}
+                    </option>
+                  ))}
               </select>
 
               {/* Property Status (any) */}
