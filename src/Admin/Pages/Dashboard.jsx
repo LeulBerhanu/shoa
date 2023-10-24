@@ -31,6 +31,8 @@ function Dashboard() {
       .then((data) => setProperties(data));
   }, []);
 
+  console.log("YOUR TOKEN", localStorage.getItem("token"));
+
   return (
     <div>
       <Header currentPage="Dashboard" />

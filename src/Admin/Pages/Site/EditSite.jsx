@@ -44,7 +44,6 @@ function EditSite() {
     setErrors(errorValidation);
 
     if (Object.keys(errorValidation).length === 0) {
-      console.log("CLOSED", data.closed);
       let sentData = {
         title: data.title,
         location: data.location,
