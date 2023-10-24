@@ -45,8 +45,6 @@ function HomePage() {
     }
   }, [properties]);
 
-  console.log("sites", sites);
-
   return (
     <>
       <h1 className="px-6 text-center capitalize text-[40px] xl:text-[80px]">
@@ -104,6 +102,8 @@ function HomePage() {
                       <LocationName
                         name={site.title}
                         img={site?.siteImage?.url}
+                        closed={site.closed}
+                        remark={site.remark}
                         rounded
                       />
                     </div>
@@ -122,6 +122,7 @@ function HomePage() {
                       <LocationName
                         name={site.title}
                         img={site?.siteImage?.url}
+                        closed={site.closed}
                         rounded
                       />
                     </div>

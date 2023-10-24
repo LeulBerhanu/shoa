@@ -106,6 +106,9 @@ function EditSite() {
                     }))
                   }
                 />
+                {errors?.title ? (
+                  <p className="invalidForm">{errors.title}</p>
+                ) : null}
               </div>
 
               <div className="flex flex-col">
@@ -116,7 +119,7 @@ function EditSite() {
                   required
                   id="readTime"
                   type="text"
-                  placeholder="Enter location name"
+                  placeholder="Enter location link"
                   className="h-[70px] p-5 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none"
                   value={data.location}
                   onChange={(e) =>
@@ -156,9 +159,15 @@ function EditSite() {
                       id="remark"
                       type="text"
                       placeholder="Enter remark"
-                      className="h-[70px] p-5 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none"
                       value={data.remark}
-                      onChange={(e) => setRemark(e.target.value)}
+                      className="h-[70px] p-5 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none"
+                      onChange={(e) => {
+                        setRemark(e.target.value);
+                        setData((prev) => ({
+                          ...prev,
+                          remark: e.target.value,
+                        }));
+                      }}
                     />
                   </div>
                 ) : null}

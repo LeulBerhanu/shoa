@@ -2,9 +2,17 @@ import React, { useEffect, useState } from "react";
 import UploadImage from "../UploadImage";
 import axios from "axios";
 import { FaCheck } from "react-icons/fa";
+import propertyValidation from "../../Validation/propertyValidation";
+import { useNavigate } from "react-router-dom";
 
 function CreateForm() {
-  const [image, setImage] = useState({});
+  const navigate = useNavigate();
+
+  const [image, setImage] = useState("");
+  const [errors, setErrors] = useState({});
+  const [disable, setDisable] = useState(false);
+
+  console.log("errors", errors);
 
   const [data, setData] = useState({
     name: "",
@@ -36,32 +44,41 @@ function CreateForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setDisable(true);
 
-    try {
-      const res = await axios.post(
-        "http://localhost:4000/api/property",
-        {
-          ...data,
-          propertyImage: image,
-          siteId: selectedSite,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
+    const errorValidation = propertyValidation(data, image, selectedSite);
+    setErrors(errorValidation);
+
+    if (Object.keys(errorValidation).length === 0) {
+      try {
+        const res = await axios.post(
+          "http://localhost:4000/api/property",
+          {
+            ...data,
+            propertyImage: image,
+            siteId: selectedSite,
           },
-        }
-      );
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
 
-      console.log(res);
-    } catch (err) {
-      console.error(err);
+        console.log(res);
+        navigate("/admin/property");
+      } catch (err) {
+        console.error(err);
+      }
     }
+    setDisable(false);
   };
 
   return (
     <div className="px-10">
       <h2 className="font-bold">Add Property</h2>
-      <form action="" onSubmit={handleSubmit}>
+
+      <form>
         <div className="flex flex-col gap-y-9 bg-white rounded-lg p-10">
           {/* Title/Price and Image */}
           <div className="grid grid-cols-2 w-full gap-x-3">
@@ -80,6 +97,9 @@ function CreateForm() {
                     setData((prev) => ({ ...prev, name: e.target.value }))
                   }
                 />
+                {errors?.name ? (
+                  <p className="invalidForm">{errors.name}</p>
+                ) : null}
               </div>
 
               <div className="flex flex-col">
@@ -95,6 +115,9 @@ function CreateForm() {
                     setData((prev) => ({ ...prev, price: e.target.value }))
                   }
                 />
+                {errors?.price ? (
+                  <p className="invalidForm">{errors.price}</p>
+                ) : null}
               </div>
 
               <div className="flex flex-col">
@@ -112,6 +135,9 @@ function CreateForm() {
                   <option value="apartment">Apartment</option>
                   <option value="villa">Villa</option>
                 </select>
+                {errors?.propertyType ? (
+                  <p className="invalidForm">{errors.propertyType}</p>
+                ) : null}
               </div>
 
               <div className="flex flex-col">
@@ -127,6 +153,9 @@ function CreateForm() {
                     setData((prev) => ({ ...prev, size: e.target.value }))
                   }
                 />
+                {errors?.size ? (
+                  <p className="invalidForm">{errors.size}</p>
+                ) : null}
               </div>
 
               <div className="flex flex-col">
@@ -142,6 +171,9 @@ function CreateForm() {
                     setData((prev) => ({ ...prev, bedRoom: e.target.value }))
                   }
                 />
+                {errors?.bedRoom ? (
+                  <p className="invalidForm">{errors.bedRoom}</p>
+                ) : null}
               </div>
 
               <div className="flex flex-col">
@@ -157,6 +189,9 @@ function CreateForm() {
                     setData((prev) => ({ ...prev, bathRoom: e.target.value }))
                   }
                 />
+                {errors?.bathRoom ? (
+                  <p className="invalidForm">{errors.bathRoom}</p>
+                ) : null}
               </div>
 
               <div className="flex flex-col ">
@@ -175,6 +210,9 @@ function CreateForm() {
                     }))
                   }
                 />
+                {errors?.description ? (
+                  <p className="invalidForm">{errors.description}</p>
+                ) : null}
               </div>
 
               <div className="flex flex-col">
@@ -184,7 +222,7 @@ function CreateForm() {
                 <input
                   id="mapLocation"
                   type="text"
-                  placeholder="Enter location name"
+                  placeholder="Enter location link"
                   className="h-[70px] p-5 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none"
                   onChange={(e) =>
                     setData((prev) => ({
@@ -193,6 +231,9 @@ function CreateForm() {
                     }))
                   }
                 />
+                {errors?.mapLocation ? (
+                  <p className="invalidForm">{errors.mapLocation}</p>
+                ) : null}
               </div>
 
               <div className="flex flex-col">
@@ -211,6 +252,9 @@ function CreateForm() {
                       );
                     })}
                 </select>
+                {errors?.site ? (
+                  <p className="invalidForm">{errors.site}</p>
+                ) : null}
               </div>
 
               <div className="flex flex-col">
@@ -228,6 +272,9 @@ function CreateForm() {
                   <option value="semi-finished">Semi Finished</option>
                   <option value="finished">Finished</option>
                 </select>
+                {errors?.buildingStatus ? (
+                  <p className="invalidForm">{errors.buildingStatus}</p>
+                ) : null}
               </div>
 
               <div className="flex flex-col">
@@ -246,6 +293,9 @@ function CreateForm() {
                   <option value="on-sale">On Sale</option>
                   <option value="discount">Discount</option>
                 </select>
+                {errors?.sellingStatus ? (
+                  <p className="invalidForm">{errors.sellingStatus}</p>
+                ) : null}
               </div>
 
               <div className="flex align-middle gap-x-3">
@@ -282,6 +332,9 @@ function CreateForm() {
                       }))
                     }
                   />
+                  {errors?.featuredStatement ? (
+                    <p className="invalidForm">{errors.featuredStatement}</p>
+                  ) : null}
                 </div>
               ) : null}
             </div>
@@ -292,6 +345,9 @@ function CreateForm() {
                 <div className="h-full p-1 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none">
                   <UploadImage image={image} setImage={setImage} />
                 </div>
+                {errors?.image ? (
+                  <p className="invalidForm">{errors.image}</p>
+                ) : null}
               </div>
 
               {/* <div className="flex flex-col w-full">
@@ -315,18 +371,11 @@ function CreateForm() {
             </div>
           </div>
 
-          {/* <div className="flex flex-col w-1/2">
-            <label htmlFor="description" className="text-2xl mb-6">
-              Description
-            </label>
-            <textarea
-              id="price"
-              type="description"
-              placeholder="Enter description"
-              className=" p-5 h-[220px] min-h-[70px] max-h-[220px] placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none"
-            />
-          </div> */}
-          <button onClick={handleSubmit} className="primaryBtn self-end">
+          <button
+            onClick={handleSubmit}
+            disabled={disable ? true : false}
+            className="primaryBtn self-end"
+          >
             Save
           </button>
         </div>

@@ -8,7 +8,6 @@ function AddSite() {
   const navigate = useNavigate();
   const [errors, setErrors] = useState({});
   const [disable, setDisable] = useState(false);
-  console.log("erroer", errors);
 
   const [image, setImage] = useState("");
   const [data, setData] = useState({
@@ -90,7 +89,7 @@ function AddSite() {
                   required
                   id="readTime"
                   type="text"
-                  placeholder="Enter location name"
+                  placeholder="Enter location link"
                   className="h-[70px] p-5 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none"
                   value={data.location}
                   onChange={(e) =>

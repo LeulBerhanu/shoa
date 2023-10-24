@@ -10,7 +10,6 @@ const tableBtn =
 
 function Site() {
   const [sites, setSites] = useState(null);
-  console.log(sites);
 
   useEffect(() => {
     axios

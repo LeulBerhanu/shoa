@@ -5,12 +5,13 @@ import OnSaleBadge from "../OnSaleBadge";
 import { Link } from "react-router-dom";
 
 function Card({ item }) {
+  console.log(item);
   return (
     <div className="flex flex-col gap-4 items-center p-5  shadow-boxShadow rounded-2xl relative w-[500px] md:flex-row">
       <div className="flex relative justify-center ">
         <img
-          src={house}
-          className="w-[244px] md:max-w-[430px] xl:max-w-[300px]  "
+          src={item.propertyImage.url}
+          className="w-[244px] h-[244px] rounded-lg object-cover md:max-w-[430px] xl:max-w-[300px]  "
           alt="house"
         />
         <Link
@@ -36,8 +37,8 @@ function Card({ item }) {
         {/* Details */}
         <ul className="flex flex-col text-xl xl:text-xl">
           <li>{item?.size}</li>
-          <li>{item?.bedroom} bedrooms</li>
-          <li>{item?.bathroom} bathrooms</li>
+          <li>{item?.bedRoom} bedrooms</li>
+          <li>{item?.bathRoom} bathrooms</li>
         </ul>
       </div>
 

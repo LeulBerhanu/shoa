@@ -1,7 +1,7 @@
 import React from "react";
 import house from "../img/house.png";
 
-function LocationName({ name, message, closed, rounded, img }) {
+function LocationName({ name, remark, closed, rounded, img }) {
   console.log("imageee", img);
 
   return (
@@ -12,7 +12,7 @@ function LocationName({ name, message, closed, rounded, img }) {
     >
       <div className="absolute px-14 text-center text-xl leading-none text-white z-10 xl:text-[50px]">
         <p>{name}</p>
-        {message ? <p className="opacity-50 text-sm">{message}</p> : null}
+        {remark ? <p className="opacity-50 text-sm mt-2">{remark}</p> : null}
       </div>
 
       {closed ? (
