@@ -6,11 +6,7 @@ import { useParams } from "react-router-dom";
 
 function EditForm() {
   const { id } = useParams();
-  const [property, setProperty] = useState("");
-
-  const [image, setImage] = useState({});
-
-  console.log("image", image);
+  const [image, setImage] = useState("");
 
   const [data, setData] = useState({
     name: "",
@@ -28,13 +24,8 @@ function EditForm() {
     propertyType: "",
   });
 
-  console.log(data);
-
   const [sites, setSites] = useState([]);
   const [selectedSite, setSelectedSite] = useState("");
-  console.log("selectedSite", selectedSite);
-
-  console.log(data);
 
   useEffect(() => {
     axios
@@ -43,20 +34,31 @@ function EditForm() {
 
     axios.get(`http://localhost:4000/api/property/${id}`).then((res) => {
       setSelectedSite(res.data.property.siteId);
-      setImage(res.data.property.propertyImage);
       setData(res.data.property);
     });
   }, []);
 
+  console.log("image", image);
+  console.log("data", data);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    console.log("image submit", image);
+    const { propertyImage, ...others } = data;
+
+    let sentData = {
+      ...others,
+    };
+
+    image ? (sentData.propertyImage = image) : null;
+
+    console.log(sentData);
     try {
       const res = await axios.patch(
         `http://localhost:4000/api/property/${id}`,
         {
-          ...data,
-          propertyImage: image,
+          ...sentData,
           siteId: selectedSite,
         },
         {
@@ -75,7 +77,7 @@ function EditForm() {
   return (
     <div className="px-10">
       <h2 className="font-bold">Edit Property</h2>
-      <form action="" onSubmit={handleSubmit}>
+      <form>
         <div className="flex flex-col gap-y-9 bg-white rounded-lg p-10">
           {/* Title/Price and Image */}
           <div className="grid grid-cols-2 w-full gap-x-3">
@@ -317,7 +319,7 @@ function EditForm() {
               <div className="flex flex-col w-full">
                 <label className="text-2xl mb-6">Image</label>
                 <div className="h-full p-1 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none">
-                  <UploadImage image={image.url} setImage={setImage} />
+                  <UploadImage image={image} setImage={setImage} />
                 </div>
               </div>
 
@@ -347,7 +349,7 @@ function EditForm() {
             />
           </div> */}
 
-          <button type="submit" className="primaryBtn self-end">
+          <button onClick={handleSubmit} className="primaryBtn self-end">
             Save
           </button>
         </div>

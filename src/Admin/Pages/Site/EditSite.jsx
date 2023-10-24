@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 function EditSite() {
   const { id } = useParams();
 
-  const [image, setImage] = useState({});
+  const [image, setImage] = useState("");
   const [data, setData] = useState({
     title: "",
     location: "",
@@ -14,22 +14,40 @@ function EditSite() {
     closed: false,
   });
 
+  console.log("Image", image);
+
   console.log(data);
 
   useEffect(() => {
     axios.get(`http://localhost:4000/api/site/${id}`).then((res) => {
-      setImage(res.data.site.siteImage.url);
-      setData(res.data.site);
+      // setImage(res.data.site.siteImage);
+      console.log("RESPONSE", res.data);
+      setData({
+        title: res.data.site.title,
+        location: res.data.site.location,
+        image: res.data.site.siteImage.url,
+        remark: res.data.site.remark,
+        closed: res.data.site.closed,
+      });
     });
   }, []);
 
   async function handleSubmit(e) {
     e.preventDefault();
 
+    let sentData = {
+      title: data.title,
+      location: data.location,
+      remark: data.remark,
+      closed: data.closed,
+    };
+
+    image ? (sentData.image = image) : null;
+
     try {
       const response = await axios.patch(
         `http://localhost:4000/api/site/${id}`,
-        { ...data, image },
+        sentData,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -37,12 +55,11 @@ function EditSite() {
         }
       );
       console.log("Response:", response.data);
+      setImage({});
+      setData({ title: "", location: "", remark: "", closed: false });
     } catch (error) {
       console.error("Error: ", error);
     }
-
-    setImage({});
-    setData({ title: "", location: "", remark: "", closed: false });
   }
 
   return (
@@ -130,12 +147,15 @@ function EditSite() {
               </div>
               <div>
                 {/* { ? <p>image uploaded</p> : null} */}
-                {/* <img src={image} alt="" className="w-7 h-7" /> */}
+                <img src={data.image} alt="" className="w-7 h-7" />
               </div>
             </div>
           </div>
 
-          <button type="submit" className="primaryBtn self-end w-[148px]">
+          <button
+            onClick={handleSubmit}
+            className="primaryBtn self-end w-[148px]"
+          >
             Save
           </button>
         </div>

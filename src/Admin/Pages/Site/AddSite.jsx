@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import UploadImage from "../../Components/UploadImage";
+import { useNavigate } from "react-router-dom";
 
 // {
 //   "_id": {
@@ -11,6 +12,8 @@ import UploadImage from "../../Components/UploadImage";
 // }
 
 function AddSite() {
+  const navigate = useNavigate();
+
   const [image, setImage] = useState({});
   const [data, setData] = useState({
     title: "",
@@ -32,6 +35,7 @@ function AddSite() {
           },
         }
       );
+      navigate("/admin/site");
       console.log("Response:", response.data);
     } catch (error) {
       console.error("Error: ", error);
@@ -44,7 +48,7 @@ function AddSite() {
   return (
     <div className="px-10">
       <h2 className="font-bold">Add Site</h2>
-      <form action="" onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <div className="flex flex-col gap-y-9 bg-white rounded-lg p-10">
           {/* Title/Price and Image */}
           <div className="grid grid-cols-2  gap-x-12">
@@ -95,6 +99,7 @@ function AddSite() {
                   Remark
                 </label>
                 <input
+                  required
                   id="readTime"
                   type="text"
                   placeholder="Enter remark"
@@ -131,7 +136,10 @@ function AddSite() {
             </div>
           </div>
 
-          <button type="submit" className="primaryBtn self-end w-[148px]">
+          <button
+            onClick={handleSubmit}
+            className="primaryBtn self-end w-[148px]"
+          >
             Save
           </button>
         </div>

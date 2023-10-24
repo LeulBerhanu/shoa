@@ -36,6 +36,7 @@ function CreateForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("SUBMITTTTTTTTT");
 
     try {
       const res = await axios.post(
@@ -294,6 +295,13 @@ function CreateForm() {
                 </div>
               </div>
 
+              {/* <div className="flex flex-col w-full">
+                <label className="text-2xl mb-6">Image</label>
+                <div className="h-full p-1 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none">
+                  <UploadImage image={image} setImage={setImage} />
+                </div>
+              </div> */}
+
               <div className="flex flex-col  w-full">
                 <label htmlFor="price" className="text-2xl mb-6">
                   Image
@@ -319,8 +327,7 @@ function CreateForm() {
               className=" p-5 h-[220px] min-h-[70px] max-h-[220px] placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none"
             />
           </div> */}
-
-          <button type="submit" className="primaryBtn self-end">
+          <button onClick={handleSubmit} className="primaryBtn self-end">
             Save
           </button>
         </div>

@@ -18,6 +18,9 @@ function PropertyPage() {
   }, []);
 
   const handleDelete = async (id, idx) => {
+    const filtered = properties.filter((item) => item.id !== id);
+    setProperties(filtered);
+
     try {
       const res = await axios.delete(
         `http://localhost:4000/api/property/${id}`,

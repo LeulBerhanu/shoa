@@ -11,7 +11,7 @@ export default function UploadImage({ image, setImage }) {
     finished
       ? setTimeout(() => {
           setFinished(false);
-        }, 3000)
+        }, 4000)
       : null;
   }, [finished]);
 

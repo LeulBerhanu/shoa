@@ -8,7 +8,6 @@ import axios from "axios";
 import { AiOutlineSearch } from "react-icons/ai";
 
 function ProjectsPage() {
-  const [search, setSearch] = useState("");
   const [properties, setProperties] = useState("");
   console.log(properties);
 
@@ -46,19 +45,10 @@ function ProjectsPage() {
     });
   };
 
-  // useEffect(() => {
-  //   const filteredProperties = handleFilter(filters);
-  //   setFilteredProperties(filteredProperties);
-  // }, [filters]);
-
   useEffect(() => {
-    if (properties) {
-      const filteredData = properties.filter((item) =>
-        item.siteName.includes(search)
-      );
-      setFilteredProperties(filteredData);
-    }
-  }, [search]);
+    const filteredProperties = handleFilter(filters);
+    setFilteredProperties(filteredProperties);
+  }, [filters]);
 
   const handleFilter = () => {
     const { location, sale, status, type } = filters;
