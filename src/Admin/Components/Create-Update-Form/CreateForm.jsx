@@ -36,7 +36,6 @@ function CreateForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("SUBMITTTTTTTTT");
 
     try {
       const res = await axios.post(

@@ -18,3 +18,7 @@
 .primaryBtn {
   @apply text-xl text-white p-4 rounded-lg bg-[#0E344B];
 }
+
+.invalidForm {
+  @apply mt-1 text-red-700;
+}

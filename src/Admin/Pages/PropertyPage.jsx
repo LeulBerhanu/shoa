@@ -3,6 +3,7 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { MdSwapVert } from "react-icons/md";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import moment from "moment";
 
 const tableBtn =
   "w-[60px] h-[40px]  flex items-center justify-center  px-4 py-3 font-medium border-2 border-black/25 rounded-lg";
@@ -79,7 +80,7 @@ function PropertyPage() {
                   <tr key={property._id} className="[&>*]:px-10">
                     <td>{idx + 1}</td>
                     <td>{property.name}</td>
-                    <td>28 Oct 2023</td>
+                    <td>{moment(property.updatedAt).format("DD MMM Y")}</td>
                     <td>
                       <button
                         className={`${tableBtn} border-2 border-[#A3CFBB] bg-[#D1E7DD]`}
