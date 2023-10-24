@@ -3,10 +3,16 @@ import UploadImage from "../UploadImage";
 import axios from "axios";
 import { FaCheck } from "react-icons/fa";
 import { useParams } from "react-router-dom";
+import propertyValidation from "../../Validation/propertyValidation";
+import { useNavigate } from "react-router-dom";
 
 function EditForm() {
+  const navigate = useNavigate();
+
   const { id } = useParams();
   const [image, setImage] = useState("");
+  const [errors, setErrors] = useState({});
+  const [disable, setDisable] = useState(false);
 
   const [data, setData] = useState({
     name: "",
@@ -43,35 +49,41 @@ function EditForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setDisable(true);
 
-    console.log("image submit", image);
-    const { propertyImage, ...others } = data;
+    const errorValidation = propertyValidation(data, image, selectedSite);
+    setErrors(errorValidation);
 
-    let sentData = {
-      ...others,
-    };
+    if (Object.keys(errorValidation).length === 0) {
+      const { propertyImage, ...others } = data;
 
-    image ? (sentData.propertyImage = image) : null;
+      let sentData = {
+        ...others,
+      };
 
-    console.log(sentData);
-    try {
-      const res = await axios.patch(
-        `http://localhost:4000/api/property/${id}`,
-        {
-          ...sentData,
-          siteId: selectedSite,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
+      image ? (sentData.propertyImage = image) : null;
+
+      console.log(sentData);
+      try {
+        const res = await axios.patch(
+          `http://localhost:4000/api/property/${id}`,
+          {
+            ...sentData,
+            siteId: selectedSite,
           },
-        }
-      );
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
 
-      console.log(res);
-    } catch (err) {
-      console.error(err);
+        console.log(res);
+      } catch (err) {
+        console.error(err);
+      }
     }
+    setDisable(false);
   };
 
   return (
@@ -97,6 +109,9 @@ function EditForm() {
                     setData((prev) => ({ ...prev, name: e.target.value }))
                   }
                 />
+                {errors?.name ? (
+                  <p className="invalidForm">{errors.name}</p>
+                ) : null}
               </div>
 
               <div className="flex flex-col">
@@ -113,6 +128,9 @@ function EditForm() {
                     setData((prev) => ({ ...prev, price: e.target.value }))
                   }
                 />
+                {errors?.price ? (
+                  <p className="invalidForm">{errors.price}</p>
+                ) : null}
               </div>
 
               <div className="flex flex-col">
@@ -130,7 +148,10 @@ function EditForm() {
                   <option value="">--Choose property type--</option>
                   <option value="apartment">Apartment</option>
                   <option value="villa">Villa</option>
-                </select>
+                </select>{" "}
+                {errors?.propertyType ? (
+                  <p className="invalidForm">{errors.propertyType}</p>
+                ) : null}
               </div>
 
               <div className="flex flex-col">
@@ -146,7 +167,10 @@ function EditForm() {
                   onChange={(e) =>
                     setData((prev) => ({ ...prev, size: e.target.value }))
                   }
-                />
+                />{" "}
+                {errors?.size ? (
+                  <p className="invalidForm">{errors.size}</p>
+                ) : null}
               </div>
 
               <div className="flex flex-col">
@@ -163,6 +187,9 @@ function EditForm() {
                     setData((prev) => ({ ...prev, bedRoom: e.target.value }))
                   }
                 />
+                {errors?.bedRoom ? (
+                  <p className="invalidForm">{errors.bedRoom}</p>
+                ) : null}
               </div>
 
               <div className="flex flex-col">
@@ -179,6 +206,9 @@ function EditForm() {
                     setData((prev) => ({ ...prev, bathRoom: e.target.value }))
                   }
                 />
+                {errors?.bathRoom ? (
+                  <p className="invalidForm">{errors.bathRoom}</p>
+                ) : null}
               </div>
 
               <div className="flex flex-col ">
@@ -198,6 +228,9 @@ function EditForm() {
                     }))
                   }
                 />
+                {errors?.description ? (
+                  <p className="invalidForm">{errors.description}</p>
+                ) : null}
               </div>
 
               <div className="flex flex-col">
@@ -216,7 +249,10 @@ function EditForm() {
                       mapLocation: e.target.value,
                     }))
                   }
-                />
+                />{" "}
+                {errors?.mapLocation ? (
+                  <p className="invalidForm">{errors.mapLocation}</p>
+                ) : null}
               </div>
 
               <div className="flex flex-col">
@@ -236,6 +272,9 @@ function EditForm() {
                       );
                     })}
                 </select>
+                {errors?.site ? (
+                  <p className="invalidForm">{errors.site}</p>
+                ) : null}
               </div>
 
               <div className="flex flex-col">
@@ -253,7 +292,10 @@ function EditForm() {
                   <option value="">--Choose building status--</option>
                   <option value="semi-finished">Semi Finished</option>
                   <option value="finished">Finished</option>
-                </select>
+                </select>{" "}
+                {errors?.buildingStatus ? (
+                  <p className="invalidForm">{errors.buildingStatus}</p>
+                ) : null}
               </div>
 
               <div className="flex flex-col">
@@ -272,7 +314,10 @@ function EditForm() {
                   <option value="sold-out">Sold Out</option>
                   <option value="on-sale">On Sale</option>
                   <option value="discount">Discount</option>
-                </select>
+                </select>{" "}
+                {errors?.sellingStatus ? (
+                  <p className="invalidForm">{errors.sellingStatus}</p>
+                ) : null}
               </div>
 
               <div className="flex align-middle gap-x-3">
@@ -310,7 +355,10 @@ function EditForm() {
                         featuredStatement: e.target.value,
                       }))
                     }
-                  />
+                  />{" "}
+                  {errors?.featuredStatement ? (
+                    <p className="invalidForm">{errors.featuredStatement}</p>
+                  ) : null}
                 </div>
               ) : null}
             </div>
@@ -320,7 +368,10 @@ function EditForm() {
                 <label className="text-2xl mb-6">Image</label>
                 <div className="h-full p-1 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none">
                   <UploadImage image={image} setImage={setImage} />
-                </div>
+                </div>{" "}
+                {errors?.image ? (
+                  <p className="invalidForm">{errors.image}</p>
+                ) : null}
               </div>
 
               <div className="flex flex-col  w-full">
@@ -349,7 +400,11 @@ function EditForm() {
             />
           </div> */}
 
-          <button onClick={handleSubmit} className="primaryBtn self-end">
+          <button
+            onClick={handleSubmit}
+            disabled={disable ? true : false}
+            className="primaryBtn self-end"
+          >
             Save
           </button>
         </div>

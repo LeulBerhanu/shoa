@@ -1,9 +1,15 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import blogValidation from "../../Validation/blogValidation";
+import { useNavigate, useParams } from "react-router-dom";
 
 function EditBlog() {
+  const navigate = useNavigate();
   const { id } = useParams();
+
+  const [errors, setErrors] = useState({});
+  const [disable, setDisable] = useState(false);
+  console.log(errors);
 
   const [blog, setBlog] = useState({
     title: "",
@@ -20,21 +26,29 @@ function EditBlog() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      const res = await axios.patch(
-        `http://localhost:4000/api/blog/${id}`,
-        blog,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        }
-      );
+    const errorValidation = blogValidation(blog);
+    setErrors(errorValidation);
 
-      console.log("Response", res.data);
-    } catch (err) {
-      console.error("Error: ", err);
+    if (Object.keys(errorValidation).length === 0) {
+      try {
+        const res = await axios.patch(
+          `http://localhost:4000/api/blog/${id}`,
+          blog,
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
+
+        console.log("Response", res.data);
+
+        navigate("/admin/blog");
+      } catch (err) {
+        console.error("Error: ", err);
+      }
     }
+    setDisable(false);
   };
 
   return (
@@ -60,6 +74,9 @@ function EditBlog() {
                     setBlog((prev) => ({ ...prev, title: e.target.value }))
                   }
                 />
+                {errors?.title ? (
+                  <p className="invalidForm">{errors.title}</p>
+                ) : null}
               </div>
 
               <div className="flex flex-col">
@@ -76,6 +93,9 @@ function EditBlog() {
                     setBlog((prev) => ({ ...prev, readTime: e.target.value }))
                   }
                 />
+                {errors?.readTime ? (
+                  <p className="invalidForm">{errors.readTime}</p>
+                ) : null}
               </div>
             </div>
 
@@ -93,10 +113,17 @@ function EditBlog() {
                   setBlog((prev) => ({ ...prev, body: e.target.value }))
                 }
               />
+              {errors?.body ? (
+                <p className="invalidForm">{errors.body}</p>
+              ) : null}
             </div>
           </div>
 
-          <button type="submit" className="primaryBtn self-end w-[148px]">
+          <button
+            disabled={disable ? true : false}
+            type="submit"
+            className="primaryBtn self-end w-[148px]"
+          >
             Save
           </button>
         </div>

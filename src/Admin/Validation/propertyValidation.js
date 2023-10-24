@@ -5,7 +5,7 @@ function siteValidation(formData, image, site) {
     errors.name = "* Title is required";
   }
 
-  if (!formData.price.trim()) {
+  if (!formData.price) {
     errors.price = "* Price is required";
   }
 
@@ -13,11 +13,11 @@ function siteValidation(formData, image, site) {
     errors.size = "* Size is required";
   }
 
-  if (!formData.bedRoom.trim()) {
+  if (!formData.bedRoom) {
     errors.bedRoom = "* Bedroom is required";
   }
 
-  if (!formData.bathRoom.trim()) {
+  if (!formData.bathRoom) {
     errors.bathRoom = "* Bathroom is required";
   }
 

@@ -12,8 +12,6 @@ function CreateForm() {
   const [errors, setErrors] = useState({});
   const [disable, setDisable] = useState(false);
 
-  console.log("errors", errors);
-
   const [data, setData] = useState({
     name: "",
     price: "",

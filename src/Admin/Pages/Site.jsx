@@ -81,9 +81,11 @@ function Site() {
                     </td>
                     <td>
                       <div className="flex gap-x-3">
-                        <button className={`${tableBtn} bg-white`}>
-                          <Link to={`edit-site/${site._id}`}>Edit</Link>
-                        </button>
+                        <Link to={`edit-site/${site._id}`}>
+                          <button className={`${tableBtn} bg-white`}>
+                            Edit
+                          </button>
+                        </Link>
                         <button
                           className={`${tableBtn} bg-white`}
                           onClick={() => handleDelete(site._id)}

@@ -40,7 +40,7 @@ function EditSite() {
     e.preventDefault();
     setDisable(true);
 
-    const errorValidation = siteValidation(data, data.image);
+    const errorValidation = siteValidation(data, image);
     setErrors(errorValidation);
 
     if (Object.keys(errorValidation).length === 0) {

@@ -40,15 +40,15 @@ function BlogPage() {
       <section className="px-10">
         <div className="flex justify-between items-center mt-9">
           <h2 className="text-2xl font-bold">Blog list</h2>
-          <button className="primaryBtn ">
-            <Link to="add-blog">+ Add Blog</Link>
-          </button>
+          <Link to="add-blog">
+            <button className="primaryBtn ">+ Add Blog</button>
+          </Link>
         </div>
 
         <div className="p-10 bg-white rounded-lg shadow-boxShadow">
           <table className="mx-auto text-xl border-separate border-spacing-0 border-2 rounded-lg ">
             <thead className="h-20 text-left">
-              <tr className="[&>*]:px-6 [&>*]:font-normal">
+              <tr className="[&>*]:px-4 [&>*]:font-normal">
                 <th>
                   <div className="flex items-center gap-x-1">
                     <p>No</p> <MdSwapVert />
@@ -71,7 +71,7 @@ function BlogPage() {
             <tbody className="[&>:nth-child(odd)]:bg-black/5 [&>*]:h-20">
               {blogs &&
                 blogs.map((blog, idx) => (
-                  <tr key={blog._id} className="[&>*]:px-6">
+                  <tr key={blog._id} className="[&>*]:px-4">
                     <td>{idx + 1}</td>
                     <td>{blog.title}</td>
                     <td className="overflow-x-hidden">

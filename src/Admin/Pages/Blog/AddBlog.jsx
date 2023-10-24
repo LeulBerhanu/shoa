@@ -1,29 +1,44 @@
 import axios from "axios";
 import React, { useState } from "react";
+import blogValidation from "../../Validation/blogValidation";
+import { useNavigate } from "react-router-dom";
 
 function AddBlog() {
+  const navigate = useNavigate();
+
+  const [errors, setErrors] = useState({});
+  const [disable, setDisable] = useState(false);
+
   const [data, setData] = useState({
     title: "",
     body: "",
     readTime: "",
   });
 
-  console.log(data);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setDisable(true);
 
-    try {
-      const res = await axios.post("http://localhost:4000/api/blog", data, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+    const errorValidation = blogValidation(data);
+    setErrors(errorValidation);
 
-      console.log("Response", res.data);
-    } catch (err) {
-      console.error("Error: ", err);
+    if (Object.keys(errorValidation).length === 0) {
+      try {
+        const res = await axios.post("http://localhost:4000/api/blog", data, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+
+        console.log("Response", res.data);
+
+        navigate("/admin/blog");
+      } catch (err) {
+        console.error("Error: ", err);
+      }
     }
+
+    setDisable(false);
   };
 
   return (
@@ -48,6 +63,9 @@ function AddBlog() {
                     setData((prev) => ({ ...prev, title: e.target.value }))
                   }
                 />
+                {errors?.title ? (
+                  <p className="invalidForm">{errors.title}</p>
+                ) : null}
               </div>
 
               <div className="flex flex-col">
@@ -63,6 +81,9 @@ function AddBlog() {
                     setData((prev) => ({ ...prev, readTime: e.target.value }))
                   }
                 />
+                {errors?.readTime ? (
+                  <p className="invalidForm">{errors.readTime}</p>
+                ) : null}
               </div>
             </div>
 
@@ -79,10 +100,17 @@ function AddBlog() {
                   setData((prev) => ({ ...prev, body: e.target.value }))
                 }
               />
+              {errors?.body ? (
+                <p className="invalidForm">{errors.body}</p>
+              ) : null}
             </div>
           </div>
 
-          <button type="submit" className="primaryBtn self-end w-[148px]">
+          <button
+            type="submit"
+            disabled={disable ? true : false}
+            className="primaryBtn self-end w-[148px]"
+          >
             Save
           </button>
         </div>
