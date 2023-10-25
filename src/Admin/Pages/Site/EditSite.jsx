@@ -14,6 +14,8 @@ function EditSite() {
   console.log("Edit site page");
 
   const [image, setImage] = useState("");
+  console.log("image", image);
+
   const [remark, setRemark] = useState("");
   const [data, setData] = useState({
     title: "",
@@ -21,9 +23,9 @@ function EditSite() {
     closed: false,
   });
 
-  console.log("Image", image);
-
-  console.log(data);
+  function scrollToTop() {
+    window.scrollTo(0, 0);
+  }
 
   useEffect(() => {
     axios.get(`http://localhost:4000/api/site/${id}`).then((res) => {
@@ -48,6 +50,8 @@ function EditSite() {
     setUploading(true);
 
     if (Object.keys(errorValidation).length === 0) {
+      scrollToTop();
+
       let sentData = {
         title: data.title,
         location: data.location,

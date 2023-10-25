@@ -18,6 +18,10 @@ function AddSite() {
     closed: false,
   });
 
+  function scrollToTop() {
+    window.scrollTo(0, 0);
+  }
+
   async function handleSubmit(e) {
     e.preventDefault();
     setDisable(true);
@@ -28,6 +32,8 @@ function AddSite() {
     setUploading(true);
 
     if (Object.keys(errorValidation).length === 0) {
+      scrollToTop();
+
       try {
         const response = await axios.post(
           "http://localhost:4000/api/site",

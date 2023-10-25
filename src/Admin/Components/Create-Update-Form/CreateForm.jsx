@@ -45,8 +45,6 @@ function CreateForm() {
     e.preventDefault();
     setDisable(true);
 
-    console.log(data);
-
     const errorValidation = propertyValidation(data, image, selectedSite);
     setErrors(errorValidation);
 
@@ -116,7 +114,8 @@ function CreateForm() {
                 </label>
                 <input
                   id="price"
-                  type="text"
+                  type="number"
+                  min={0}
                   placeholder="Enter price"
                   className="h-[70px] p-5 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none"
                   onChange={(e) =>
@@ -173,6 +172,7 @@ function CreateForm() {
                 <input
                   id="bedroom"
                   type="number"
+                  min={0}
                   placeholder="Enter number of bedroom"
                   className="h-[70px] p-5 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none"
                   onChange={(e) =>
@@ -191,6 +191,7 @@ function CreateForm() {
                 <input
                   id="bathroom"
                   type="number"
+                  min={0}
                   placeholder="Enter number of bathroom"
                   className="h-[70px] p-5 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none"
                   onChange={(e) =>

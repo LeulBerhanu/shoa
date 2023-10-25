@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 function AddBlog() {
   const navigate = useNavigate();
+  const [uploading, setUploading] = useState(false);
 
   const [errors, setErrors] = useState({});
   const [disable, setDisable] = useState(false);
@@ -14,6 +15,10 @@ function AddBlog() {
     body: "",
     readTime: "",
   });
+
+  function scrollToTop() {
+    window.scrollTo(0, 0);
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();

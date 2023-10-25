@@ -1,4 +1,4 @@
-function siteValidation(formData, image, site) {
+function siteValidation(formData, site, image) {
   const errors = {};
 
   if (!formData.name.trim()) {

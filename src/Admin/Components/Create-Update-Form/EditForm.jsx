@@ -14,6 +14,7 @@ function EditForm() {
   const [image, setImage] = useState("");
   const [errors, setErrors] = useState({});
   const [disable, setDisable] = useState(false);
+  console.log("image", image);
 
   const [data, setData] = useState({
     name: "",
@@ -25,11 +26,12 @@ function EditForm() {
     sellingStatus: "",
     description: "",
     mapLocation: "",
-    siteId: "",
     featured: false,
-    featuredStatement: "",
+    siteId: "",
     propertyType: "",
   });
+
+  console.log("data", data);
 
   const [sites, setSites] = useState([]);
   const [selectedSite, setSelectedSite] = useState("");
@@ -53,11 +55,15 @@ function EditForm() {
     e.preventDefault();
     setDisable(true);
 
-    const errorValidation = propertyValidation(data, image, selectedSite);
+    const errorValidation = propertyValidation(
+      data,
+      selectedSite,
+      data.propertyImage
+    );
     setErrors(errorValidation);
 
     if (Object.keys(errorValidation).length === 0) {
-      setUploading(true)
+      setUploading(true);
       scrollToTop();
       const { propertyImage, ...others } = data;
 
@@ -267,7 +273,7 @@ function EditForm() {
               <div className="flex flex-col">
                 <label className="text-2xl mb-6">Site</label>
                 <select
-                  value={data?.siteId}
+                  value={selectedSite}
                   onChange={(e) => setSelectedSite(e.target.value)}
                   className="h-[70px] p-5 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none"
                 >
@@ -334,7 +340,7 @@ function EditForm() {
                   type="checkbox"
                   id="featuredStatus"
                   className="text-5xl h-9 w-9"
-                  checked={data?.featured}
+                  checked={data.featured}
                   onChange={(e) =>
                     setData((prev) => ({
                       ...prev,
