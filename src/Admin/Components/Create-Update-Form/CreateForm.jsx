@@ -6,6 +6,7 @@ import propertyValidation from "../../Validation/propertyValidation";
 import { useNavigate } from "react-router-dom";
 
 function CreateForm() {
+  const [uploading, setUploading] = useState(false);
   const navigate = useNavigate();
 
   const [image, setImage] = useState("");
@@ -24,15 +25,11 @@ function CreateForm() {
     mapLocation: "",
     siteId: "",
     featured: false,
-    featuredStatement: "",
     propertyType: "",
   });
 
   const [sites, setSites] = useState([]);
   const [selectedSite, setSelectedSite] = useState("");
-  console.log(selectedSite);
-
-  console.log(data);
 
   useEffect(() => {
     axios
@@ -40,14 +37,23 @@ function CreateForm() {
       .then((res) => setSites(res.data.sites));
   }, []);
 
+  function scrollToTop() {
+    window.scrollTo(0, 0);
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setDisable(true);
 
+    console.log(data);
+
     const errorValidation = propertyValidation(data, image, selectedSite);
     setErrors(errorValidation);
 
+    setUploading(true);
+
     if (Object.keys(errorValidation).length === 0) {
+      scrollToTop();
       try {
         const res = await axios.post(
           "http://localhost:4000/api/property",
@@ -69,13 +75,17 @@ function CreateForm() {
         console.error(err);
       }
     }
+
+    setUploading(false);
     setDisable(false);
   };
 
   return (
     <div className="px-10">
-      <h2 className="font-bold">Add Property</h2>
-
+      <div className="flex items-center justify-between">
+        <h2 className="font-bold">Add Property</h2>
+        {uploading && <p className="text-2xl">Uploading, please wait ...</p>}
+      </div>
       <form>
         <div className="flex flex-col gap-y-9 bg-white rounded-lg p-10">
           {/* Title/Price and Image */}

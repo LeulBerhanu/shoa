@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import siteValidation from "../../Validation/siteValidation";
 
 function AddSite() {
+  const [uploading, setUploading] = useState(false);
   const navigate = useNavigate();
   const [errors, setErrors] = useState({});
   const [disable, setDisable] = useState(false);
@@ -23,6 +24,8 @@ function AddSite() {
 
     const errorValidation = siteValidation(data, image);
     setErrors(errorValidation);
+
+    setUploading(true);
 
     if (Object.keys(errorValidation).length === 0) {
       try {
@@ -46,12 +49,16 @@ function AddSite() {
       }
     }
 
+    setUploading(false);
     setDisable(false);
   }
 
   return (
     <div className="px-10">
-      <h2 className="font-bold">Add Site</h2>
+      <div className="flex items-center justify-between">
+        <h2 className="font-bold">Add Site</h2>
+        {uploading && <p className="text-2xl">Uploading, please wait ...</p>}
+      </div>
       <form>
         <div className="flex flex-col gap-y-9 bg-white rounded-lg p-10">
           {/* Title/Price and Image */}

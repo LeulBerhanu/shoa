@@ -5,11 +5,13 @@ import { useNavigate, useParams } from "react-router-dom";
 import siteValidation from "../../Validation/siteValidation";
 
 function EditSite() {
+  const [uploading, setUploading] = useState(false);
   const { id } = useParams();
   const navigate = useNavigate();
   const [errors, setErrors] = useState({});
   const [disable, setDisable] = useState(false);
   console.log("erroer", errors);
+  console.log("Edit site page");
 
   const [image, setImage] = useState("");
   const [remark, setRemark] = useState("");
@@ -40,8 +42,10 @@ function EditSite() {
     e.preventDefault();
     setDisable(true);
 
-    const errorValidation = siteValidation(data, image);
+    const errorValidation = siteValidation(data, data.image);
     setErrors(errorValidation);
+
+    setUploading(true);
 
     if (Object.keys(errorValidation).length === 0) {
       let sentData = {
@@ -75,12 +79,16 @@ function EditSite() {
       }
     }
 
+    setUploading(false);
     setDisable(false);
   }
 
   return (
     <div className="px-10">
-      <h2 className="font-bold">Edit Site</h2>
+      <div className="flex items-center justify-between">
+        <h2 className="font-bold">Edit Site</h2>
+        {uploading && <p className="text-2xl">Uploading, please wait ...</p>}
+      </div>
       <form action="" onSubmit={handleSubmit}>
         <div className="flex flex-col gap-y-9 bg-white rounded-lg p-10">
           {/* Title/Price and Image */}

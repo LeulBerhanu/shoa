@@ -23,6 +23,9 @@ function AddBlog() {
     setErrors(errorValidation);
 
     if (Object.keys(errorValidation).length === 0) {
+      scrollToTop();
+      setUploading(true);
+
       try {
         const res = await axios.post("http://localhost:4000/api/blog", data, {
           headers: {
@@ -38,12 +41,16 @@ function AddBlog() {
       }
     }
 
+    setUploading(false);
     setDisable(false);
   };
 
   return (
     <div className="px-10">
-      <h2 className="font-bold">Add Blog</h2>
+      <div className="flex items-center justify-between">
+        <h2 className="font-bold">Add Blog</h2>
+        {uploading && <p className="text-2xl">Uploading, please wait ...</p>}
+      </div>
       <form action="" onSubmit={handleSubmit}>
         <div className="flex flex-col gap-y-9 bg-white rounded-lg p-10">
           {/* Title/Price and Image */}

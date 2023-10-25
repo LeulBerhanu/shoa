@@ -16,7 +16,7 @@ function ContactInfo() {
             <IoMdMail />
           </i>
           <a href="#" className="ml-5 self-end">
-            info@shoa.com
+            info@shoahomes.com
           </a>
         </div>
 
@@ -24,8 +24,9 @@ function ContactInfo() {
         <div className="flex mt-8">
           <img src={phone} alt="Phone icon" className="self-start" />
           <div className="ml-3">
-            <p>+251-906-500000</p>
-            <p>+251-906-500000</p>
+            <p>+251995191919</p>
+            <p>+251992494949</p>
+            <p>+251115589897</p>
           </div>
         </div>
       </address>
@@ -33,10 +34,10 @@ function ContactInfo() {
       <h2 className="text-xl">Working Hours</h2>
       <ul>
         <li className="list-disc ml-8">
-          <p>Mon - Fri: 6 am to 8 pm</p>
+          <p>Mon - Fri: 8 am to 6 pm</p>
         </li>
         <li className="list-disc ml-8">
-          <p>Sat - Sun: 6 am to 8 pm </p>
+          <p>Sat - Sun: 8 am to 6 pm </p>
         </li>
       </ul>
 

@@ -7,6 +7,7 @@ import propertyValidation from "../../Validation/propertyValidation";
 import { useNavigate } from "react-router-dom";
 
 function EditForm() {
+  const [uploading, setUploading] = useState(false);
   const navigate = useNavigate();
 
   const { id } = useParams();
@@ -44,8 +45,9 @@ function EditForm() {
     });
   }, []);
 
-  console.log("image", image);
-  console.log("data", data);
+  function scrollToTop() {
+    window.scrollTo(0, 0);
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -55,6 +57,8 @@ function EditForm() {
     setErrors(errorValidation);
 
     if (Object.keys(errorValidation).length === 0) {
+      setUploading(true)
+      scrollToTop();
       const { propertyImage, ...others } = data;
 
       let sentData = {
@@ -63,7 +67,6 @@ function EditForm() {
 
       image ? (sentData.propertyImage = image) : null;
 
-      console.log(sentData);
       try {
         const res = await axios.patch(
           `http://localhost:4000/api/property/${id}`,
@@ -79,16 +82,22 @@ function EditForm() {
         );
 
         console.log(res);
+        navigate("/admin/property");
       } catch (err) {
         console.error(err);
       }
     }
+
+    setUploading(false);
     setDisable(false);
   };
 
   return (
     <div className="px-10">
-      <h2 className="font-bold">Edit Property</h2>
+      <div className="flex items-center justify-between">
+        <h2 className="font-bold">Edit Property</h2>
+        {uploading && <p className="text-2xl">Uploading, please wait ...</p>}
+      </div>
       <form>
         <div className="flex flex-col gap-y-9 bg-white rounded-lg p-10">
           {/* Title/Price and Image */}
