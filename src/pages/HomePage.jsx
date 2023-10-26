@@ -66,9 +66,9 @@ function HomePage() {
       <h2 className={h2Style}>Why choose shoa Homes?</h2>
       <Hero />
 
-      <section id="featured_properties_section">
+      <section id="featured_properties_section" className="container mx-auto">
         <h2 className={h2Style}>Featured properties</h2>
-        <div className=" flex flex-col gap-11 justify-center items-center xl:flex-row ">
+        <div className=" flex flex-col gap-11 justify-center items-center xl:grid xl:grid-cols-2 xl:justify-items-center ">
           {featuredProperties &&
             featuredProperties.map((item) => <SmallCard item={item} />)}
 
@@ -78,12 +78,14 @@ function HomePage() {
 
       <section id="blog_section">
         <h2 className={h2Style}>Blog</h2>
-        <div className="container mx-auto px-7 gap-y-4 flex flex-col text-center text-[28px]  auto-rows-fr md:text-2xl md:grid md:grid-cols-2 xl:flex xl:flex-row xl:text-4xl xl:h-[323px] xl:items-stretch">
+        <div className="container mx-auto px-7bg-red flex flex-col text-center text-[28px] auto-cols-max auto-rows-auto  md:text-2xl md:grid md:grid-cols-2 xl:grid-cols-3 xl:text-4xl">
           {blogs &&
             blogs.map((blog) => (
-              <div key={blog._id}>
-                <LinkBoxHomePage content={blog.title} id={blog._id} />
-              </div>
+              <LinkBoxHomePage
+                key={blog._id}
+                content={blog.title}
+                id={blog._id}
+              />
             ))}
         </div>
       </section>

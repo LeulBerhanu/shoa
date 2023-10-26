@@ -13,6 +13,7 @@ export default {
         primary: "#132F40",
         primary_light: "#0E344B",
         badge_onsale: "#F80000",
+        badge_soldOut: "#AF0000",
         badge_discount: "#F3F800",
       },
       boxShadow: {

@@ -4,14 +4,18 @@ import axios from "axios";
 import { FaCheck } from "react-icons/fa";
 import propertyValidation from "../../Validation/propertyValidation";
 import { useNavigate } from "react-router-dom";
+import UploadFloorplan from "../UploadFloorplan";
 
 function CreateForm() {
   const [uploading, setUploading] = useState(false);
   const navigate = useNavigate();
 
+  const [floorplans, setFloorplans] = useState([]);
+  console.log("Floorplans", floorplans);
   const [image, setImage] = useState("");
   const [errors, setErrors] = useState({});
   const [disable, setDisable] = useState(false);
+  console.log("image", image);
 
   const [data, setData] = useState({
     name: "",
@@ -40,6 +44,23 @@ function CreateForm() {
   function scrollToTop() {
     window.scrollTo(0, 0);
   }
+
+  const handleCreateFloorPlan = async () => {
+    try {
+      const res = await axios.post(
+        "http://localhost:4000/api/floorplan",
+        floorplans,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      console.log(res);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -348,7 +369,24 @@ function CreateForm() {
               ) : null}
             </div>
 
-            <div className="flex flex-col gap-y-9">
+            <div className="flex flex-col w-full">
+              <label className="text-2xl mb-6">Floor Plan</label>
+              <div className="h-full p-1 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none">
+                <UploadFloorplan
+                  floorplans={floorplans}
+                  setFloorplans={setFloorplans}
+                />
+              </div>
+              <div className="flex flex-col gap-y-9">
+                {/* {errors?.image ? (
+                  <p className="invalidForm">{errors.image}</p>
+                ) : null} */}
+                <div>
+                  {/* { ? <p>image uploaded</p> : null} */}
+                  {/* <img src={floorplan} alt="" className="w-7 h-7" /> */}
+                </div>
+              </div>
+
               <div className="flex flex-col w-full">
                 <label className="text-2xl mb-6">Image</label>
                 <div className="h-full p-1 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none">

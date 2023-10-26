@@ -1,9 +1,6 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
-import assets from "../../assets/assets.gif";
-import axios from "axios";
+import React, { useState, useEffect } from "react";
 
-export default function UploadImage({ image, setImage }) {
+function UploadFloorplan({ floorplans, setFloorplans }) {
   const [loading, setLoading] = useState(false);
   const [finished, setFinished] = useState(false);
 
@@ -15,7 +12,7 @@ export default function UploadImage({ image, setImage }) {
       : null;
   }, [finished]);
 
-  const convertBase64 = (file) => {
+  const convertBase64Floorplan = (file) => {
     return new Promise((resolve, reject) => {
       const fileReader = new FileReader();
       fileReader.readAsDataURL(file);
@@ -30,18 +27,17 @@ export default function UploadImage({ image, setImage }) {
     });
   };
 
-  const uploadImage = async (event) => {
+  const uploadFloorplan = async (event) => {
     setLoading(true);
-    const file = event.target.files;
-    console.log(files.length);
+    const files = event.target.files;
 
-    const base64 = await convertBase64(file[0]);
-    setImage(base64);
+    const base64 = await convertBase64Floorplan(files[0]);
+    setFloorplans((prev) => [...prev, base64]);
     setLoading(false);
     setFinished(true);
   };
 
-  function UploadInput() {
+  function UploadInputFloorplan() {
     return (
       <div className="flex items-center justify-center w-full">
         <label
@@ -72,7 +68,7 @@ export default function UploadImage({ image, setImage }) {
             </p>
           </div>
           <input
-            onChange={uploadImage}
+            onChange={uploadFloorplan}
             id="dropzone-file"
             type="file"
             className="hidden"
@@ -87,10 +83,10 @@ export default function UploadImage({ image, setImage }) {
       <div>
         {loading ? (
           <div className="flex items-center justify-center">
-            <img src={assets} />{" "}
+            <p>Image uploading...</p>
           </div>
         ) : (
-          <UploadInput />
+          <UploadInputFloorplan />
         )}
         <div className="flex gap-x-2 items-center justify-center mt-3 ">
           {finished && (
@@ -103,3 +99,5 @@ export default function UploadImage({ image, setImage }) {
     </div>
   );
 }
+
+export default UploadFloorplan;

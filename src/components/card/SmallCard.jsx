@@ -4,8 +4,12 @@ import house from "../../img/house.png";
 function SmallCard({ item, discountBadge, onSaleBadge }) {
   console.log("featured", item);
   return (
-    <div className="flex flex-col gap-x-9 gap-y-4 md:items-center px-5 py-12 shadow-boxShadow md:w-[610px] rounded-2xl relative md:flex-row">
-      <img src={house} className="max-w-[244px]" alt="house" />
+    <div className="flex flex-col gap-x-9 gap-y-4 md:items-center px-5 py-7 shadow-boxShadow md:w-[610px] rounded-2xl relative md:flex-row">
+      <img
+        src={item?.propertyImage.url}
+        className="w-[244px] h-[244px] object-cover rounded-2xl"
+        alt="house"
+      />
       {/* Card Body */}
       <div className="flex flex-col ">
         {/* Title and Price */}
@@ -28,13 +32,19 @@ function SmallCard({ item, discountBadge, onSaleBadge }) {
       </div>
 
       {/* Badge */}
-      {discountBadge && (
+      {item?.sellingStatus === "discount" && (
         <div className="bg-badge_discount absolute top-0 right-0 rounded-[15px] p-2">
-          Holiday Discount
+          {item?.featuredStatement || "Discount"}
         </div>
       )}
 
-      {onSaleBadge && (
+      {item?.sellingStatus === "sold-out" && (
+        <div className="bg-badge_soldOut absolute top-0 right-0 rounded-[15px] py-2 px-5 text-white uppercase">
+          Sold Out
+        </div>
+      )}
+
+      {item?.sellingStatus === "on-sale" && (
         <div className="bg-badge_onsale absolute top-0 right-0 rounded-[15px] py-2 px-5 text-white uppercase">
           On Sale
         </div>
