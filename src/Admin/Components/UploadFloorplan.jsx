@@ -12,7 +12,22 @@ function UploadFloorplan({ floorplans, setFloorplans }) {
       : null;
   }, [finished]);
 
-  const convertBase64Floorplan = (file) => {
+  // const convertBase64Floorplan = (file) => {
+  //   return new Promise((resolve, reject) => {
+  //     const fileReader = new FileReader();
+  //     fileReader.readAsDataURL(file);
+
+  //     fileReader.onload = () => {
+  //       resolve(fileReader.result);
+  //     };
+
+  //     fileReader.onerror = (error) => {
+  //       reject(error);
+  //     };
+  //   });
+  // };
+
+  const convertBase64 = (file) => {
     return new Promise((resolve, reject) => {
       const fileReader = new FileReader();
       fileReader.readAsDataURL(file);
@@ -27,15 +42,59 @@ function UploadFloorplan({ floorplans, setFloorplans }) {
     });
   };
 
-  const uploadFloorplan = async (event) => {
+  function uploadSingleImage(base64) {
     setLoading(true);
-    const files = event.target.files;
+    axios
+      .post(`${import.meta.env.VITE_API}/api/property/floorplan`, {
+        image: base64,
+      })
+      .then((res) => {
+        setUrl(res.data);
+        alert("Image uploaded Succesfully");
+      })
+      .then(() => setLoading(false))
+      .catch((err) => console.log(err));
+  }
 
-    const base64 = await convertBase64Floorplan(files[0]);
-    setFloorplans((prev) => [...prev, base64]);
-    setLoading(false);
-    setFinished(true);
+  function uploadMultipleImages(images) {
+    setLoading(true);
+    axios
+      .post(`${import.meta.env.VITE_API}/uploadMultipleImages`, { images })
+      .then((res) => {
+        setUrl(res.data);
+        alert("Image uploaded Succesfully");
+      })
+      .then(() => setLoading(false))
+      .catch((err) => console.log(err));
+  }
+
+  const uploadImage = async (event) => {
+    const files = event.target.files;
+    console.log(files.length);
+
+    if (files.length === 1) {
+      const base64 = await convertBase64(files[0]);
+      uploadSingleImage(base64);
+      return;
+    }
+
+    const base64s = [];
+    for (var i = 0; i < files.length; i++) {
+      var base = await convertBase64(files[i]);
+      base64s.push(base);
+    }
+    uploadMultipleImages(base64s);
   };
+
+  // const uploadFloorplan = async (event) => {
+  //   setLoading(true);
+  //   const files = event.target.files;
+
+  //   const base64 = await convertBase64Floorplan(files[0]);
+  //   setFloorplans((prev) => [...prev, base64]);
+  //   setLoading(false);
+  //   setFinished(true);
+  // };
 
   function UploadInputFloorplan() {
     return (
@@ -64,14 +123,15 @@ function UploadFloorplan({ floorplans, setFloorplans }) {
               <span className="font-semibold">Click to upload</span>
             </p>
             <p className="text-xs text-gray-500 dark:text-gray-400">
-              SVG, PNG, or JPG (MAX. 500KB)
+              WebP, PNG, or JPG (MAX. 500KB)
             </p>
           </div>
           <input
-            onChange={uploadFloorplan}
+            onChange={uploadImage}
             id="dropzone-file"
             type="file"
             className="hidden"
+            multiple
           />
         </label>
       </div>

@@ -20,21 +20,21 @@ function HomePage() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/api/blog")
+      .get(`${import.meta.env.VITE_API}/api/blog`)
       .then((res) => res.data.blogs)
       .then((data) => setBlogs(data));
   }, []);
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/api/site")
+      .get(`${import.meta.env.VITE_API}/api/site`)
       .then((res) => res.data.sites)
       .then((data) => setSites(data));
   }, []);
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/api/property")
+      .get(`${import.meta.env.VITE_API}/api/property`)
       .then((res) => res.data.properties)
       .then((data) => setProperties(data));
   }, []);

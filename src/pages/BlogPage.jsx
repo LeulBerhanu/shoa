@@ -8,7 +8,7 @@ function BlogPage() {
   const [blogs, setBlogs] = useState(null);
 
   useEffect(() => {
-    Axios.get("http://localhost:4000/api/blog")
+    Axios.get(`${import.meta.env.VITE_API}/api/blog`)
       .then((res) => res.data.blogs)
       .then((data) => setBlogs(data));
   }, []);

@@ -19,7 +19,7 @@ export default function SwiperComponent({ slides }) {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/api/property")
+      .get(`${import.meta.env.VITE_API}/api/property`)
       .then((res) => res.data.properties)
       .then((data) => setProperties(data));
   }, []);

@@ -4,7 +4,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function LoginPage() {
-  console.log(import.meta.env.REACT_APP_API);
   const navigate = useNavigate();
 
   const [data, setData] = useState({ username: "", password: "" });
@@ -14,7 +13,7 @@ function LoginPage() {
 
     try {
       const res = await axios.post(
-        "http://localhost:4000/api/auth/login",
+        `${import.meta.env.VITE_API}/api/auth/login`,
         data
       );
       console.log("res", res.data.access_token);

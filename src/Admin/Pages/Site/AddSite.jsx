@@ -36,7 +36,7 @@ function AddSite() {
 
       try {
         const response = await axios.post(
-          "http://localhost:4000/api/site",
+          `${import.meta.env.VITE_API}/api/site`,
           { ...data, image },
           {
             headers: {

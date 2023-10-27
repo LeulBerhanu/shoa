@@ -32,11 +32,15 @@ function AddBlog() {
       setUploading(true);
 
       try {
-        const res = await axios.post("http://localhost:4000/api/blog", data, {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        });
+        const res = await axios.post(
+          `${import.meta.env.VITE_API}/api/blog`,
+          data,
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
 
         console.log("Response", res.data);
 

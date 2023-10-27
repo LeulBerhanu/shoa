@@ -10,7 +10,7 @@ function BlogPageNews() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/api/blog/${params.id}`)
+      .get(`${import.meta.env.VITE_API}/api/blog/${params.id}`)
       .then((res) => res.data)
       .then((data) => setBlog(data.blog));
   }, []);

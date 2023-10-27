@@ -13,7 +13,7 @@ function Site() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/api/site")
+      .get(`${import.meta.env.VITE_API}/api/site`)
       .then((res) => res.data.sites)
       .then((data) => setSites(data));
   }, []);
@@ -27,11 +27,14 @@ function Site() {
 
   const handleDelete = async (id) => {
     try {
-      const res = await axios.delete(`http://localhost:4000/api/site/${id}`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+      const res = await axios.delete(
+        `${import.meta.env.VITE_API}/api/site/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
 
       console.log(res);
     } catch (err) {

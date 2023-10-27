@@ -5,6 +5,7 @@ import { FaCheck } from "react-icons/fa";
 import propertyValidation from "../../Validation/propertyValidation";
 import { useNavigate } from "react-router-dom";
 import UploadFloorplan from "../UploadFloorplan";
+import FloorPlans from "../FloorPlans";
 
 function CreateForm() {
   const [uploading, setUploading] = useState(false);
@@ -45,22 +46,42 @@ function CreateForm() {
     window.scrollTo(0, 0);
   }
 
-  const handleCreateFloorPlan = async () => {
-    try {
-      const res = await axios.post(
-        "http://localhost:4000/api/floorplan",
-        floorplans,
+  function uploadImage(id, base64) {
+    // setLoading(true);
+    axios
+      .post(
+        "http://localhost:4000/api/property/floorplan",
+        { propertyId: id, image: base64 },
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         }
-      );
-      console.log(res);
-    } catch (err) {
-      console.error(err);
-    }
-  };
+      )
+      .then((res) => {
+        setUrl(res.data);
+        alert("Image uploaded Succesfully");
+      })
+      .then(() => setLoading(false))
+      .catch((err) => console.log(err));
+  }
+
+  // const handleCreateFloorPlan = async () => {
+  //   try {
+  //     const res = await axios.post(
+  //       "http://localhost:4000/api/floorplan",
+  //       floorplans,
+  //       {
+  //         headers: {
+  //           Authorization: `Bearer ${localStorage.getItem("token")}`,
+  //         },
+  //       }
+  //     );
+  //     console.log(res);
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -75,7 +96,7 @@ function CreateForm() {
       scrollToTop();
       try {
         const res = await axios.post(
-          "http://localhost:4000/api/property",
+          `${import.meta.env.VITE_API}/api/property`,
           {
             ...data,
             propertyImage: image,
@@ -89,6 +110,16 @@ function CreateForm() {
         );
 
         console.log(res);
+
+        for (let i = 0; i < floorplans.length; i++) {
+          const plan = floorplans[i];
+
+          console.log(res.data.property._id);
+          const response = await uploadImage(res.data.property._id, plan);
+
+          console.log("floorplan res", response);
+        }
+
         navigate("/admin/property");
       } catch (err) {
         console.error(err);
@@ -370,22 +401,13 @@ function CreateForm() {
             </div>
 
             <div className="flex flex-col w-full">
-              <label className="text-2xl mb-6">Floor Plan</label>
+              {/* <label className="text-2xl mb-6">Floor Plan</label>
               <div className="h-full p-1 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none">
                 <UploadFloorplan
                   floorplans={floorplans}
                   setFloorplans={setFloorplans}
                 />
-              </div>
-              <div className="flex flex-col gap-y-9">
-                {/* {errors?.image ? (
-                  <p className="invalidForm">{errors.image}</p>
-                ) : null} */}
-                <div>
-                  {/* { ? <p>image uploaded</p> : null} */}
-                  {/* <img src={floorplan} alt="" className="w-7 h-7" /> */}
-                </div>
-              </div>
+              </div> */}
 
               <div className="flex flex-col w-full">
                 <label className="text-2xl mb-6">Image</label>
@@ -397,6 +419,13 @@ function CreateForm() {
                 ) : null}
               </div>
 
+              <p className="mt-6">floorplans</p>
+              <FloorPlans
+                floorplans={floorplans}
+                setFloorplans={setFloorplans}
+                uploadImage={uploadImage}
+              />
+
               {/* <div className="flex flex-col w-full">
                 <label className="text-2xl mb-6">Image</label>
                 <div className="h-full p-1 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none">
@@ -404,9 +433,9 @@ function CreateForm() {
                 </div>
               </div> */}
 
-              <div className="flex flex-col  w-full">
+              {/* <div className="flex flex-col  w-full">
                 <label htmlFor="price" className="text-2xl mb-6">
-                  Image
+                  Floor plans
                 </label>
                 <input
                   id="price"
@@ -414,7 +443,10 @@ function CreateForm() {
                   placeholder="Enter price"
                   className="h-full p-5 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none"
                 />
-              </div>
+                {errors?.image ? (
+                  <p className="invalidForm">{errors.image}</p>
+                ) : null}
+              </div> */}
             </div>
           </div>
 

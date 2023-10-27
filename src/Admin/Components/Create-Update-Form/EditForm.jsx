@@ -38,10 +38,10 @@ function EditForm() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/api/site`)
+      .get(`${import.meta.env.VITE_API}/api/site`)
       .then((res) => setSites(res.data.sites));
 
-    axios.get(`http://localhost:4000/api/property/${id}`).then((res) => {
+    axios.get(`${import.meta.env.VITE_API}/api/property/${id}`).then((res) => {
       setSelectedSite(res.data.property.siteId);
       setData(res.data.property);
     });

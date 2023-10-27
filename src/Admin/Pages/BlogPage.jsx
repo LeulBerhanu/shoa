@@ -13,7 +13,7 @@ function BlogPage() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/api/blog")
+      .get(`${import.meta.env.VITE_API}/api/blog`)
       .then((res) => res.data.blogs)
       .then((data) => setBlogs(data));
   }, []);
@@ -27,11 +27,14 @@ function BlogPage() {
 
   const handleDelete = async (id, idx) => {
     try {
-      const res = await axios.delete(`http://localhost:4000/api/blog/${id}`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+      const res = await axios.delete(
+        `${import.meta.env.VITE_API}/api/blog/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
 
       // const prop = properties.splice(idx, 1);
       // console.log(prop);

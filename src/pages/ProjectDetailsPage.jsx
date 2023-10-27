@@ -25,7 +25,7 @@ function ProjectDetailsPage() {
   const getting = async () => {
     try {
       await axios
-        .get(`http://localhost:4000/api/property/${id}`)
+        .get(`${import.meta.env.VITE_API}/api/property/${id}`)
         .then((res) => setProperty(res.data.property));
     } catch (err) {
       console.error(err);

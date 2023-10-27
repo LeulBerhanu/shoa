@@ -19,7 +19,7 @@ function EditBlog() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/api/blog/${id}`)
+      .get(`${import.meta.env.VITE_API}/api/blog/${id}`)
       .then((res) => setBlog(res.data.blog));
   }, []);
 
@@ -32,7 +32,7 @@ function EditBlog() {
     if (Object.keys(errorValidation).length === 0) {
       try {
         const res = await axios.patch(
-          `http://localhost:4000/api/blog/${id}`,
+          `${import.meta.env.VITE_API}/api/blog/${id}`,
           blog,
           {
             headers: {

@@ -25,12 +25,12 @@ function ProjectsPage() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/api/property")
+      .get(`${import.meta.env.VITE_API}/api/property`)
       .then((res) => res.data.properties)
       .then((data) => setProperties(data));
 
     axios
-      .get("http://localhost:4000/api/site")
+      .get(`${import.meta.env.VITE_API}/api/site`)
       .then((res) => res.data.sites)
       .then((data) => setSites(data));
   }, []);
@@ -67,7 +67,7 @@ function ProjectsPage() {
     }
 
     if (type) {
-      result = result.filter((property) => property.type === type);
+      result = result.filter((property) => property.propertyType === type);
     }
 
     if (!type && !location && !status && !sale) {
@@ -130,8 +130,8 @@ function ProjectsPage() {
                 className="w-full p-3 rounded-[15px] font-medium outline-none xl:p-5 "
               >
                 <option value="">Property Status (any)</option>
-                <option value="Finished">Finished</option>
-                <option value="Semi Finished">Semi Finished</option>
+                <option value="finished">Finished</option>
+                <option value="semi-finished">Semi Finished</option>
               </select>
 
               {/* Keyword */}
@@ -140,9 +140,9 @@ function ProjectsPage() {
                 className="w-full p-3 rounded-[15px] font-medium outline-none xl:p-5 "
               >
                 <option value="">Sale (any)</option>
-                <option value="Sold out">Sold out</option>
-                <option value="On sale">On sale</option>
-                <option value="Discount">Discount</option>
+                <option value="sold-out">Sold out</option>
+                <option value="on-sale">On sale</option>
+                <option value="discount">Discount</option>
               </select>
 
               {/* Property Type*/}
@@ -151,8 +151,8 @@ function ProjectsPage() {
                 className="w-full p-3 rounded-[15px] font-medium outline-none xl:p-5 "
               >
                 <option value="">Property Type (any)</option>
-                <option value="Apartment">Apartment</option>
-                <option value="Villa">Villa</option>
+                <option value="apartment">Apartment</option>
+                <option value="villa">Villa</option>
               </select>
             </div>
           </div>
@@ -174,8 +174,8 @@ function ProjectsPage() {
             className="w-60 mb-7 p-3 xl:p-5 rounded-[15px] font-medium outline-none md:w-44 xl:text-base"
           >
             <option value="">Sort by Price</option>
-            <option value="">Ascending</option>
-            <option value="">Descending</option>
+            <option value="ascending">Ascending</option>
+            <option value="descending">Descending</option>
           </select>
         </div>
 

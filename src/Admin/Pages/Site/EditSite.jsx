@@ -28,7 +28,7 @@ function EditSite() {
   }
 
   useEffect(() => {
-    axios.get(`http://localhost:4000/api/site/${id}`).then((res) => {
+    axios.get(`${import.meta.env.VITE_API}/api/site/${id}`).then((res) => {
       console.log("RESPONSE", res.data);
       setData({
         title: res.data.site.title,

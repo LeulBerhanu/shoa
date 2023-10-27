@@ -28,7 +28,7 @@ function PropertyPage() {
   const handleDelete = async (id) => {
     try {
       const res = await axios.delete(
-        `http://localhost:4000/api/property/${id}`,
+        `${import.meta.env.VITE_API}/api/property/${id}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,

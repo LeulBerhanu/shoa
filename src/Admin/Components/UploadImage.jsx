@@ -33,7 +33,6 @@ export default function UploadImage({ image, setImage }) {
   const uploadImage = async (event) => {
     setLoading(true);
     const file = event.target.files;
-    console.log(files.length);
 
     const base64 = await convertBase64(file[0]);
     setImage(base64);
@@ -68,7 +67,7 @@ export default function UploadImage({ image, setImage }) {
               <span className="font-semibold">Click to upload</span>
             </p>
             <p className="text-xs text-gray-500 dark:text-gray-400">
-              SVG, PNG, or JPG (MAX. 500KB)
+              WebP, PNG, or JPG (MAX. 500KB)
             </p>
           </div>
           <input
@@ -87,7 +86,7 @@ export default function UploadImage({ image, setImage }) {
       <div>
         {loading ? (
           <div className="flex items-center justify-center">
-            <img src={assets} />{" "}
+            <p>Uploading image...</p>
           </div>
         ) : (
           <UploadInput />
