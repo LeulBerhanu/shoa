@@ -32,9 +32,9 @@ function CurrencyConvertor() {
         console.log("data", data);
       })
       .catch((err) => {
-        console.error("error occured while fetching", err);
+        console.error("error occurred while fetching", err);
       });
-  }, [currency1, currency2]);
+  }, [fromCurr, toCurr, currency1]); // Updated dependencies
 
   function handleSwap() {
     setSwapCurrency((prev) => !prev);

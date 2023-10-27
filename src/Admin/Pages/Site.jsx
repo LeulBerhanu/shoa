@@ -18,7 +18,14 @@ function Site() {
       .then((data) => setSites(data));
   }, []);
 
-  const handleDelete = async (id, idx) => {
+  const deleteElement = (id, idx) => {
+    const newArray = sites.filter((_, index) => index !== idx);
+    setSites(newArray);
+
+    handleDelete(id);
+  };
+
+  const handleDelete = async (id) => {
     try {
       const res = await axios.delete(`http://localhost:4000/api/site/${id}`, {
         headers: {
@@ -57,11 +64,6 @@ function Site() {
                     <p>Date</p> <MdSwapVert />
                   </div>
                 </th>
-                <th>
-                  <div className="flex items-center gap-x-1">
-                    <p>Live</p> <MdSwapVert />
-                  </div>
-                </th>
                 <th>Options</th>
               </tr>
             </thead>
@@ -70,15 +72,8 @@ function Site() {
                 sites.map((site, idx) => (
                   <tr key={site._id} className="[&>*]:px-10">
                     <td>{idx + 1}</td>
-                    <td>{site.title}</td>
+                    <td className="max-w-[550px]">{site.title}</td>
                     <td>{moment(site.updatedAt).format("DD MMM Y")}</td>
-                    <td>
-                      <button
-                        className={`${tableBtn} border-2 border-[#A3CFBB] bg-[#D1E7DD]`}
-                      >
-                        Yes
-                      </button>
-                    </td>
                     <td>
                       <div className="flex gap-x-3">
                         <Link to={`edit-site/${site._id}`}>
@@ -88,7 +83,7 @@ function Site() {
                         </Link>
                         <button
                           className={`${tableBtn} bg-white`}
-                          onClick={() => handleDelete(site._id)}
+                          onClick={() => deleteElement(site._id, idx)}
                         >
                           <RiDeleteBin6Line />
                         </button>

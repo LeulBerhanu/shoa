@@ -18,10 +18,14 @@ function PropertyPage() {
       .then((data) => setProperties(data));
   }, []);
 
-  const handleDelete = async (id, idx) => {
-    const filtered = properties.filter((item) => item.id !== id);
-    setProperties(filtered);
+  const deleteElement = (id, idx) => {
+    const newArray = properties.filter((_, index) => index !== idx);
+    setProperties(newArray);
 
+    handleDelete(id);
+  };
+
+  const handleDelete = async (id) => {
     try {
       const res = await axios.delete(
         `http://localhost:4000/api/property/${id}`,
@@ -52,7 +56,7 @@ function PropertyPage() {
         </div>
 
         <div className="p-10 bg-white rounded-lg shadow-boxShadow">
-          <table className="mx-auto text-xl border-separate border-spacing-0 border-2 rounded-lg ">
+          <table className="mx-auto text-xl w-full border-separate border-spacing-0 border-2 rounded-lg ">
             <thead className="h-20 text-left">
               <tr className="[&>*]:px-10 [&>*]:font-normal">
                 <th>
@@ -66,11 +70,7 @@ function PropertyPage() {
                     <p>Date</p> <MdSwapVert />
                   </div>
                 </th>
-                <th>
-                  <div className="flex items-center gap-x-1">
-                    <p>Live</p> <MdSwapVert />
-                  </div>
-                </th>
+
                 <th>Options</th>
               </tr>
             </thead>
@@ -81,13 +81,7 @@ function PropertyPage() {
                     <td>{idx + 1}</td>
                     <td>{property.name}</td>
                     <td>{moment(property.updatedAt).format("DD MMM Y")}</td>
-                    <td>
-                      <button
-                        className={`${tableBtn} border-2 border-[#A3CFBB] bg-[#D1E7DD]`}
-                      >
-                        Yes
-                      </button>
-                    </td>
+
                     <td>
                       <div className="flex gap-x-3">
                         <Link to={`edit-property/${property._id}`}>
@@ -97,7 +91,7 @@ function PropertyPage() {
                         </Link>
                         <button
                           className={`${tableBtn} bg-white`}
-                          onClick={() => handleDelete(property._id, idx)}
+                          onClick={() => deleteElement(property._id, idx)}
                         >
                           <RiDeleteBin6Line />
                         </button>

@@ -3,6 +3,8 @@ import Header from "../Components/Header";
 import axios from "axios";
 import Card from "../../components/card/Card";
 import LinkBoxHomePage from "../../components/LinkBoxHomePage";
+import LocationName from "../../components/LocationName";
+import MapComponent from "../../components/MapComponent";
 
 function Dashboard() {
   const [blogs, setBlogs] = useState(null);
@@ -59,14 +61,18 @@ function Dashboard() {
         </div>
 
         <div className="p-10 bg-white rounded-lg shadow-boxShadow">
-          <div className="grid grid-cols-2 gap-10">
-            {properties &&
-              properties.map((item) => (
-                <div key={item._id} className="object-cover">
-                  <Card item={item} />
+          {sites &&
+            sites.map((site, index) => (
+              <div className="mb-9">
+                <div className="text-3xl mb-3">
+                  {site.title}{" "}
+                  {site.remark && (
+                    <span className="text-base">({site.remark})</span>
+                  )}
                 </div>
-              ))}
-          </div>
+                <MapComponent location={site.location} />
+              </div>
+            ))}
         </div>
       </section>
 
