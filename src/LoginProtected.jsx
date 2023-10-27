@@ -25,7 +25,7 @@ export default LoginProtected;
 
 export const verifyToken = async () => {
   let token = localStorage.getItem("token");
-  const res = await axios.get("http://localhost:4000/api/auth/verify", {
+  const res = await axios.get(`${import.meta.env.VITE_API}/api/auth/verify`, {
     headers: {
       authorization: `bearer ${token}`,
     },
