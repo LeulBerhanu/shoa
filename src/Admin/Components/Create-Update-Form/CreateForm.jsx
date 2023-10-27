@@ -38,7 +38,7 @@ function CreateForm() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/api/site")
+      .get(`${import.meta.env.VITE_API}/api/site`)
       .then((res) => setSites(res.data.sites));
   }, []);
 
@@ -50,7 +50,7 @@ function CreateForm() {
     // setLoading(true);
     axios
       .post(
-        "http://localhost:4000/api/property/floorplan",
+        `${import.meta.env.VITE_API}/api/property/floorplan`,
         { propertyId: id, image: base64 },
         {
           headers: {

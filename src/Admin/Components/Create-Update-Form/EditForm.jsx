@@ -75,7 +75,7 @@ function EditForm() {
 
       try {
         const res = await axios.patch(
-          `http://localhost:4000/api/property/${id}`,
+          `${import.meta.env.VITE_API}/api/property/${id}`,
           {
             ...sentData,
             siteId: selectedSite,
