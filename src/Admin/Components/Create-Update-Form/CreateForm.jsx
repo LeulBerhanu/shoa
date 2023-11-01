@@ -12,11 +12,9 @@ function CreateForm() {
   const navigate = useNavigate();
 
   const [floorplans, setFloorplans] = useState([]);
-  console.log("Floorplans", floorplans);
   const [image, setImage] = useState("");
   const [errors, setErrors] = useState({});
   const [disable, setDisable] = useState(false);
-  console.log("image", image);
 
   const [data, setData] = useState({
     name: "",
@@ -59,29 +57,12 @@ function CreateForm() {
         }
       )
       .then((res) => {
-        setUrl(res.data);
+        console.log(res);
         alert("Image uploaded Succesfully");
       })
       .then(() => setLoading(false))
       .catch((err) => console.log(err));
   }
-
-  // const handleCreateFloorPlan = async () => {
-  //   try {
-  //     const res = await axios.post(
-  //       "http://localhost:4000/api/floorplan",
-  //       floorplans,
-  //       {
-  //         headers: {
-  //           Authorization: `Bearer ${localStorage.getItem("token")}`,
-  //         },
-  //       }
-  //     );
-  //     console.log(res);
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -401,15 +382,7 @@ function CreateForm() {
             </div>
 
             <div className="flex flex-col w-full">
-              {/* <label className="text-2xl mb-6">Floor Plan</label>
-              <div className="h-full p-1 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none">
-                <UploadFloorplan
-                  floorplans={floorplans}
-                  setFloorplans={setFloorplans}
-                />
-              </div> */}
-
-              <div className="flex flex-col w-full">
+              <div className="flex flex-col w-full mb-6">
                 <label className="text-2xl mb-6">Image</label>
                 <div className="h-full p-1 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none">
                   <UploadImage image={image} setImage={setImage} />
@@ -419,34 +392,28 @@ function CreateForm() {
                 ) : null}
               </div>
 
-              <p className="mt-6">floorplans</p>
-              <FloorPlans
-                floorplans={floorplans}
-                setFloorplans={setFloorplans}
-                uploadImage={uploadImage}
-              />
-
-              {/* <div className="flex flex-col w-full">
-                <label className="text-2xl mb-6">Image</label>
-                <div className="h-full p-1 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none">
-                  <UploadImage image={image} setImage={setImage} />
+              <div>
+                <div>
+                  <label className="text-2xl mb-6">Floor Plans</label>
+                  <div className="mt-6 mb-6">
+                    <FloorPlans
+                      floorplans={floorplans}
+                      setFloorplans={setFloorplans}
+                      uploadImage={uploadImage}
+                    />
+                  </div>
                 </div>
-              </div> */}
 
-              {/* <div className="flex flex-col  w-full">
-                <label htmlFor="price" className="text-2xl mb-6">
-                  Floor plans
-                </label>
-                <input
-                  id="price"
-                  type="file"
-                  placeholder="Enter price"
-                  className="h-full p-5 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none"
-                />
-                {errors?.image ? (
-                  <p className="invalidForm">{errors.image}</p>
-                ) : null}
-              </div> */}
+                <div>
+                  {floorplans &&
+                    floorplans.map((plan, idx) => (
+                      <div key={idx} className="mb-4 ">
+                        <img src={plan} alt="" />
+                        <p>Floor plan {idx + 1}</p>
+                      </div>
+                    ))}
+                </div>
+              </div>
             </div>
           </div>
 

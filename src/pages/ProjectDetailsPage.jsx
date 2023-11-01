@@ -53,13 +53,15 @@ function ProjectDetailsPage() {
 
           {/* Project Id */}
           <div className="bg-white absolute bottom-3 right-3 text-xs px-3 py-2 md:px-5 md:py-3 rounded-[15px] xl:text-[28px]">
-            ID: RP-2015-12
+            ID: {property._id}
           </div>
 
           {/* Badge */}
-          <div className="absolute top-0 right-6">
-            <OnSaleBadge />
-          </div>
+          {property?.sellingStatus === "on-sale" && (
+            <div className="absolute top-0 right-6">
+              <OnSaleBadge />
+            </div>
+          )}
         </div>
       </div>
 
@@ -140,30 +142,15 @@ function ProjectDetailsPage() {
         <div className="container mx-auto px-8 md:px-20">
           <h2 className="md:text-[49px]">Floor Plans:</h2>
           <div className="flex flex-col gap-9 md:gap-6 md:grid md:grid-cols-2 xl:gap-y-12 xl:gap-x-24">
-            <div className="relative">
-              <img
-                src={floorPlan}
-                className="rounded-[15px] shadow-boxShadow-2"
-              />
-            </div>
-            <div className="relative">
-              <img
-                src={floorPlan}
-                className="rounded-[15px] shadow-boxShadow-2"
-              />
-            </div>
-            <div className="relative">
-              <img
-                src={floorPlan}
-                className="rounded-[15px] shadow-boxShadow-2"
-              />
-            </div>
-            <div className="relative">
-              <img
-                src={floorPlan}
-                className="rounded-[15px] shadow-boxShadow-2"
-              />
-            </div>
+            {property &&
+              property.floorPlans.map((plan) => (
+                <div key={plan._id} className="relative">
+                  <img
+                    src={plan.url}
+                    className="rounded-[15px] shadow-boxShadow-2 w-full h-full object-contain"
+                  />
+                </div>
+              ))}
           </div>
         </div>
       </section>
@@ -173,7 +160,7 @@ function ProjectDetailsPage() {
           <h2>Location:</h2>
           <div className="flex flex-col  gap-x-11 gap-y-8 xl:flex-row">
             <div className="h-[300px]  xl:h-auto xl:flex-1">
-              <LocationComp url={property?.mapLocation} />
+              <MapComponent url={property?.mapLocation} />
             </div>
             <div className="xl:w-[444px] ">
               <CallCard />

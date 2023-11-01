@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 
-function FloorPlans({ floorplans, setFloorplans, uploadImage }) {
-  const [url, setUrl] = useState("");
+function FloorPlans({ floorplans, setFloorplans }) {
+  //   const [url, setUrl] = useState("");
 
   const convertBase64Floorplan = (file) => {
     return new Promise((resolve, reject) => {

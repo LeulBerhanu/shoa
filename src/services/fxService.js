@@ -1,5 +1,5 @@
 const endpoint = "convert";
-const access_key = "5518711f5b2a87ba53ea898b";
+const access_key = "4f26c46653db1b75edc3cdd6";
 
 export const fetchExchangeRates = async (from, to, amount) => {
   const response = await fetch(

@@ -25,16 +25,20 @@ function CurrencyConvertor() {
     setCurrency2(0);
   }, [swapCurrency]);
 
-  useEffect(() => {
-    fetchExchangeRates(fromCurr, toCurr, currency1)
-      .then((data) => {
-        setCurrency2(data.conversion_result);
-        console.log("data", data);
-      })
-      .catch((err) => {
-        console.error("error occurred while fetching", err);
-      });
-  }, [fromCurr, toCurr, currency1]); // Updated dependencies
+  // useEffect(() => {
+  //   const unsub = () => {
+  //     fetchExchangeRates(fromCurr, toCurr, currency1)
+  //       .then((data) => {
+  //         setCurrency2(data.conversion_result);
+  //         console.log("data", data);
+  //       })
+  //       .catch((err) => {
+  //         console.error("error occurred while fetching", err);
+  //       });
+  //   };
+
+  //   unsub();
+  // }, []); // Updated dependencies
 
   function handleSwap() {
     setSwapCurrency((prev) => !prev);

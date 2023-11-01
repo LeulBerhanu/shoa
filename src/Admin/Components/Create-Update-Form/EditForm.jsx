@@ -5,12 +5,20 @@ import { FaCheck } from "react-icons/fa";
 import { useParams } from "react-router-dom";
 import propertyValidation from "../../Validation/propertyValidation";
 import { useNavigate } from "react-router-dom";
+import FloorPlans from "../FloorPlans";
+import SingleFloorPlan from "../SingleFloorPlan";
 
 function EditForm() {
   const [uploading, setUploading] = useState(false);
   const navigate = useNavigate();
 
   const { id } = useParams();
+
+  const [floorplans, setFloorplans] = useState([]);
+  console.log("FLOORPLANS", floorplans);
+  const [floorplan, setFloorplan] = useState("");
+  console.log("floorplan", floorplan);
+
   const [image, setImage] = useState("");
   const [errors, setErrors] = useState({});
   const [disable, setDisable] = useState(false);
@@ -36,6 +44,7 @@ function EditForm() {
   const [sites, setSites] = useState([]);
   const [selectedSite, setSelectedSite] = useState("");
 
+  console.log("SELECTED SITE", selectedSite);
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_API}/api/site`)
@@ -44,11 +53,60 @@ function EditForm() {
     axios.get(`${import.meta.env.VITE_API}/api/property/${id}`).then((res) => {
       setSelectedSite(res.data.property.siteId);
       setData(res.data.property);
+      setFloorplans(res.data.property.floorPlans);
     });
+    //
   }, []);
+
+  console.log("Floorplan", floorplan);
+  // function handlePlanUpdate(planId, idx) {
+  //   // for (let i = 0; i < floorplans.length; i++) {
+  //   //   const plan = floorPlans[i];
+  //   //   console.log("plan", plan);
+  //   // console.log("id", id);
+
+  //   axios
+  //     .patch(
+  //       `${import.meta.env.VITE_API}/api/property/floorplan/${id}`,
+  //       { id: planId, image: floorplan },
+  //       {
+  //         headers: {
+  //           Authorization: `Bearer ${localStorage.getItem("token")}`,
+  //         },
+  //       }
+  //     )
+  //     .then((resp) => {
+  //       console.log("FETCH RESOPONSE", resp);
+  //       // setFloorplans(prev => [...prev, res.data.] );
+  //     });
+  // }
+
+  // useEffect(() => {
+
+  // }, [handlePlanUpdate])
 
   function scrollToTop() {
     window.scrollTo(0, 0);
+  }
+
+  function uploadImage(id, base64) {
+    // setLoading(true);
+    axios
+      .post(
+        `${import.meta.env.VITE_API}/api/property/floorplan`,
+        { propertyId: id, image: base64 },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+        alert("Image uploaded Succesfully");
+      })
+      .then(() => setLoading(false))
+      .catch((err) => console.log(err));
   }
 
   const handleSubmit = async (e) => {
@@ -67,9 +125,15 @@ function EditForm() {
       scrollToTop();
       const { propertyImage, ...others } = data;
 
+      const floorPlansWithUrl = floorplans.filter(
+        (item) => typeof item != "string"
+      );
       let sentData = {
         ...others,
+        floorPlans: floorPlansWithUrl,
       };
+
+      console.log("SEEEEEEEEEEEEEEEEEEEEEEENT DATA", sentData);
 
       image ? (sentData.propertyImage = image) : null;
 
@@ -88,6 +152,21 @@ function EditForm() {
         );
 
         console.log(res);
+
+        console.log(">>>>>>>>>>>>>>>>>>>>>>floorplans", floorplans);
+        for (let i = 0; i < floorplans.length; i++) {
+          console.log("floorplans[i].length", typeof floorplans[i]);
+          if (typeof floorplans[i] === "string") {
+            const plan = floorplans[i];
+            console.log(">...........>>>>PLAN", i, plan);
+
+            console.log("RRRRRRRRRRRRRRRRSSSS ID", res.data.property._id);
+            const response = await uploadImage(res.data.property._id, plan);
+
+            console.log("floorplan res", response);
+          }
+        }
+
         navigate("/admin/property");
       } catch (err) {
         console.error(err);
@@ -389,31 +468,41 @@ function EditForm() {
                 ) : null}
               </div>
 
-              <div className="flex flex-col  w-full">
-                <label htmlFor="price" className="text-2xl mb-6">
-                  Image
-                </label>
-                <input
-                  id="price"
-                  type="file"
-                  placeholder="Enter price"
-                  className="h-full p-5 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none"
-                />
+              <div>
+                <div>
+                  <label className="text-2xl mb-6">Floor Plans</label>
+                  <div className="mt-6 mb-6">
+                    <FloorPlans
+                      floorplans={floorplans}
+                      setFloorplans={setFloorplans}
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  {floorplans &&
+                    floorplans.map((plan, idx) => (
+                      <div
+                        key={idx}
+                        className="mb-4"
+                        // onClick={() => handlePlanUpdate(plan.id, idx)}
+                      >
+                        <img src={plan.url} alt="" />
+                        <p>Floor plan {idx + 1}</p>
+                        <SingleFloorPlan
+                          floorplan={floorplan}
+                          setFloorplan={setFloorplan}
+                          floorplans={floorplans}
+                          setFloorplans={setFloorplans}
+                          index={idx}
+                          plan={plan}
+                        />
+                      </div>
+                    ))}
+                </div>
               </div>
             </div>
           </div>
-
-          {/* <div className="flex flex-col w-1/2">
-            <label htmlFor="description" className="text-2xl mb-6">
-              Description
-            </label>
-            <textarea
-              id="price"
-              type="description"
-              placeholder="Enter description"
-              className=" p-5 h-[220px] min-h-[70px] max-h-[220px] placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none"
-            />
-          </div> */}
 
           <button
             onClick={handleSubmit}
