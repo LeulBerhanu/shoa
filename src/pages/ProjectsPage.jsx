@@ -9,19 +9,13 @@ import { AiOutlineSearch } from "react-icons/ai";
 
 function ProjectsPage() {
   const [properties, setProperties] = useState("");
-  console.log(properties);
 
   const [filters, setFilters] = useState("");
-
-  console.log("FIlters", filters);
+  const [sortBy, setSortBy] = useState("");
 
   const [search, setSearch] = useState("");
 
-  const [filteredProperties, setFilteredProperties] = useState("");
-  console.log("FP", filteredProperties);
-
   const [sites, setSites] = useState();
-  console.log(sites);
 
   useEffect(() => {
     axios
@@ -35,6 +29,11 @@ function ProjectsPage() {
       .then((data) => setSites(data));
   }, []);
 
+  const handleSortChange = (event) => {
+    const value = event.target.value;
+    setSortBy(value === "default" ? "" : value);
+  };
+
   const handleSelectChange = (event, filterType) => {
     console.log("handling change...");
     const value = event.target.value;
@@ -44,11 +43,6 @@ function ProjectsPage() {
       [filterType]: value,
     });
   };
-
-  useEffect(() => {
-    const filteredProperties = handleFilter(filters);
-    setFilteredProperties(filteredProperties);
-  }, [filters]);
 
   const handleFilter = () => {
     const { location, sale, status, type } = filters;
@@ -80,6 +74,13 @@ function ProjectsPage() {
       );
     }
 
+    if (sortBy === "ascending") {
+      result = result.slice().sort((a, b) => a.price - b.price);
+    } else if (sortBy === "descending") {
+      result = result.slice().sort((a, b) => b.price - a.price);
+    } else {
+    }
+
     return result;
   };
 
@@ -87,19 +88,6 @@ function ProjectsPage() {
 
   return (
     <div>
-      {/* <div
-        style={{ backgroundImage: `url(${bedroom})` }}
-        className="-z-10 w-full h-[500px] absolute top-0 bg-cover bg-no-repeat"
-      >
-        <div
-          style={{
-            background:
-              "linear-gradient(180deg, rgba(255, 255, 255, 0.8) -61.6%, rgba(14, 52, 75, 0.8) 100%)",
-          }}
-          className="absolute w-full h-full"
-        ></div>
-      </div> */}
-
       <PageBanner
         content={
           <div className="flex flex-col gap-5 md:px-10 xl:px-36">
@@ -108,18 +96,6 @@ function ProjectsPage() {
               setSearch={setSearch}
               setFilters={setFilters}
             />
-            {/* Search Bar */}
-            {/* <div className="container mx-auto flex bg-white/[.75] items-center border capitalize rounded-[15px] px-4 py-3 justify-between xl:p-5 xl:text-lg">
-              <input
-                type="text"
-                placeholder="Find your home"
-                className=" placeholder-black bg-transparent w-full outline-none"
-                onChange={(e) => setSearch(e.target.value)}
-              />
-              <div className="xl:text-2xl">
-                <AiOutlineSearch />
-              </div>
-            </div> */}
 
             <div className="container flex flex-col  gap-2 justify-between mx-auto md:grid md:grid-cols-2 md:gap-2 xl:gap-4 xl:text-base">
               {/* Location */}
@@ -179,6 +155,8 @@ function ProjectsPage() {
           </h2>
           {/* TODO: sort */}
           <select
+            onChange={handleSortChange}
+            value={sortBy || "default"}
             style={{ boxShadow: "0px 0px 11px 1px #00000040" }}
             className="w-60 mb-7 p-3 xl:p-5 rounded-[15px] font-medium outline-none md:w-44 xl:text-base"
           >
@@ -190,9 +168,8 @@ function ProjectsPage() {
 
         {/* Search Result */}
         <div className="container mx-auto px-4  flex flex-col  gap-8 items-center md:px-20 xl:grid xl:grid-cols-2 xl:place-items-center">
-          {handleFilter().map((item) => (
-            <Card key={item._id} item={item} />
-          ))}
+          {handleFilter() &&
+            handleFilter().map((item) => <Card key={item._id} item={item} />)}
         </div>
       </section>
     </div>

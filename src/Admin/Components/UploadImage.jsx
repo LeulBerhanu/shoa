@@ -34,10 +34,18 @@ export default function UploadImage({ image, setImage }) {
     setLoading(true);
     const file = event.target.files;
 
-    const base64 = await convertBase64(file[0]);
-    setImage(base64);
+    const maxSizeInBytes = 500 * 1024; // 500KB
+    if (file && file[0].size > maxSizeInBytes) {
+      alert(
+        "File size exceeds the maximum allowed limit (500KB). Please choose a smaller file."
+      );
+      event.target.value = null; // Reset the input field
+    } else {
+      const base64 = await convertBase64(file[0]);
+      setImage(base64);
+      setFinished(true);
+    }
     setLoading(false);
-    setFinished(true);
   };
 
   function UploadInput() {

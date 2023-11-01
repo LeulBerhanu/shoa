@@ -7,6 +7,7 @@ import propertyValidation from "../../Validation/propertyValidation";
 import { useNavigate } from "react-router-dom";
 import FloorPlans from "../FloorPlans";
 import SingleFloorPlan from "../SingleFloorPlan";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 function EditForm() {
   const [uploading, setUploading] = useState(false);
@@ -15,14 +16,11 @@ function EditForm() {
   const { id } = useParams();
 
   const [floorplans, setFloorplans] = useState([]);
-  console.log("FLOORPLANS", floorplans);
   const [floorplan, setFloorplan] = useState("");
-  console.log("floorplan", floorplan);
 
   const [image, setImage] = useState("");
   const [errors, setErrors] = useState({});
   const [disable, setDisable] = useState(false);
-  console.log("image", image);
 
   const [data, setData] = useState({
     name: "",
@@ -35,16 +33,14 @@ function EditForm() {
     description: "",
     mapLocation: "",
     featured: false,
+    featuredStatement: "",
     siteId: "",
     propertyType: "",
   });
 
-  console.log("data", data);
-
   const [sites, setSites] = useState([]);
   const [selectedSite, setSelectedSite] = useState("");
 
-  console.log("SELECTED SITE", selectedSite);
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_API}/api/site`)
@@ -58,32 +54,15 @@ function EditForm() {
     //
   }, []);
 
-  console.log("Floorplan", floorplan);
-  // function handlePlanUpdate(planId, idx) {
-  //   // for (let i = 0; i < floorplans.length; i++) {
-  //   //   const plan = floorPlans[i];
-  //   //   console.log("plan", plan);
-  //   // console.log("id", id);
-
-  //   axios
-  //     .patch(
-  //       `${import.meta.env.VITE_API}/api/property/floorplan/${id}`,
-  //       { id: planId, image: floorplan },
-  //       {
-  //         headers: {
-  //           Authorization: `Bearer ${localStorage.getItem("token")}`,
-  //         },
-  //       }
-  //     )
-  //     .then((resp) => {
-  //       console.log("FETCH RESOPONSE", resp);
-  //       // setFloorplans(prev => [...prev, res.data.] );
-  //     });
-  // }
-
-  // useEffect(() => {
-
-  // }, [handlePlanUpdate])
+  const handleDelete = (idx, e) => {
+    e.preventDefault();
+    const confirmDelete = window.confirm("Are you sure you want to delete?");
+    if (confirmDelete) {
+      setFloorplans((prev) =>
+        prev.filter((item, index) => (index !== idx ? item : null))
+      );
+    }
+  };
 
   function scrollToTop() {
     window.scrollTo(0, 0);
@@ -133,8 +112,6 @@ function EditForm() {
         floorPlans: floorPlansWithUrl,
       };
 
-      console.log("SEEEEEEEEEEEEEEEEEEEEEEENT DATA", sentData);
-
       image ? (sentData.propertyImage = image) : null;
 
       try {
@@ -153,14 +130,11 @@ function EditForm() {
 
         console.log(res);
 
-        console.log(">>>>>>>>>>>>>>>>>>>>>>floorplans", floorplans);
         for (let i = 0; i < floorplans.length; i++) {
           console.log("floorplans[i].length", typeof floorplans[i]);
           if (typeof floorplans[i] === "string") {
             const plan = floorplans[i];
-            console.log(">...........>>>>PLAN", i, plan);
 
-            console.log("RRRRRRRRRRRRRRRRSSSS ID", res.data.property._id);
             const response = await uploadImage(res.data.property._id, plan);
 
             console.log("floorplan res", response);
@@ -471,34 +445,45 @@ function EditForm() {
               <div>
                 <div>
                   <label className="text-2xl mb-6">Floor Plans</label>
-                  <div className="mt-6 mb-6">
-                    <FloorPlans
-                      floorplans={floorplans}
-                      setFloorplans={setFloorplans}
-                    />
+                  <div className="mt-6 mb-6"></div>
+                  <div>
+                    {floorplans &&
+                      floorplans.map((plan, idx) => (
+                        <div key={idx} className="mb-4 border">
+                          <img src={plan.url || plan} alt="" />
+                          <div className="px-2 py-3">
+                            <div className="flex justify-between">
+                              <p className="text-2xl">Floor plan {idx + 1}</p>
+                              <button onClick={(e) => handleDelete(idx, e)}>
+                                <div className="text-xl hover:opacity-50">
+                                  <RiDeleteBin6Line />
+                                </div>
+                              </button>
+                            </div>
+                            {plan.url && (
+                              <div className="flex items-center gap-x-3">
+                                <SingleFloorPlan
+                                  floorplan={floorplan}
+                                  setFloorplan={setFloorplan}
+                                  index={idx}
+                                  plan={plan}
+                                />
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      ))}
                   </div>
-                </div>
 
-                <div>
-                  {floorplans &&
-                    floorplans.map((plan, idx) => (
-                      <div
-                        key={idx}
-                        className="mb-4"
-                        // onClick={() => handlePlanUpdate(plan.id, idx)}
-                      >
-                        <img src={plan.url} alt="" />
-                        <p>Floor plan {idx + 1}</p>
-                        <SingleFloorPlan
-                          floorplan={floorplan}
-                          setFloorplan={setFloorplan}
-                          floorplans={floorplans}
-                          setFloorplans={setFloorplans}
-                          index={idx}
-                          plan={plan}
-                        />
-                      </div>
-                    ))}
+                  <div>
+                    <p className="text-2xl mb-6 mt-11">Add Floor Plan</p>
+                    <div className="h-[70px] flex items-center px-5 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none">
+                      <FloorPlans
+                        floorplans={floorplans}
+                        setFloorplans={setFloorplans}
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

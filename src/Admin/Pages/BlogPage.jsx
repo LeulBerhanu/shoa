@@ -18,11 +18,15 @@ function BlogPage() {
       .then((data) => setBlogs(data));
   }, []);
 
-  const deleteElement = (id, idx) => {
-    const newArray = blogs.filter((_, index) => index !== idx);
-    setBlogs(newArray);
+  const deleteElement = (id, idx, e) => {
+    e.preventDefault();
+    const confirmDelete = window.confirm("Are you sure you want to delete?");
+    if (confirmDelete) {
+      const newArray = blogs.filter((_, index) => index !== idx);
+      setBlogs(newArray);
 
-    handleDelete(id);
+      handleDelete(id);
+    }
   };
 
   const handleDelete = async (id, idx) => {
@@ -36,9 +40,6 @@ function BlogPage() {
         }
       );
 
-      // const prop = properties.splice(idx, 1);
-      // console.log(prop);
-      // setProperties(prop);
       console.log(res);
     } catch (err) {
       console.error(err);
@@ -103,7 +104,7 @@ function BlogPage() {
                         </Link>
                         <button
                           className={`${tableBtn} bg-white`}
-                          onClick={() => deleteElement(blog._id, idx)}
+                          onClick={(e) => deleteElement(blog._id, idx, e)}
                         >
                           <RiDeleteBin6Line />
                         </button>

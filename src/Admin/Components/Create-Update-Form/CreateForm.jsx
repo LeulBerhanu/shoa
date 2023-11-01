@@ -6,6 +6,7 @@ import propertyValidation from "../../Validation/propertyValidation";
 import { useNavigate } from "react-router-dom";
 import UploadFloorplan from "../UploadFloorplan";
 import FloorPlans from "../FloorPlans";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 function CreateForm() {
   const [uploading, setUploading] = useState(false);
@@ -63,6 +64,16 @@ function CreateForm() {
       .then(() => setLoading(false))
       .catch((err) => console.log(err));
   }
+
+  const handleDelete = (idx, e) => {
+    e.preventDefault();
+    const confirmDelete = window.confirm("Are you sure you want to delete?");
+    if (confirmDelete) {
+      setFloorplans((prev) =>
+        prev.filter((item, index) => (index !== idx ? item : null))
+      );
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -394,24 +405,32 @@ function CreateForm() {
 
               <div>
                 <div>
-                  <label className="text-2xl mb-6">Floor Plans</label>
-                  <div className="mt-6 mb-6">
-                    <FloorPlans
-                      floorplans={floorplans}
-                      setFloorplans={setFloorplans}
-                      uploadImage={uploadImage}
-                    />
-                  </div>
+                  {floorplans &&
+                    floorplans.map((plan, idx) => (
+                      <div key={idx} className="mb-4  border">
+                        <img src={plan} alt="" />
+                        <div className="px-2 py-3">
+                          <div className="flex justify-between">
+                            <p className="text-2xl">Floor plan {idx + 1}</p>
+                            <button onClick={(e) => handleDelete(idx, e)}>
+                              <div className="text-xl hover:opacity-50">
+                                <RiDeleteBin6Line />
+                              </div>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
                 </div>
 
                 <div>
-                  {floorplans &&
-                    floorplans.map((plan, idx) => (
-                      <div key={idx} className="mb-4 ">
-                        <img src={plan} alt="" />
-                        <p>Floor plan {idx + 1}</p>
-                      </div>
-                    ))}
+                  <p className="text-2xl mb-6 mt-11">Add Floor Plan</p>
+                  <div className="h-[70px] flex items-center px-5 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none">
+                    <FloorPlans
+                      floorplans={floorplans}
+                      setFloorplans={setFloorplans}
+                    />
+                  </div>
                 </div>
               </div>
             </div>

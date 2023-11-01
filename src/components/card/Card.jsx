@@ -5,7 +5,6 @@ import OnSaleBadge from "../OnSaleBadge";
 import { Link } from "react-router-dom";
 
 function Card({ item }) {
-  console.log("item", item);
   return (
     <div className="flex flex-col gap-4 items-center p-5  shadow-boxShadow rounded-2xl relative w-[500px] md:flex-row">
       <div className="flex relative justify-center ">

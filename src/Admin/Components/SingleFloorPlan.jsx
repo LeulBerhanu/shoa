@@ -2,13 +2,7 @@ import axios from "axios";
 import React from "react";
 import { useParams } from "react-router-dom";
 
-function SingleFloorPlan({
-  floorplans,
-  setFloorplan,
-  setFloorplans,
-  plan,
-  index,
-}) {
+function SingleFloorPlan({ setFloorplans, plan, index }) {
   const { id } = useParams();
   console.log("PropertyID", id);
 
@@ -30,31 +24,39 @@ function SingleFloorPlan({
   const uploadSingleFloorplan = async (event) => {
     // setLoading(true);
     const files = event.target.files;
+    const maxSizeInBytes = 500 * 1024; // 500KB
 
-    const base64 = await convertBase64Floorplan(files[0]);
-    base64 && console.log("converted");
-
-    try {
-      const res = await axios.patch(
-        `${import.meta.env.VITE_API}/api/property/floorplan/${id}`,
-        { id: plan.id, image: base64 },
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        }
+    if (files && files[0].size > maxSizeInBytes) {
+      alert(
+        "File size exceeds the maximum allowed limit (500KB). Please choose a smaller file."
       );
-      console.log("respomse edot", res);
+      event.target.value = null; // Reset the input field
+    } else {
+      const base64 = await convertBase64Floorplan(files[0]);
+      base64 && console.log("converted");
 
-      setFloorplans((prev) =>
-        prev.map((item, idx) => (idx === index ? res.data.floorPlan : item))
-      );
-    } catch (err) {
-      console.log("There is an error", err);
+      try {
+        const res = await axios.patch(
+          `${import.meta.env.VITE_API}/api/property/floorplan/${id}`,
+          { id: plan.id, image: base64 },
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
+        console.log("respomse edot", res);
+
+        setFloorplans((prev) =>
+          prev.map((item, idx) => (idx === index ? res.data.floorPlan : item))
+        );
+      } catch (err) {
+        console.log("There is an error", err);
+      }
+
+      // setLoading(false);
+      // setFinished(true);
     }
-
-    // setLoading(false);
-    // setFinished(true);
   };
 
   function handlePlanUpdate() {
@@ -66,7 +68,10 @@ function SingleFloorPlan({
 
   return (
     <div>
-      <input type="file" onChange={uploadSingleFloorplan} name="" id="" />
+      <div className="flex items-center gap-x-3">
+        <p className="text-lg">Update Floor Plan</p>
+        <input type="file" onChange={uploadSingleFloorplan} name="" id="" />
+      </div>
     </div>
   );
 }

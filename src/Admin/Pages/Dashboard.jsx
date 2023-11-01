@@ -10,7 +10,6 @@ function Dashboard() {
   const [blogs, setBlogs] = useState(null);
   const [sites, setSites] = useState(null);
   const [properties, setProperties] = useState(null);
-  const [featuredProperties, setFeaturedProperties] = useState([]);
 
   useEffect(() => {
     axios
@@ -32,8 +31,6 @@ function Dashboard() {
       .then((res) => res.data.properties)
       .then((data) => setProperties(data));
   }, []);
-
-  console.log("YOUR TOKEN", localStorage.getItem("token"));
 
   return (
     <div>
@@ -63,7 +60,7 @@ function Dashboard() {
         <div className="p-10 bg-white rounded-lg shadow-boxShadow">
           {sites &&
             sites.map((site, index) => (
-              <div className="mb-9">
+              <div key={site._id} className="mb-9">
                 <div className="text-3xl mb-3">
                   {site.title}{" "}
                   {site.remark && (

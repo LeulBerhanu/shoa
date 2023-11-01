@@ -18,11 +18,15 @@ function PropertyPage() {
       .then((data) => setProperties(data));
   }, []);
 
-  const deleteElement = (id, idx) => {
-    const newArray = properties.filter((_, index) => index !== idx);
-    setProperties(newArray);
+  const deleteElement = (id, idx, e) => {
+    e.preventDefault();
+    const confirmDelete = window.confirm("Are you sure you want to delete?");
+    if (confirmDelete) {
+      const newArray = properties.filter((_, index) => index !== idx);
+      setProperties(newArray);
 
-    handleDelete(id);
+      handleDelete(id);
+    }
   };
 
   const handleDelete = async (id) => {
@@ -36,7 +40,6 @@ function PropertyPage() {
         }
       );
 
-      // const prop = properties.splice(idx, 1);
       // console.log(prop);
       // setProperties(prop);
       console.log(res);
@@ -81,7 +84,6 @@ function PropertyPage() {
                     <td>{idx + 1}</td>
                     <td>{property.name}</td>
                     <td>{moment(property.updatedAt).format("DD MMM Y")}</td>
-
                     <td>
                       <div className="flex gap-x-3">
                         <Link to={`edit-property/${property._id}`}>
@@ -91,7 +93,7 @@ function PropertyPage() {
                         </Link>
                         <button
                           className={`${tableBtn} bg-white`}
-                          onClick={() => deleteElement(property._id, idx)}
+                          onClick={(e) => deleteElement(property._id, idx, e)}
                         >
                           <RiDeleteBin6Line />
                         </button>

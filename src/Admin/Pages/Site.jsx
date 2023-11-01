@@ -18,11 +18,15 @@ function Site() {
       .then((data) => setSites(data));
   }, []);
 
-  const deleteElement = (id, idx) => {
-    const newArray = sites.filter((_, index) => index !== idx);
-    setSites(newArray);
+  const deleteElement = (id, idx, e) => {
+    e.preventDefault();
+    const confirmDelete = window.confirm("Are you sure you want to delete?");
+    if (confirmDelete) {
+      const newArray = sites.filter((_, index) => index !== idx);
+      setSites(newArray);
 
-    handleDelete(id);
+      handleDelete(id);
+    }
   };
 
   const handleDelete = async (id) => {
@@ -86,7 +90,7 @@ function Site() {
                         </Link>
                         <button
                           className={`${tableBtn} bg-white`}
-                          onClick={() => deleteElement(site._id, idx)}
+                          onClick={(e) => deleteElement(site._id, idx, e)}
                         >
                           <RiDeleteBin6Line />
                         </button>
