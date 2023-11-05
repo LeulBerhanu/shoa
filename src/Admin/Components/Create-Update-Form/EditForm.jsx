@@ -112,6 +112,8 @@ function EditForm() {
         floorPlans: floorPlansWithUrl,
       };
 
+      console.log("sentData", sentData);
+
       image ? (sentData.propertyImage = image) : null;
 
       try {

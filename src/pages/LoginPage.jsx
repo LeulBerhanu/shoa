@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 
 function LoginPage() {
   const navigate = useNavigate();
-
   const [data, setData] = useState({ username: "", password: "" });
 
   const handleSubmit = async (e) => {
@@ -16,7 +15,7 @@ function LoginPage() {
         `${import.meta.env.VITE_API}/api/auth/login`,
         data
       );
-      console.log("res", res.data.access_token);
+
       localStorage.setItem("token", res.data.access_token);
 
       navigate("/admin");
