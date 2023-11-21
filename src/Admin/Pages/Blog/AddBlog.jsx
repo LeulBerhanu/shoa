@@ -62,9 +62,9 @@ function AddBlog() {
       </div>
       <form action="" onSubmit={handleSubmit}>
         <div className="flex flex-col gap-y-9 bg-white rounded-lg p-10">
-          {/* Title/Price and Image */}
-          <div className="flex w-full gap-x-12">
-            {/* Title and Price */}
+          {/* Title/ReadTime and Description */}
+          <div className="flex flex-col lg:flex-row w-full gap-x-12">
+            {/* Title and ReadTime */}
             <div className="flex flex-col gap-y-9  w-full">
               <div className="flex flex-col">
                 <label htmlFor="title" className="text-2xl mb-6">
@@ -103,7 +103,7 @@ function AddBlog() {
               </div>
             </div>
 
-            <div className="flex flex-col w-full">
+            <div className="flex flex-col w-full mt-10 lg:mt-0">
               <label htmlFor="description" className="text-2xl mb-6">
                 Description
               </label>

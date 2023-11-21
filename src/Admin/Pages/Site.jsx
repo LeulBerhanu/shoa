@@ -57,9 +57,9 @@ function Site() {
         </div>
 
         <div className="p-10 bg-white rounded-lg shadow-boxShadow ">
-          <table className="mx-auto text-xl border-separate border-spacing-0 border-2 rounded-lg w-full ">
+          <table className="mx-auto lg:text-xl border-separate border-spacing-0 border-2 rounded-lg w-full ">
             <thead className="h-20 text-left">
-              <tr className="[&>*]:px-10 [&>*]:font-normal">
+              <tr className="[&>*]:px-4 lg:[&>*]:px-10 [&>*]:font-normal">
                 <th>
                   <div className="flex items-center gap-x-1">
                     <p>No</p> <MdSwapVert />
@@ -77,7 +77,7 @@ function Site() {
             <tbody className="[&>:nth-child(odd)]:bg-black/5 [&>*]:h-20">
               {sites &&
                 sites.map((site, idx) => (
-                  <tr key={site._id} className="[&>*]:px-10">
+                  <tr key={site._id} className="[&>*]:px-4 lg:[&>*]:px-10">
                     <td>{idx + 1}</td>
                     <td className="max-w-[550px]">{site.title}</td>
                     <td>{moment(site.updatedAt).format("DD MMM Y")}</td>

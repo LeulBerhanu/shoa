@@ -43,9 +43,7 @@ function Navigation() {
           <NavLink className="relative" to="/">
             Home
           </NavLink>
-          <NavLink className="relative" to="/admin">
-            Admin
-          </NavLink>
+
           <NavLink
             className={
               location.pathname.includes("/blog/")

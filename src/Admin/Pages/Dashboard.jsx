@@ -35,13 +35,15 @@ function Dashboard() {
   return (
     <div>
       <Header currentPage="Dashboard" />
+
+      {/* Property Section */}
       <section className="px-5">
         <div className="flex justify-between items-center mt-9">
           <h2 className="text-2xl font-bold">Property</h2>
         </div>
 
-        <div className="p-10 bg-white rounded-lg shadow-boxShadow">
-          <div className="grid grid-cols-2 gap-10">
+        <div className="p-10 bg-white rounded-lg flex justify-center shadow-boxShadow">
+          <div className="flex flex-col gap-y-6  xl:grid xl:grid-cols-2 gap-10">
             {properties &&
               properties.map((item) => (
                 <div key={item._id} className="object-cover">
@@ -52,6 +54,7 @@ function Dashboard() {
         </div>
       </section>
 
+      {/* Site Section */}
       <section className="px-5">
         <div className="flex justify-between items-center mt-9">
           <h2 className="text-2xl font-bold">Site</h2>
@@ -73,13 +76,14 @@ function Dashboard() {
         </div>
       </section>
 
+      {/* Blog Section */}
       <section className="px-5">
         <div className="flex justify-between items-center mt-9">
           <h2 className="text-2xl font-bold">Blog</h2>
         </div>
 
         <div className="p-10 bg-white rounded-lg shadow-boxShadow text-2xl">
-          <div className="grid grid-cols-2 gap-10">
+          <div className="flex flex-col gap-y-6  xl:grid xl:grid-cols-2 gap-10">
             {blogs &&
               blogs.map((blog) => (
                 <div key={blog._id}>

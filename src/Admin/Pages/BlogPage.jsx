@@ -57,7 +57,7 @@ function BlogPage() {
         </div>
 
         <div className="p-10 bg-white rounded-lg shadow-boxShadow">
-          <table className="mx-auto text-xl w-full border-separate border-spacing-0 border-2 rounded-lg ">
+          <table className="mx-auto lg:text-xl w-full border-separate border-spacing-0 border-2 rounded-lg ">
             <thead className="h-20 text-left">
               <tr className="[&>*]:px-4 [&>*]:font-normal">
                 <th>

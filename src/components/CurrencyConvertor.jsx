@@ -40,6 +40,17 @@ function CurrencyConvertor() {
   //   unsub();
   // }, []); // Updated dependencies
 
+  function handleConvert() {
+    fetchExchangeRates(fromCurr, toCurr, currency1)
+      .then((data) => {
+        setCurrency2(data.conversion_result);
+        console.log("data", data);
+      })
+      .catch((err) => {
+        console.error("error occurred while fetching", err);
+      });
+  }
+
   function handleSwap() {
     setSwapCurrency((prev) => !prev);
   }
@@ -74,7 +85,7 @@ function CurrencyConvertor() {
 
       <button
         onClick={handleSwap}
-        className="flex items-center gap-2 px-1 hover:opacity-50"
+        className="flex items-center justify-center gap-2 px-1 primaryBtn"
       >
         <AiOutlineSwap /> Swap
       </button>
@@ -105,6 +116,9 @@ function CurrencyConvertor() {
           />
         </label>
       </div>
+      <button onClick={handleConvert} className=" primaryBtn">
+        Convert
+      </button>
     </div>
   );
 }

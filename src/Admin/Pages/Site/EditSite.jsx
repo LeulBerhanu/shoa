@@ -96,7 +96,7 @@ function EditSite() {
       <form action="" onSubmit={handleSubmit}>
         <div className="flex flex-col gap-y-9 bg-white rounded-lg p-10">
           {/* Title/Price and Image */}
-          <div className="grid grid-cols-2  gap-x-12">
+          <div className="xl:grid grid-cols-2  gap-x-12">
             {/* Title and Price */}
             <div className="flex flex-col gap-y-9  w-full">
               <div className="flex flex-col">

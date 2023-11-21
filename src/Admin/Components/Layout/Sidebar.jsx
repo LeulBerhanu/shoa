@@ -10,9 +10,9 @@ const navLinkStyle = "py-5 flex gap-x-2 items-center cursor-pointer";
 
 function Sidebar() {
   return (
-    <div className="flex flex-col gap-20 items-center w-[368px] bg-white">
-      <img src={shoa} alt="shoa logo" className="w-24 my-11" />
-      <ul className="flex flex-col text-2xl">
+    <div className="flex flex-col gap-20 items-center w-[368px] px-4 bg-white">
+      <img src={shoa} alt="shoa logo" className="w-16 my-11 lg:w-24" />
+      <ul className="flex flex-col lg:text-2xl text-base">
         <Link to="." className={navLinkStyle}>
           <BiSolidDashboard />
           <p className="cursor-pointer">Dashboard</p>
@@ -26,7 +26,7 @@ function Sidebar() {
           <p className="cursor-pointer">Property</p>
         </Link>
         <Link to="blog" className={navLinkStyle}>
-          <img src={blogIcon} />
+          <img src={blogIcon} className="md:w-[16px]" />
           <p className="cursor-pointer">Blog</p>
         </Link>
       </ul>

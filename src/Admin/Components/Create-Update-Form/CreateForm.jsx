@@ -131,7 +131,7 @@ function CreateForm() {
       <form>
         <div className="flex flex-col gap-y-9 bg-white rounded-lg p-10">
           {/* Title/Price and Image */}
-          <div className="grid grid-cols-2 w-full gap-x-3">
+          <div className="xl:grid grid-cols-2 w-full gap-x-3">
             {/* Title and Price */}
             <div className="flex flex-col gap-y-9  w-full">
               <div className="flex flex-col">
@@ -392,7 +392,7 @@ function CreateForm() {
               ) : null}
             </div>
 
-            <div className="flex flex-col w-full">
+            <div className="flex flex-col w-full mt-10 lg:mt-0">
               <div className="flex flex-col w-full mb-6">
                 <label className="text-2xl mb-6">Image</label>
                 <div className="h-full p-1 placeholder-black text-xl border-2 border-black/20 bg-[#D9D9D940]/25 outline-none">

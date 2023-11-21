@@ -95,7 +95,7 @@ function AboutUsPage() {
         </ul>
       </div>
 
-      <section>
+      {/* <section>
         <div className="px-4  container flex flex-col gap-4 justify-between mx-auto object-cover py-5 md:py-14 md:px-20 xl:flex-row ">
           <div
             style={bgImage}
@@ -110,10 +110,10 @@ function AboutUsPage() {
             <div className="flex items-center absolute w-full h-full rounded-[15px] bg-primary_light/[.50] py-[73px] px-14 leading-[1.15] "></div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section>
-        <div className="px-4 container mx-auto text-xs text-justify  md:px-20  xl:text-[28px]">
+        <div className="px-4 container mx-auto  leading-normal text-xs text-justify  md:px-20  xl:text-[28px]">
           <p className="my-8 md:my-16">
             Recently to tackle the sever problem in shortage and expensiveness
             of housing, we joined the real estate sector with adequate resources

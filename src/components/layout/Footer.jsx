@@ -6,8 +6,13 @@ import { RiTwitterXFill } from "react-icons/ri";
 import copyright from "../../img/ph_copyright-thin.svg";
 
 import CurrencyConvertor from "../CurrencyConvertor";
+import { Link } from "react-router-dom";
 
 function Footer() {
+  function scrollToTop() {
+    window.scrollTo(0, 0);
+  }
+
   return (
     <footer className="bg-primary flex-shrink-0 mt-24">
       <div className=" container flex flex-col md:grid md:grid-cols-2  text-white mx-auto">
@@ -17,10 +22,10 @@ function Footer() {
           <div className="flex justify-between">
             <div className="capitalize tracking-wide font-bold text-[22px] xl:text-[28px]">
               {/* Phone */}
-              <p>+251 912121212</p>
+              <p>+251 115589897</p>
               {/* location */}
               <div className="text-white mt-9 opacity-50 ">
-                <p>Megenagna,</p>
+                <p>kazanchis,</p>
                 <p>addis ababa, ethiopia</p>
               </div>
             </div>
@@ -34,7 +39,10 @@ function Footer() {
           </div>
 
           {/* Arrow Button */}
-          <button className="hidden text-[40px] self-end md:block">
+          <button
+            className="hidden text-[40px] self-end md:block"
+            onClick={scrollToTop}
+          >
             <HiOutlineArrowUp />
           </button>
 
@@ -72,6 +80,11 @@ function Footer() {
               <RiTwitterXFill />
             </div>
           </div>
+          <Link to="/admin">
+            <span className="border px-6 py-2 rounded-md hover:bg-white hover:text-black transition-all">
+              Admin
+            </span>
+          </Link>
         </div>
 
         {/* *** Right Column *** */}
